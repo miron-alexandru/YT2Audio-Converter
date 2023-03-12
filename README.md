@@ -1,4 +1,5 @@
 # MP3PlaylistMaker
 Description:
 
-GUI application that allows the user to download and convert YouTube videos from a playlist into MP3 files.
+GUI application that can convert YouTube videos or playlists to MP3 format,
+and download them to a specified directory.
