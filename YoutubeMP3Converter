@@ -16,6 +16,7 @@ from tkinter import filedialog
 import tkinter.messagebox as messagebox
 from pytube import YouTube
 from pytube import Playlist
+from moviepy.editor import VideoFileClip, AudioFileClip
 
 
 class YouTubeConverterGUI:
@@ -72,9 +73,6 @@ class YouTubeConverterGUI:
             )
 
     def _download_video(self):
-        """This method checks if the given link is a video or a playlist using regex,
-        and downloads the file(s) in .mp3 format. If the link is a playlist,
-        all videos in the playlist will be downloaded."""
         self.stop_event.clear()
         yt_link = str(self.link.get())
         is_playlist = False
@@ -115,10 +113,16 @@ class YouTubeConverterGUI:
             try:
                 audio_stream = video.streams.filter(only_audio=True).order_by('abr').desc().first()
                 if audio_stream is not None:
-                    file_name = re.sub('[^A-Za-z0-9 ]+', '', video.title) + ".mp3"
-                    audio_stream.download(output_path=self.download_directory, filename=file_name)
+                    file_name = re.sub('[^A-Za-z0-9 ]+', '', video.title) + ".mp4"
+                    video_file_path = audio_stream.download(output_path=self.download_directory, filename=file_name)
+                    audio_file_path = os.path.splitext(video_file_path)[0] + ".mp3"
+                    video_clip = AudioFileClip(video_file_path)
+                    video_clip.write_audiofile(audio_file_path)
+                    video_clip.close()
+                    os.remove(video_file_path)
             except Exception as e:
                 messagebox.showerror("Error", f"Failed to download video: {video.title}")
+                print(e)
                 continue
             self.progress_bar["value"] = int((i + 1) / num_videos * 100)
             self.window.update()
