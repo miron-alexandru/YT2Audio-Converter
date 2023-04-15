@@ -5,8 +5,6 @@ and download them to a specified directory.
 Author: [Miron Alexandru]
 """
 
-
-
 import os
 import re
 import threading
@@ -16,7 +14,7 @@ from tkinter import filedialog
 import tkinter.messagebox as messagebox
 from pytube import YouTube
 from pytube import Playlist
-from moviepy.editor import VideoFileClip, AudioFileClip
+from moviepy.editor import AudioFileClip
 
 
 class YouTubeConverterGUI:
@@ -114,13 +112,14 @@ class YouTubeConverterGUI:
                 audio_stream = video.streams.filter(only_audio=True).order_by('abr').desc().first()
                 if audio_stream:
                     file_name = re.sub('[^A-Za-z0-9 ]+', '', video.title) + ".mp4"
-                    video_file_path = audio_stream.download(output_path=self.download_directory, filename=file_name)
+                    video_file_path = audio_stream.download(output_path=self.download_directory,
+                                                             filename=file_name)
                     audio_file_path = os.path.splitext(video_file_path)[0] + ".mp3"
                     with AudioFileClip(video_file_path) as video_clip:
                         video_clip.write_audiofile(audio_file_path)
                     os.remove(video_file_path)
-            except Exception as e:
-                messagebox.showerror("Error", f"Failed to download video: {video.title}\nError message: {e}")
+            except Exception as all_ex:
+                messagebox.showerror("Error", f"Failed to download: {video.title}\nError: {all_ex}")
                 continue
 
             self.progress_bar["value"] = int((i + 1) / num_videos * 100)
