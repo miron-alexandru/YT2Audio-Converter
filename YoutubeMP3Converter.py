@@ -29,6 +29,7 @@ class YouTubeConverter:
         self.window.config(bg="#0D47A1")
         self.window.resizable(width=False, height=False)
         self.window.title("YouTube to MP3 Converter")
+        self.window.iconbitmap("icon.ico")
         self.link = tk.StringVar()
         self.progress_bar = ttk.Progressbar(self.window, length=200, mode="determinate")
         self.link_enter = None
@@ -193,8 +194,13 @@ class YouTubeConverter:
             except Exception as ex:
                 return video_title, str(ex)  # Failure
 
+        if is_playlist:
+            max_workers = 3
+        else:
+            max_workers = 1
+
         # Download the video or the playlist using multi-threading
-        with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
             futures = []
             for i in range(num_videos):
                 if self.stop_event.is_set():
@@ -212,10 +218,13 @@ class YouTubeConverter:
                 video_title, error_message = future.result()
                 completed_count += 1
                 if error_message:
-                    messagebox.showerror(
-                        "Error",
-                        f"Failed to download: {video_title}\nError: {error_message}",
-                    )
+                    if "[WinError 32]" or ["WinError 2"] in error_message:
+                        continue
+                    else:
+                        messagebox.showerror(
+                            "Error",
+                            f"Failed to download: {video_title}\nError: {error_message}",
+                        )
                 self.progress_bar["value"] = int(completed_count / num_videos * 100)
                 self.window.update()
                 self.window.update_idletasks()
