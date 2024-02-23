@@ -7,7 +7,9 @@ Author: [Miron Alexandru]
 
 import os
 import sys
+from bs4 import BeautifulSoup
 import re
+import requests
 import threading
 import concurrent.futures
 import subprocess
@@ -162,6 +164,24 @@ class YouTubeConverter:
             except Exception as ex:
                 return f"Unexpected error: {str(ex)}"
 
+        def get_video_title(video_url):
+            try:
+                response = requests.get(video_url)
+                if response.status_code == 200:
+                    soup = BeautifulSoup(response.text, 'html.parser')
+                    title = soup.find('title').text
+                    video_title_match = re.search(r'(.+) - YouTube', title)
+                    if video_title_match:
+                        video_title = video_title_match.group(1)
+                        return video_title
+                    else:
+                        return None
+                else:
+                    return None
+            except Exception as e:
+                return None
+
+
         # Define a function for downloading a single video
         def download_single_video(video_url):
             video_title = ""
@@ -173,8 +193,13 @@ class YouTubeConverter:
                     video.streams.filter(only_audio=True).order_by("abr").desc().first()
                 )
                 if audio_stream:
-                    video_title = video.title
-                    file_name = re.sub("[^A-Za-z0-9 ]+", "", video_title) + ".mp4"
+                    try:
+                        video_name = get_video_title(video_url)
+                        title_to_use = video_name if video_name else video.title
+                    except Exception as e:
+                        title_to_use = video.title
+                    
+                    file_name = re.sub("[^A-Za-z0-9 -]+", "", title_to_use) + ".mp4"
                     video_file_path = os.path.join(self.download_directory, file_name)
                     audio_file_path = f"{os.path.splitext(video_file_path)[0]}.mp3"
 

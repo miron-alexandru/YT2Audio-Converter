@@ -1,34 +1,23 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- Created by GNU Texinfo 7.0.1, https://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>ffmpeg Documentation</title>
-
-<meta name="description" content="ffmpeg Documentation">
-<meta name="keywords" content="ffmpeg Documentation">
-<meta name="resource-type" content="document">
-<meta name="distribution" content="global">
-<meta name="Generator" content="makeinfo">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-
-<link href="#SEC_Contents" rel="contents" title="Table of Contents">
-<style type="text/css">
-<!--
-div.example {margin-left: 3.2em}
-ul.mark-bullet {list-style-type: disc}
-ul.toc-numbered-mark {list-style: none}
--->
-</style>
-
-
-</head>
-
-<body lang="en">
+<!-- Created by , GNU Texinfo 7.0.1 -->
+  <head>
+    <meta charset="utf-8">
+    <title>
+      ffmpeg Documentation
+    </title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>
+      ffmpeg Documentation
+      </h1>
 
 
 <div class="top-level-extent" id="SEC_Top">
-
 
 <div class="element-contents" id="SEC_Contents">
 <h2 class="contents-heading">Table of Contents</h2>
@@ -89,6 +78,17 @@ ul.toc-numbered-mark {list-style: none}
 </ul>
 </div>
 </div>
+
+<ul class="mini-toc">
+<li><a href="#Synopsis" accesskey="1">Synopsis</a></li>
+<li><a href="#Description" accesskey="2">Description</a></li>
+<li><a href="#Detailed-description" accesskey="3">Detailed description</a></li>
+<li><a href="#Stream-selection" accesskey="4">Stream selection</a></li>
+<li><a href="#Options" accesskey="5">Options</a></li>
+<li><a href="#Examples-1" accesskey="6">Examples</a></li>
+<li><a href="#See-Also" accesskey="7">See Also</a></li>
+<li><a href="#Authors" accesskey="8">Authors</a></li>
+</ul>
 <div class="chapter-level-extent" id="Synopsis">
 <h2 class="chapter">1 Synopsis</h2>
 
@@ -193,7 +193,7 @@ tracking lowest timestamp on any active input stream.
 for the stream, see further for a description). The decoder produces
 uncompressed frames (raw video/PCM audio/...) which can be processed further by
 filtering (see next section). After filtering, the frames are passed to the
-encoder, which encodes them and outputs encoded packets. Finally those are
+encoder, which encodes them and outputs encoded packets. Finally, those are
 passed to the muxer, which writes the encoded packets to the output file.
 </p>
 <ul class="mini-toc">
@@ -547,6 +547,15 @@ corresponding value to true. They can be set to false by prefixing
 the option name with &quot;no&quot;. For example using &quot;-nofoo&quot;
 will set the boolean option with name &quot;foo&quot; to false.
 </p>
+<p>Options that take arguments support a special syntax where the argument given on
+the command line is interpreted as a path to the file from which the actual
+argument value is loaded. To use this feature, add a forward slash &rsquo;/&rsquo;
+immediately before the option name (after the leading dash). E.g.
+</p><div class="example">
+<pre class="example-preformatted">ffmpeg -i INPUT -/filter:v filter.script OUTPUT
+</pre></div>
+<p>will load a filtergraph description from the file named <samp class="file">filter.script</samp>.
+</p>
 <a class="anchor" id="Stream-specifiers"></a><ul class="mini-toc">
 <li><a href="#Stream-specifiers-1" accesskey="1">Stream specifiers</a></li>
 <li><a href="#Generic-options" accesskey="2">Generic options</a></li>
@@ -586,9 +595,9 @@ or <code class="code">-codec: copy</code> would copy all the streams without ree
 thread count for the second stream to 4. If <var class="var">stream_index</var> is used as an
 additional stream specifier (see below), then it selects stream number
 <var class="var">stream_index</var> from the matching streams. Stream numbering is based on the
-order of the streams as detected by libavformat except when a program ID is
-also specified. In this case it is based on the ordering of the streams in the
-program.
+order of the streams as detected by libavformat except when a stream group
+specifier or program ID is also specified. In this case it is based on the
+ordering of the streams in the group or program.
 </p></dd>
 <dt><samp class="option"><var class="var">stream_type</var>[:<var class="var">additional_stream_specifier</var>]</samp></dt>
 <dd><p><var class="var">stream_type</var> is one of following: &rsquo;v&rsquo; or &rsquo;V&rsquo; for video, &rsquo;a&rsquo; for audio, &rsquo;s&rsquo;
@@ -599,6 +608,20 @@ it matches streams which both have this type and match the
 <var class="var">additional_stream_specifier</var>. Otherwise, it matches all streams of the
 specified type.
 </p></dd>
+<dt><samp class="option">g:<var class="var">group_specifier</var>[:<var class="var">additional_stream_specifier</var>]</samp></dt>
+<dd><p>Matches streams which are in the group with the specifier <var class="var">group_specifier</var>.
+if <var class="var">additional_stream_specifier</var> is used, then it matches streams which both
+are part of the group and match the <var class="var">additional_stream_specifier</var>.
+<var class="var">group_specifier</var> may be one of the following:
+</p><dl class="table">
+<dt><samp class="option"><var class="var">group_index</var></samp></dt>
+<dd><p>Match the stream with this group index.
+</p></dd>
+<dt><samp class="option">#<var class="var">group_id</var> or i:<var class="var">group_id</var></samp></dt>
+<dd><p>Match the stream with this group id.
+</p></dd>
+</dl>
+</dd>
 <dt><samp class="option">p:<var class="var">program_id</var>[:<var class="var">additional_stream_specifier</var>]</samp></dt>
 <dd><p>Matches streams which are in the program with the id <var class="var">program_id</var>. If
 <var class="var">additional_stream_specifier</var> is used, then it matches streams which both
@@ -1232,6 +1255,246 @@ disposition from the first subtitle stream:
 <var class="var">stream</var>(s) to it.
 </p>
 </dd>
+<dt><samp class="option">-stream_group type=<var class="var">type</var>:st=<var class="var">stream</var>[:st=<var class="var">stream</var>][:stg=<var class="var">stream_group</var>][:id=<var class="var">stream_group_id</var>...] (<em class="emph">output</em>)</samp></dt>
+<dd>
+<p>Creates a stream group of the specified <var class="var">type</var>, <var class="var">stream_group_id</var> and adds the specified
+<var class="var">stream</var>(s) and/or previously defined <var class="var">stream_group</var>(s) to it.
+</p>
+<p><var class="var">type</var> can be one of the following:
+</p><dl class="table">
+<dt><samp class="option">iamf_audio_element</samp></dt>
+<dd><p>Groups <var class="var">stream</var>s that belong to the same IAMF Audio Element
+</p>
+<p>For this group <var class="var">type</var>, the following options are available
+</p><dl class="table">
+<dt><samp class="option">audio_element_type</samp></dt>
+<dd><p>The Audio Element type. The following values are supported:
+</p>
+<dl class="table">
+<dt><samp class="option">channel</samp></dt>
+<dd><p>Scalable channel audio representation
+</p></dd>
+<dt><samp class="option">scene</samp></dt>
+<dd><p>Ambisonics representation
+</p></dd>
+</dl>
+
+</dd>
+<dt><samp class="option">demixing</samp></dt>
+<dd><p>Demixing information used to reconstruct a scalable channel audio representation.
+This option must be separated from the rest with a &rsquo;,&rsquo;, and takes the following
+key=value options
+</p>
+<dl class="table">
+<dt><samp class="option">parameter_id</samp></dt>
+<dd><p>An identifier parameters blocks in frames may refer to
+</p></dd>
+<dt><samp class="option">dmixp_mode</samp></dt>
+<dd><p>A pre-defined combination of demixing parameters
+</p></dd>
+</dl>
+
+</dd>
+<dt><samp class="option">recon_gain</samp></dt>
+<dd><p>Recon gain information used to reconstruct a scalable channel audio representation.
+This option must be separated from the rest with a &rsquo;,&rsquo;, and takes the following
+key=value options
+</p>
+<dl class="table">
+<dt><samp class="option">parameter_id</samp></dt>
+<dd><p>An identifier parameters blocks in frames may refer to
+</p></dd>
+</dl>
+
+</dd>
+<dt><samp class="option">layer</samp></dt>
+<dd><p>A layer defining a Channel Layout in the Audio Element.
+This option must be separated from the rest with a &rsquo;,&rsquo;. Several &rsquo;,&rsquo; separated entries
+can be defined, and at least one must be set.
+</p>
+<p>It takes the following &quot;:&quot;-separated key=value options
+</p>
+<dl class="table">
+<dt><samp class="option">ch_layout</samp></dt>
+<dd><p>The layer&rsquo;s channel layout
+</p></dd>
+<dt><samp class="option">flags</samp></dt>
+<dd><p>The following flags are available:
+</p>
+<dl class="table">
+<dt><samp class="option">recon_gain</samp></dt>
+<dd><p>Wether to signal if recon_gain is present as metadata in parameter blocks within frames
+</p></dd>
+</dl>
+
+</dd>
+<dt><samp class="option">output_gain</samp></dt>
+<dt><samp class="option">output_gain_flags</samp></dt>
+<dd><p>Which channels output_gain applies to. The following flags are available:
+</p>
+<dl class="table">
+<dt><samp class="option">FL</samp></dt>
+<dt><samp class="option">FR</samp></dt>
+<dt><samp class="option">BL</samp></dt>
+<dt><samp class="option">BR</samp></dt>
+<dt><samp class="option">TFL</samp></dt>
+<dt><samp class="option">TFR</samp></dt>
+</dl>
+
+</dd>
+<dt><samp class="option">ambisonics_mode</samp></dt>
+<dd><p>The ambisonics mode. This has no effect if audio_element_type is set to channel.
+</p>
+<p>The following values are supported:
+</p>
+<dl class="table">
+<dt><samp class="option">mono</samp></dt>
+<dd><p>Each ambisonics channel is coded as an individual mono stream in the group
+</p></dd>
+</dl>
+
+</dd>
+</dl>
+
+</dd>
+<dt><samp class="option">default_w</samp></dt>
+<dd><p>Default weight value
+</p>
+</dd>
+</dl>
+
+</dd>
+<dt><samp class="option">iamf_mix_presentation</samp></dt>
+<dd><p>Groups <var class="var">stream</var>s that belong to all IAMF Audio Element the same
+IAMF Mix Presentation references
+</p>
+<p>For this group <var class="var">type</var>, the following options are available
+</p>
+<dl class="table">
+<dt><samp class="option">submix</samp></dt>
+<dd><p>A sub-mix within the Mix Presentation.
+This option must be separated from the rest with a &rsquo;,&rsquo;. Several &rsquo;,&rsquo; separated entries
+can be defined, and at least one must be set.
+</p>
+<p>It takes the following &quot;:&quot;-separated key=value options
+</p>
+<dl class="table">
+<dt><samp class="option">parameter_id</samp></dt>
+<dd><p>An identifier parameters blocks in frames may refer to, for post-processing the mixed
+audio signal to generate the audio signal for playback
+</p></dd>
+<dt><samp class="option">parameter_rate</samp></dt>
+<dd><p>The sample rate duration fields in parameters blocks in frames that refer to this
+<var class="var">parameter_id</var> are expressed as
+</p></dd>
+<dt><samp class="option">default_mix_gain</samp></dt>
+<dd><p>Default mix gain value to apply when there are no parameter blocks sharing the same
+<var class="var">parameter_id</var> for a given frame
+</p>
+</dd>
+<dt><samp class="option">element</samp></dt>
+<dd><p>References an Audio Element used in this Mix Presentation to generate the final output
+audio signal for playback.
+This option must be separated from the rest with a &rsquo;|&rsquo;. Several &rsquo;|&rsquo; separated entries
+can be defined, and at least one must be set.
+</p>
+<p>It takes the following &quot;:&quot;-separated key=value options:
+</p>
+<dl class="table">
+<dt><samp class="option">stg</samp></dt>
+<dd><p>The <var class="var">stream_group_id</var> for an Audio Element which this sub-mix refers to
+</p></dd>
+<dt><samp class="option">parameter_id</samp></dt>
+<dd><p>An identifier parameters blocks in frames may refer to, for applying any processing to
+the referenced and rendered Audio Element before being summed with other processed Audio
+Elements
+</p></dd>
+<dt><samp class="option">parameter_rate</samp></dt>
+<dd><p>The sample rate duration fields in parameters blocks in frames that refer to this
+<var class="var">parameter_id</var> are expressed as
+</p></dd>
+<dt><samp class="option">default_mix_gain</samp></dt>
+<dd><p>Default mix gain value to apply when there are no parameter blocks sharing the same
+<var class="var">parameter_id</var> for a given frame
+</p></dd>
+<dt><samp class="option">annotations</samp></dt>
+<dd><p>A key=value string describing the sub-mix element where &quot;key&quot; is a string conforming to
+BCP-47 that specifies the language for the &quot;value&quot; string. &quot;key&quot; must be the same as the
+one in the mix&rsquo;s <var class="var">annotations</var>
+</p></dd>
+<dt><samp class="option">headphones_rendering_mode</samp></dt>
+<dd><p>Indicates whether the input channel-based Audio Element is rendered to stereo loudspeakers
+or spatialized with a binaural renderer when played back on headphones.
+This has no effect if the referenced Audio Element&rsquo;s <var class="var">audio_element_type</var> is set to
+channel.
+</p>
+<p>The following values are supported:
+</p>
+<dl class="table">
+<dt><samp class="option">stereo</samp></dt>
+<dt><samp class="option">binaural</samp></dt>
+</dl>
+
+</dd>
+</dl>
+
+</dd>
+<dt><samp class="option">layout</samp></dt>
+<dd><p>Specifies the layouts for this sub-mix on which the loudness information was measured.
+This option must be separated from the rest with a &rsquo;|&rsquo;. Several &rsquo;|&rsquo; separated entries
+can be defined, and at least one must be set.
+</p>
+<p>It takes the following &quot;:&quot;-separated key=value options:
+</p>
+<dl class="table">
+<dt><samp class="option">layout_type</samp></dt>
+<dd>
+<dl class="table">
+<dt><samp class="option">loudspeakers</samp></dt>
+<dd><p>The layout follows the loudspeaker sound system convention of ITU-2051-3.
+</p></dd>
+<dt><samp class="option">binaural</samp></dt>
+<dd><p>The layout is binaural.
+</p></dd>
+</dl>
+
+</dd>
+<dt><samp class="option">sound_system</samp></dt>
+<dd><p>Channel layout matching one of Sound Systems A to J of ITU-2051-3, plus 7.1.2 and 3.1.2
+This has no effect if <var class="var">layout_type</var> is set to binaural.
+</p></dd>
+<dt><samp class="option">integrated_loudness</samp></dt>
+<dd><p>The program integrated loudness information, as defined in ITU-1770-4.
+</p></dd>
+<dt><samp class="option">digital_peak</samp></dt>
+<dd><p>The digital (sampled) peak value of the audio signal, as defined in ITU-1770-4.
+</p></dd>
+<dt><samp class="option">true_peak</samp></dt>
+<dd><p>The true peak of the audio signal, as defined in ITU-1770-4.
+</p></dd>
+<dt><samp class="option">dialog_anchored_loudness</samp></dt>
+<dd><p>The Dialogue loudness information, as defined in ITU-1770-4.
+</p></dd>
+<dt><samp class="option">album_anchored_loudness</samp></dt>
+<dd><p>The Album loudness information, as defined in ITU-1770-4.
+</p></dd>
+</dl>
+
+</dd>
+</dl>
+
+</dd>
+<dt><samp class="option">annotations</samp></dt>
+<dd><p>A key=value string string describing the mix where &quot;key&quot; is a string conforming to BCP-47
+that specifies the language for the &quot;value&quot; string. &quot;key&quot; must be the same as the ones in
+all sub-mix element&rsquo;s <var class="var">annotations</var>s
+</p></dd>
+</dl>
+
+</dd>
+</dl>
+
+</dd>
 <dt><samp class="option">-target <var class="var">type</var> (<em class="emph">output</em>)</samp></dt>
 <dd><p>Specify target file type (<code class="code">vcd</code>, <code class="code">svcd</code>, <code class="code">dvd</code>, <code class="code">dv</code>,
 <code class="code">dv50</code>). <var class="var">type</var> may be prefixed with <code class="code">pal-</code>, <code class="code">ntsc-</code> or
@@ -1390,12 +1653,6 @@ syntax.
 <p>See the <a class="ref" href="#filter_005fcomplex_005foption">-filter_complex option</a> if you
 want to create filtergraphs with multiple inputs and/or outputs.
 </p>
-<a class="anchor" id="filter_005fscript-option"></a></dd>
-<dt><samp class="option">-filter_script[:<var class="var">stream_specifier</var>] <var class="var">filename</var> (<em class="emph">output,per-stream</em>)</samp></dt>
-<dd><p>This option is similar to <samp class="option">-filter</samp>, the only difference is that its
-argument is the name of the file from which a filtergraph description is to be
-read.
-</p>
 </dd>
 <dt><samp class="option">-reinit_filter[:<var class="var">stream_specifier</var>] <var class="var">integer</var> (<em class="emph">input,per-stream</em>)</samp></dt>
 <dd><p>This boolean option determines if the filtergraph(s) to which this stream is fed gets
@@ -1450,7 +1707,7 @@ shell.
 </p>
 </dd>
 <dt><samp class="option">-debug_ts (<em class="emph">global</em>)</samp></dt>
-<dd><p>Print timestamp information. It is off by default. This option is
+<dd><p>Print timestamp/latency information. It is off by default. This option is
 mostly useful for testing and debugging purposes, and the output
 format may change from one version to another, so it should not be
 employed by portable scripts.
@@ -1703,20 +1960,13 @@ PSNR flag to the encoder instead, using <code class="code">-flags +psnr</code>.
 <a class="ref" href="#vstats_005ffile_005fformat">vstats file format</a> section for the format description.
 </p>
 </dd>
-<dt><samp class="option">-top[:<var class="var">stream_specifier</var>] <var class="var">n</var> (<em class="emph">output,per-stream</em>)</samp></dt>
-<dd><p>top=1/bottom=0/auto=-1 field first
-</p></dd>
 <dt><samp class="option">-vtag <var class="var">fourcc/tag</var> (<em class="emph">output</em>)</samp></dt>
 <dd><p>Force video tag/fourcc. This is an alias for <code class="code">-tag:v</code>.
-</p></dd>
-<dt><samp class="option">-vbsf <var class="var">bitstream_filter</var></samp></dt>
-<dd><p>Deprecated see -bsf
 </p>
 </dd>
 <dt><samp class="option">-force_key_frames[:<var class="var">stream_specifier</var>] <var class="var">time</var>[,<var class="var">time</var>...] (<em class="emph">output,per-stream</em>)</samp></dt>
 <dt><samp class="option">-force_key_frames[:<var class="var">stream_specifier</var>] expr:<var class="var">expr</var> (<em class="emph">output,per-stream</em>)</samp></dt>
 <dt><samp class="option">-force_key_frames[:<var class="var">stream_specifier</var>] source (<em class="emph">output,per-stream</em>)</samp></dt>
-<dt><samp class="option">-force_key_frames[:<var class="var">stream_specifier</var>] source_no_drop (<em class="emph">output,per-stream</em>)</samp></dt>
 <dd>
 <p><var class="var">force_key_frames</var> can take arguments of the following form:
 </p>
@@ -1783,11 +2033,6 @@ starting from second 13:
 <dt><samp class="option">source</samp></dt>
 <dd><p>If the argument is <code class="code">source</code>, ffmpeg will force a key frame if
 the current frame being encoded is marked as a key frame in its source.
-</p>
-</dd>
-<dt><samp class="option">source_no_drop</samp></dt>
-<dd><p>If the argument is <code class="code">source_no_drop</code>, ffmpeg will force a key frame if
-the current frame being encoded is marked as a key frame in its source.
 In cases where this particular source frame has to be dropped,
 enforce the next available frame to become a key frame instead.
 </p>
@@ -1840,7 +2085,25 @@ device type:
 </dd>
 <dt><samp class="option">d3d11va</samp></dt>
 <dd><p><var class="var">device</var> is the number of the Direct3D 11 display adapter.
+If not specified, it will attempt to use the default Direct3D 11 display adapter
+or the first Direct3D 11 display adapter whose hardware VendorId is specified
+by &lsquo;<samp class="samp">vendor_id</samp>&rsquo;.
 </p>
+<p>Examples:
+</p><dl class="table">
+<dt><em class="emph">-init_hw_device d3d11va</em></dt>
+<dd><p>Create a d3d11va device on the default Direct3D 11 display adapter.
+</p>
+</dd>
+<dt><em class="emph">-init_hw_device d3d11va:1</em></dt>
+<dd><p>Create a d3d11va device on the Direct3D 11 display adapter specified by index 1.
+</p>
+</dd>
+<dt><em class="emph">-init_hw_device d3d11va:,vendor_id=0x8086</em></dt>
+<dd><p>Create a d3d11va device on the first Direct3D 11 display adapter whose hardware VendorId is 0x8086.
+</p></dd>
+</dl>
+
 </dd>
 <dt><samp class="option">vaapi</samp></dt>
 <dd><p><var class="var">device</var> is either an X11 display name, a DRM render node or a DirectX adapter index.
@@ -1848,6 +2111,34 @@ If not specified, it will attempt to open the default X11 display (<em class="em
 and then the first DRM render node (<em class="emph">/dev/dri/renderD128</em>), or the default
 DirectX adapter on Windows.
 </p>
+<p>The following options are recognized:
+</p><dl class="table">
+<dt><samp class="option">kernel_driver</samp></dt>
+<dd><p>When <var class="var">device</var> is not specified, use this option to specify the name of the kernel
+driver associated with the desired device. This option is available only when
+the hardware acceleration method <em class="emph">drm</em> and <em class="emph">vaapi</em> are enabled.
+</p></dd>
+</dl>
+
+<p>Examples:
+</p><dl class="table">
+<dt><em class="emph">-init_hw_device vaapi</em></dt>
+<dd><p>Create a vaapi device on the default device.
+</p>
+</dd>
+<dt><em class="emph">-init_hw_device vaapi:/dev/dri/renderD129</em></dt>
+<dd><p>Create a vaapi device on DRM render node <samp class="file">/dev/dri/renderD129</samp>.
+</p>
+</dd>
+<dt><em class="emph">-init_hw_device vaapi:1</em></dt>
+<dd><p>Create a vaapi device on DirectX adapter 1.
+</p>
+</dd>
+<dt><em class="emph">-init_hw_device vaapi:,kernel_driver=i915</em></dt>
+<dd><p>Create a vaapi device on a device associated with kernel driver &lsquo;<samp class="samp">i915</samp>&rsquo;.
+</p></dd>
+</dl>
+
 </dd>
 <dt><samp class="option">vdpau</samp></dt>
 <dd><p><var class="var">device</var> is an X11 display name.
@@ -1871,18 +2162,46 @@ If not specified, it will attempt to open the default X11 display (<em class="em
 platform-appropriate subdevice (&lsquo;<samp class="samp">dxva2</samp>&rsquo; or &lsquo;<samp class="samp">d3d11va</samp>&rsquo; or &lsquo;<samp class="samp">vaapi</samp>&rsquo;) and then deriving a
 QSV device from that.)
 </p>
-<p>Alternatively, &lsquo;<samp class="samp">child_device_type</samp>&rsquo; helps to choose platform-appropriate subdevice type.
-On Windows &lsquo;<samp class="samp">d3d11va</samp>&rsquo; is used as default subdevice type.
-</p>
+<p>The following options are recognized:
+</p><dl class="table">
+<dt><samp class="option">child_device</samp></dt>
+<dd><p>Specify a DRM render node on Linux or DirectX adapter on Windows.
+</p></dd>
+<dt><samp class="option">child_device_type</samp></dt>
+<dd><p>Choose platform-appropriate subdevice type. On Windows &lsquo;<samp class="samp">d3d11va</samp>&rsquo; is used
+as default subdevice type when <code class="code">--enable-libvpl</code> is specified at configuration time,
+&lsquo;<samp class="samp">dxva2</samp>&rsquo; is used as default subdevice type when <code class="code">--enable-libmfx</code> is specified at
+configuration time. On Linux user can use &lsquo;<samp class="samp">vaapi</samp>&rsquo; only as subdevice type.
+</p></dd>
+</dl>
+
 <p>Examples:
 </p><dl class="table">
+<dt><em class="emph">-init_hw_device qsv:hw,child_device=/dev/dri/renderD129</em></dt>
+<dd><p>Create a QSV device with &lsquo;<samp class="samp">MFX_IMPL_HARDWARE</samp>&rsquo; on DRM render node <samp class="file">/dev/dri/renderD129</samp>.
+</p>
+</dd>
+<dt><em class="emph">-init_hw_device qsv:hw,child_device=1</em></dt>
+<dd><p>Create a QSV device with &lsquo;<samp class="samp">MFX_IMPL_HARDWARE</samp>&rsquo; on DirectX adapter 1.
+</p>
+</dd>
 <dt><em class="emph">-init_hw_device qsv:hw,child_device_type=d3d11va</em></dt>
 <dd><p>Choose the GPU subdevice with type &lsquo;<samp class="samp">d3d11va</samp>&rsquo; and create QSV device with &lsquo;<samp class="samp">MFX_IMPL_HARDWARE</samp>&rsquo;.
 </p>
 </dd>
 <dt><em class="emph">-init_hw_device qsv:hw,child_device_type=dxva2</em></dt>
 <dd><p>Choose the GPU subdevice with type &lsquo;<samp class="samp">dxva2</samp>&rsquo; and create QSV device with &lsquo;<samp class="samp">MFX_IMPL_HARDWARE</samp>&rsquo;.
-</p></dd>
+</p>
+</dd>
+<dt><em class="emph">-init_hw_device qsv:hw,child_device=1,child_device_type=d3d11va</em></dt>
+<dd><p>Create a QSV device with &lsquo;<samp class="samp">MFX_IMPL_HARDWARE</samp>&rsquo; on DirectX adapter 1 with subdevice type &lsquo;<samp class="samp">d3d11va</samp>&rsquo;.
+</p>
+</dd>
+<dt><em class="emph">-init_hw_device vaapi=va:/dev/dri/renderD129 -init_hw_device qsv=hw1@<var class="var">va</var></em></dt>
+<dd><p>Create a VAAPI device called &lsquo;<samp class="samp">va</samp>&rsquo; on <samp class="file">/dev/dri/renderD129</samp>, then derive a QSV device called &lsquo;<samp class="samp">hw1</samp>&rsquo;
+from device &lsquo;<samp class="samp">va</samp>&rsquo;.
+</p>
+</dd>
 </dl>
 
 </dd>
@@ -2130,9 +2449,6 @@ filter the stream.
 <dt><samp class="option">-atag <var class="var">fourcc/tag</var> (<em class="emph">output</em>)</samp></dt>
 <dd><p>Force audio tag/fourcc. This is an alias for <code class="code">-tag:a</code>.
 </p></dd>
-<dt><samp class="option">-absf <var class="var">bitstream_filter</var></samp></dt>
-<dd><p>Deprecated, see -bsf
-</p></dd>
 <dt><samp class="option">-guess_layout_max <var class="var">channels</var> (<em class="emph">input,per-stream</em>)</samp></dt>
 <dd><p>If some input channel layout is not known, try to guess only if it
 corresponds to at most the specified number of channels. For example, 2
@@ -2158,9 +2474,6 @@ option to disable streams individually.
 <p>As an output option, disables subtitle recording i.e. automatic selection or
 mapping of any subtitle stream. For full manual control see the <code class="code">-map</code>
 option.
-</p></dd>
-<dt><samp class="option">-sbsf <var class="var">bitstream_filter</var></samp></dt>
-<dd><p>Deprecated, see -bsf
 </p></dd>
 </dl>
 
@@ -2199,8 +2512,7 @@ lot.
 <p>Create one or more streams in the output file. This option has two forms for
 specifying the data source(s): the first selects one or more streams from some
 input file (specified with <code class="code">-i</code>), the second takes an output from some
-complex filtergraph (specified with <code class="code">-filter_complex</code> or
-<code class="code">-filter_complex_script</code>).
+complex filtergraph (specified with <code class="code">-filter_complex</code>).
 </p>
 <p>In the first form, an output stream is created for every stream from the input
 file with the index <var class="var">input_file_id</var>. If <var class="var">stream_specifier</var> is given,
@@ -2487,10 +2799,6 @@ constant frame rate.
 <dd><p>Frames are passed through with their timestamp or dropped so as to
 prevent 2 frames from having the same timestamp.
 </p></dd>
-<dt><samp class="option">drop</samp></dt>
-<dd><p>As passthrough but destroys all timestamps, making the muxer generate
-fresh timestamps based on frame-rate.
-</p></dd>
 <dt><samp class="option">auto (-1)</samp></dt>
 <dd><p>Chooses between cfr and vfr depending on muxer capabilities. This is the
 default method.
@@ -2567,8 +2875,7 @@ decoder.
 </p>
 </dd>
 <dt><samp class="option">-enc_time_base[:<var class="var">stream_specifier</var>] <var class="var">timebase</var> (<em class="emph">output,per-stream</em>)</samp></dt>
-<dd><p>Set the encoder timebase. <var class="var">timebase</var> is a floating point number,
-and can assume one of the following values:
+<dd><p>Set the encoder timebase. <var class="var">timebase</var> can assume one of the following values:
 </p>
 <dl class="table">
 <dt><samp class="option">0</samp></dt>
@@ -2577,17 +2884,19 @@ and can assume one of the following values:
 <p>For video - use 1/framerate, for audio - use 1/samplerate.
 </p>
 </dd>
-<dt><samp class="option">-1</samp></dt>
-<dd><p>Use the input stream timebase when possible.
-</p>
-<p>If an input stream is not available, the default timebase will be used.
+<dt><samp class="option">demux</samp></dt>
+<dd><p>Use the timebase from the demuxer.
 </p>
 </dd>
-<dt><samp class="option">&gt;0</samp></dt>
+<dt><samp class="option">filter</samp></dt>
+<dd><p>Use the timebase from the filtergraph.
+</p>
+</dd>
+<dt><samp class="option">a positive number</samp></dt>
 <dd><p>Use the provided number as the timebase.
 </p>
 <p>This field can be provided as a ratio of two integers (e.g. 1:24, 1:48000)
-or as a floating point number (e.g. 0.04166, 2.0833e-5)
+or as a decimal number (e.g. 0.04166, 2.0833e-5)
 </p></dd>
 </dl>
 
@@ -2623,8 +2932,8 @@ of seconds.
 </p>
 <p>The timestamp discontinuity correction enabled by this option is only
 applied to input formats accepting timestamp discontinuity (for which
-the <code class="code">AV_FMT_DISCONT</code> flag is enabled), e.g. MPEG-TS and HLS, and
-is automatically disabled when employing the <code class="code">-copy_ts</code> option
+the <code class="code">AVFMT_TS_DISCONT</code> flag is enabled), e.g. MPEG-TS and HLS, and
+is automatically disabled when employing the <code class="code">-copyts</code> option
 (unless wrapping is detected).
 </p>
 <p>If a timestamp discontinuity is detected whose absolute value is
@@ -2641,7 +2950,7 @@ seconds.
 </p>
 <p>The timestamp correction enabled by this option is only applied to
 input formats not accepting timestamp discontinuity (for which the
-<code class="code">AV_FMT_DISCONT</code> flag is not enabled).
+<code class="code">AVFMT_TS_DISCONT</code> flag is not enabled).
 </p>
 <p>If a timestamp discontinuity is detected whose absolute value is
 greater than <var class="var">threshold</var>, ffmpeg will drop the PTS/DTS timestamp
@@ -2670,17 +2979,37 @@ an output mpegts file:
 </pre></div>
 
 </dd>
-<dt><samp class="option">-bsf[:<var class="var">stream_specifier</var>] <var class="var">bitstream_filters</var> (<em class="emph">output,per-stream</em>)</samp></dt>
-<dd><p>Set bitstream filters for matching streams. <var class="var">bitstream_filters</var> is
-a comma-separated list of bitstream filters. Use the <code class="code">-bsfs</code> option
-to get the list of bitstream filters.
+<dt><samp class="option">-bsf[:<var class="var">stream_specifier</var>] <var class="var">bitstream_filters</var> (<em class="emph">input/output,per-stream</em>)</samp></dt>
+<dd><p>Apply bitstream filters to matching streams. The filters are applied to each
+packet as it is received from the demuxer (when used as an input option) or
+before it is sent to the muxer (when used as an output option).
+</p>
+<p><var class="var">bitstream_filters</var> is a comma-separated list of bitstream filter
+specifications, each of the form
 </p><div class="example">
-<pre class="example-preformatted">ffmpeg -i h264.mp4 -c:v copy -bsf:v h264_mp4toannexb -an out.h264
+<pre class="example-preformatted"><var class="var">filter</var>[=<var class="var">optname0</var>=<var class="var">optval0</var>:<var class="var">optname1</var>=<var class="var">optval1</var>:...]
 </pre></div>
-<div class="example">
+<p>Any of the &rsquo;,=:&rsquo; characters that are to be a part of an option value need to be
+escaped with a backslash.
+</p>
+<p>Use the <code class="code">-bsfs</code> option to get the list of bitstream filters.
+</p>
+<p>E.g.
+</p><div class="example">
+<pre class="example-preformatted">ffmpeg -bsf:v h264_mp4toannexb -i h264.mp4 -c:v copy -an out.h264
+</pre></div>
+<p>applies the <code class="code">h264_mp4toannexb</code> bitstream filter (which converts
+MP4-encapsulated H.264 stream to Annex B) to the <em class="emph">input</em> video stream.
+</p>
+<p>On the other hand,
+</p><div class="example">
 <pre class="example-preformatted">ffmpeg -i file.mov -an -vn -bsf:s mov2textsub -c:s copy -f rawvideo sub.txt
 </pre></div>
-
+<p>applies the <code class="code">mov2textsub</code> bitstream filter (which extracts text from MOV
+subtitles) to the <em class="emph">output</em> subtitle stream. Note, however, that since both
+examples use <code class="code">-c copy</code>, it matters little whether the filters are applied
+on input or output - that would change if transcoding was happening.
+</p>
 </dd>
 <dt><samp class="option">-tag[:<var class="var">stream_specifier</var>] <var class="var">codec_tag</var> (<em class="emph">input/output,per-stream</em>)</samp></dt>
 <dd><p>Force a tag/fourcc for matching streams.
@@ -2767,12 +3096,6 @@ The default is the number of available CPUs.
 <dt><samp class="option">-lavfi <var class="var">filtergraph</var> (<em class="emph">global</em>)</samp></dt>
 <dd><p>Define a complex filtergraph, i.e. one with arbitrary number of inputs and/or
 outputs. Equivalent to <samp class="option">-filter_complex</samp>.
-</p>
-<a class="anchor" id="filter_005fcomplex_005fscript-option"></a></dd>
-<dt><samp class="option">-filter_complex_script <var class="var">filename</var> (<em class="emph">global</em>)</samp></dt>
-<dd><p>This option is similar to <samp class="option">-filter_complex</samp>, the only difference is that
-its argument is the name of the file from which a complex filtergraph
-description is to be read.
 </p>
 </dd>
 <dt><samp class="option">-accurate_seek (<em class="emph">input</em>)</samp></dt>
@@ -3003,12 +3326,16 @@ timebase to compute presentation time.
 </p>
 </dd>
 <dt><samp class="option">br (<em class="emph">packet</em>)</samp></dt>
-<dd><p>Current bitrate in bits per second. Post-encoding only.
+<dd><p>Current bitrate in bits per second.
 </p>
 </dd>
 <dt><samp class="option">abr (<em class="emph">packet</em>)</samp></dt>
 <dd><p>Average bitrate for the whole stream so far, in bits per second, -1 if it cannot
-be determined at this point. Post-encoding only.
+be determined at this point.
+</p>
+</dd>
+<dt><samp class="option">key (<em class="emph">packet</em>)</samp></dt>
+<dd><p>Character &rsquo;K&rsquo; if the packet contains a keyframe, character &rsquo;N&rsquo; otherwise.
 </p></dd>
 </dl>
 
@@ -3404,8 +3731,9 @@ online repository at <a class="url" href="https://git.ffmpeg.org/ffmpeg">https:/
 
 </div>
 </div>
-
-
-
-</body>
+      <p style="font-size: small;">
+        This document was generated using <a class="uref" href="https://www.gnu.org/software/texinfo/"><em class="emph">makeinfo</em></a>.
+      </p>
+    </div>
+  </body>
 </html>

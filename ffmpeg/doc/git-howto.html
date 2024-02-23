@@ -1,35 +1,24 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- Created by GNU Texinfo 7.0.1, https://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Using Git to develop FFmpeg</title>
-
-<meta name="description" content="Using Git to develop FFmpeg">
-<meta name="keywords" content="Using Git to develop FFmpeg">
-<meta name="resource-type" content="document">
-<meta name="distribution" content="global">
-<meta name="Generator" content="makeinfo">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-
-<link href="#SEC_Contents" rel="contents" title="Table of Contents">
-<style type="text/css">
-<!--
-div.example {margin-left: 3.2em}
-ul.mark-bullet {list-style-type: disc}
-ul.toc-numbered-mark {list-style: none}
--->
-</style>
-
-
-</head>
-
-<body lang="en">
+<!-- Created by , GNU Texinfo 7.0.1 -->
+  <head>
+    <meta charset="utf-8">
+    <title>
+      Using Git to develop FFmpeg
+    </title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>
+      Using Git to develop FFmpeg
+      </h1>
 
 
 
 <div class="top-level-extent" id="SEC_Top">
-
 
 <div class="element-contents" id="SEC_Contents">
 <h2 class="contents-heading">Table of Contents</h2>
@@ -71,6 +60,16 @@ ul.toc-numbered-mark {list-style: none}
 </ul>
 </div>
 </div>
+
+<ul class="mini-toc">
+<li><a href="#Introduction" accesskey="1">Introduction</a></li>
+<li><a href="#Basics-Usage" accesskey="2">Basics Usage</a></li>
+<li><a href="#Git-configuration" accesskey="3">Git configuration</a></li>
+<li><a href="#FFmpeg-specific" accesskey="4">FFmpeg specific</a></li>
+<li><a href="#gpg-key-generation" accesskey="5">gpg key generation</a></li>
+<li><a href="#Pre_002dpush-checklist" accesskey="6">Pre-push checklist</a></li>
+<li><a href="#Server-Issues" accesskey="7">Server Issues</a></li>
+</ul>
 <div class="chapter-level-extent" id="Introduction">
 <h2 class="chapter">1 Introduction</h2>
 
@@ -147,7 +146,7 @@ Most distribution and operating system provide a package for it.
 you push back your changes to the remote repository.
 </p>
 <div class="example">
-<pre class="example-preformatted">git clone gil@ffmpeg.org:ffmpeg-web &lt;target&gt;
+<pre class="example-preformatted">git clone git@ffmpeg.org:ffmpeg-web &lt;target&gt;
 </pre></div>
 
 <p>This will put the source of the FFmpeg website into the directory
@@ -182,10 +181,9 @@ achieve this is to run
 can be remote. By default the master branch tracks the branch master in
 the remote origin.
 </p>
-<div class="float">
+<div class="warning">
 <p><code class="command">--rebase</code> (see below) is recommended.
-</p><div class="type-number-float"><p><strong class="strong">IMPORTANT
-</strong></p></div></div>
+</p></div>
 </div>
 <div class="section-level-extent" id="Rebasing-your-local-branches">
 <h3 class="section">2.4 Rebasing your local branches</h3>
@@ -483,12 +481,11 @@ the current branch history.
 <p>will replay local commits over the main repository allowing to edit, merge
 or remove some of them in the process.
 </p>
-<div class="float">
+<div class="info">
 <p><code class="command">git reset</code>, <code class="command">git commit --amend</code> and <code class="command">git rebase</code>
 rewrite history, so you should use them ONLY on your local or topic branches.
 The main repository will reject those changes.
-</p><div class="type-number-float"><p><strong class="strong">NOTE
-</strong></p></div></div>
+</p></div>
 <div class="example">
 <pre class="example-preformatted">git revert &lt;commit&gt;
 </pre></div>
@@ -617,8 +614,9 @@ recommended.
 problems with the Git server.
 </p></div>
 </div>
-
-
-
-</body>
+      <p style="font-size: small;">
+        This document was generated using <a class="uref" href="https://www.gnu.org/software/texinfo/"><em class="emph">makeinfo</em></a>.
+      </p>
+    </div>
+  </body>
 </html>

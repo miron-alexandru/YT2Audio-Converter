@@ -1,34 +1,23 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- Created by GNU Texinfo 7.0.1, https://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>FFmpeg FAQ</title>
-
-<meta name="description" content="FFmpeg FAQ">
-<meta name="keywords" content="FFmpeg FAQ">
-<meta name="resource-type" content="document">
-<meta name="distribution" content="global">
-<meta name="Generator" content="makeinfo">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-
-<link href="#SEC_Contents" rel="contents" title="Table of Contents">
-<style type="text/css">
-<!--
-div.example {margin-left: 3.2em}
-ul.mark-bullet {list-style-type: disc}
-ul.toc-numbered-mark {list-style: none}
--->
-</style>
-
-
-</head>
-
-<body lang="en">
+<!-- Created by , GNU Texinfo 7.0.1 -->
+  <head>
+    <meta charset="utf-8">
+    <title>
+      FFmpeg FAQ
+    </title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>
+      FFmpeg FAQ
+      </h1>
 
 
 <div class="top-level-extent" id="SEC_Top">
-
 
 <div class="element-contents" id="SEC_Contents">
 <h2 class="contents-heading">Table of Contents</h2>
@@ -75,7 +64,7 @@ ul.toc-numbered-mark {list-style: none}
     <li><a id="toc-Using-_002df-lavfi_002c-audio-becomes-mono-for-no-apparent-reason_002e" href="#Using-_002df-lavfi_002c-audio-becomes-mono-for-no-apparent-reason_002e">3.15 Using <samp class="option">-f lavfi</samp>, audio becomes mono for no apparent reason.</a></li>
     <li><a id="toc-Why-does-FFmpeg-not-see-the-subtitles-in-my-VOB-file_003f" href="#Why-does-FFmpeg-not-see-the-subtitles-in-my-VOB-file_003f">3.16 Why does FFmpeg not see the subtitles in my VOB file?</a></li>
     <li><a id="toc-Why-was-the-ffmpeg-_002dsameq-option-removed_003f-What-to-use-instead_003f" href="#Why-was-the-ffmpeg-_002dsameq-option-removed_003f-What-to-use-instead_003f">3.17 Why was the <code class="command">ffmpeg</code> <samp class="option">-sameq</samp> option removed? What to use instead?</a></li>
-    <li><a id="toc-I-have-a-stretched-video_002c-why-does-scaling-does-not-fix-it_003f" href="#I-have-a-stretched-video_002c-why-does-scaling-does-not-fix-it_003f">3.18 I have a stretched video, why does scaling does not fix it?</a></li>
+    <li><a id="toc-I-have-a-stretched-video_002c-why-does-scaling-not-fix-it_003f" href="#I-have-a-stretched-video_002c-why-does-scaling-not-fix-it_003f">3.18 I have a stretched video, why does scaling not fix it?</a></li>
     <li><a id="toc-How-do-I-run-ffmpeg-as-a-background-task_003f" href="#How-do-I-run-ffmpeg-as-a-background-task_003f">3.19 How do I run ffmpeg as a background task?</a></li>
     <li><a id="toc-How-do-I-prevent-ffmpeg-from-suspending-with-a-message-like-suspended-_0028tty-output_0029_003f" href="#How-do-I-prevent-ffmpeg-from-suspending-with-a-message-like-suspended-_0028tty-output_0029_003f">3.20 How do I prevent ffmpeg from suspending with a message like <em class="emph">suspended (tty output)</em>?</a></li>
   </ul></li>
@@ -101,6 +90,13 @@ ul.toc-numbered-mark {list-style: none}
 </ul>
 </div>
 </div>
+
+<ul class="mini-toc">
+<li><a href="#General-Questions" accesskey="1">General Questions</a></li>
+<li><a href="#Compilation" accesskey="2">Compilation</a></li>
+<li><a href="#Usage" accesskey="3">Usage</a></li>
+<li><a href="#Development" accesskey="4">Development</a></li>
+</ul>
 <div class="chapter-level-extent" id="General-Questions">
 <h2 class="chapter">1 General Questions</h2>
 
@@ -293,7 +289,7 @@ exec /usr/bin/pkg-config &quot;$@&quot;
 <li><a href="#Using-_002df-lavfi_002c-audio-becomes-mono-for-no-apparent-reason_002e">Using <samp class="option">-f lavfi</samp>, audio becomes mono for no apparent reason.</a></li>
 <li><a href="#Why-does-FFmpeg-not-see-the-subtitles-in-my-VOB-file_003f">Why does FFmpeg not see the subtitles in my VOB file?</a></li>
 <li><a href="#Why-was-the-ffmpeg-_002dsameq-option-removed_003f-What-to-use-instead_003f">Why was the <code class="command">ffmpeg</code> <samp class="option">-sameq</samp> option removed? What to use instead?</a></li>
-<li><a href="#I-have-a-stretched-video_002c-why-does-scaling-does-not-fix-it_003f">I have a stretched video, why does scaling does not fix it?</a></li>
+<li><a href="#I-have-a-stretched-video_002c-why-does-scaling-not-fix-it_003f">I have a stretched video, why does scaling not fix it?</a></li>
 <li><a href="#How-do-I-run-ffmpeg-as-a-background-task_003f">How do I run ffmpeg as a background task?</a></li>
 <li><a href="#How-do-I-prevent-ffmpeg-from-suspending-with-a-message-like-suspended-_0028tty-output_0029_003f">How do I prevent ffmpeg from suspending with a message like <em class="emph">suspended (tty output)</em>?</a></li>
 </ul>
@@ -639,7 +635,7 @@ work with streams that were detected during the initial scan; streams that
 are detected later are ignored.
 </p>
 <p>The size of the initial scan is controlled by two options: <code class="code">probesize</code>
-(default ~5 Mo) and <code class="code">analyzeduration</code> (default 5,000,000 µs = 5 s). For
+(default ~5&nbsp;Mo) and <code class="code">analyzeduration</code> (default 5,000,000&nbsp;µs = 5&nbsp;s). For
 the subtitle stream to be detected, both values must be large enough.
 </p>
 </div>
@@ -659,8 +655,8 @@ point acceptable for your tastes. The most common options to do that are
 of the encoder you chose.
 </p>
 </div>
-<div class="section-level-extent" id="I-have-a-stretched-video_002c-why-does-scaling-does-not-fix-it_003f">
-<h3 class="section">3.18 I have a stretched video, why does scaling does not fix it?</h3>
+<div class="section-level-extent" id="I-have-a-stretched-video_002c-why-does-scaling-not-fix-it_003f">
+<h3 class="section">3.18 I have a stretched video, why does scaling not fix it?</h3>
 
 <p>A lot of video codecs and formats can store the <em class="emph">aspect ratio</em> of the
 video: this is the ratio between the width and the height of either the full
@@ -934,8 +930,9 @@ causing FATE to not find files. Just replace <code class="code">~</code> by the 
 </div>
 </div>
 </div>
-
-
-
-</body>
+      <p style="font-size: small;">
+        This document was generated using <a class="uref" href="https://www.gnu.org/software/texinfo/"><em class="emph">makeinfo</em></a>.
+      </p>
+    </div>
+  </body>
 </html>

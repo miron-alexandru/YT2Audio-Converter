@@ -1,35 +1,23 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- Created by GNU Texinfo 7.0.1, https://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>FFmpeg Codecs Documentation</title>
-
-<meta name="description" content="FFmpeg Codecs Documentation">
-<meta name="keywords" content="FFmpeg Codecs Documentation">
-<meta name="resource-type" content="document">
-<meta name="distribution" content="global">
-<meta name="Generator" content="makeinfo">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-
-<link href="#SEC_Contents" rel="contents" title="Table of Contents">
-<style type="text/css">
-<!--
-div.example {margin-left: 3.2em}
-ul.mark-bullet {list-style-type: disc}
-ul.mark-minus {list-style-type: "\2212"}
-ul.toc-numbered-mark {list-style: none}
--->
-</style>
-
-
-</head>
-
-<body lang="en">
+<!-- Created by , GNU Texinfo 7.0.1 -->
+  <head>
+    <meta charset="utf-8">
+    <title>
+      FFmpeg Codecs Documentation
+    </title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>
+      FFmpeg Codecs Documentation
+      </h1>
 
 
 <div class="top-level-extent" id="SEC_Top">
-
 
 <div class="element-contents" id="SEC_Contents">
 <h2 class="contents-heading">Table of Contents</h2>
@@ -59,14 +47,18 @@ ul.toc-numbered-mark {list-style: none}
     <ul class="toc-numbered-mark">
       <li><a id="toc-Options-3" href="#Options-3">4.5.1 Options</a></li>
     </ul></li>
-    <li><a id="toc-QSV-Decoders" href="#QSV-Decoders">4.6 QSV Decoders</a>
+    <li><a id="toc-libxevd" href="#libxevd">4.6 libxevd</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Common-Options" href="#Common-Options">4.6.1 Common Options</a></li>
-      <li><a id="toc-HEVC-Options" href="#HEVC-Options">4.6.2 HEVC Options</a></li>
+      <li><a id="toc-Options-4" href="#Options-4">4.6.1 Options</a></li>
     </ul></li>
-    <li><a id="toc-v210" href="#v210">4.7 v210</a>
+    <li><a id="toc-QSV-Decoders" href="#QSV-Decoders">4.7 QSV Decoders</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Options-4" href="#Options-4">4.7.1 Options</a></li>
+      <li><a id="toc-Common-Options" href="#Common-Options">4.7.1 Common Options</a></li>
+      <li><a id="toc-HEVC-Options" href="#HEVC-Options">4.7.2 HEVC Options</a></li>
+    </ul></li>
+    <li><a id="toc-v210" href="#v210">4.8 v210</a>
+    <ul class="toc-numbered-mark">
+      <li><a id="toc-Options-5" href="#Options-5">4.8.1 Options</a></li>
     </ul></li>
   </ul></li>
   <li><a id="toc-Audio-Decoders" href="#Audio-Decoders">5 Audio Decoders</a>
@@ -84,7 +76,7 @@ ul.toc-numbered-mark {list-style: none}
     <li><a id="toc-libgsm" href="#libgsm">5.5 libgsm</a></li>
     <li><a id="toc-libilbc" href="#libilbc">5.6 libilbc</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Options-5" href="#Options-5">5.6.1 Options</a></li>
+      <li><a id="toc-Options-6" href="#Options-6">5.6.1 Options</a></li>
     </ul></li>
     <li><a id="toc-libopencore_002damrnb" href="#libopencore_002damrnb">5.7 libopencore-amrnb</a></li>
     <li><a id="toc-libopencore_002damrwb" href="#libopencore_002damrwb">5.8 libopencore-amrwb</a></li>
@@ -103,15 +95,15 @@ ul.toc-numbered-mark {list-style: none}
     </ul></li>
     <li><a id="toc-dvbsub" href="#dvbsub">6.3 dvbsub</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Options-6" href="#Options-6">6.3.1 Options</a></li>
+      <li><a id="toc-Options-7" href="#Options-7">6.3.1 Options</a></li>
     </ul></li>
     <li><a id="toc-dvdsub" href="#dvdsub">6.4 dvdsub</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Options-7" href="#Options-7">6.4.1 Options</a></li>
+      <li><a id="toc-Options-8" href="#Options-8">6.4.1 Options</a></li>
     </ul></li>
     <li><a id="toc-libzvbi_002dteletext" href="#libzvbi_002dteletext">6.5 libzvbi-teletext</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Options-8" href="#Options-8">6.5.1 Options</a></li>
+      <li><a id="toc-Options-9" href="#Options-9">6.5.1 Options</a></li>
     </ul></li>
   </ul></li>
   <li><a id="toc-Encoders" href="#Encoders">7 Encoders</a></li>
@@ -119,7 +111,7 @@ ul.toc-numbered-mark {list-style: none}
   <ul class="toc-numbered-mark">
     <li><a id="toc-aac" href="#aac">8.1 aac</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Options-9" href="#Options-9">8.1.1 Options</a></li>
+      <li><a id="toc-Options-10" href="#Options-10">8.1.1 Options</a></li>
     </ul></li>
     <li><a id="toc-ac3-and-ac3_005ffixed" href="#ac3-and-ac3_005ffixed">8.2 ac3 and ac3_fixed</a>
     <ul class="toc-numbered-mark">
@@ -140,24 +132,24 @@ ul.toc-numbered-mark {list-style: none}
     </ul></li>
     <li><a id="toc-flac-2" href="#flac-2">8.3 flac</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Options-10" href="#Options-10">8.3.1 Options</a></li>
+      <li><a id="toc-Options-11" href="#Options-11">8.3.1 Options</a></li>
     </ul></li>
     <li><a id="toc-opus" href="#opus">8.4 opus</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Options-11" href="#Options-11">8.4.1 Options</a></li>
+      <li><a id="toc-Options-12" href="#Options-12">8.4.1 Options</a></li>
     </ul></li>
     <li><a id="toc-libfdk_005faac" href="#libfdk_005faac">8.5 libfdk_aac</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Options-12" href="#Options-12">8.5.1 Options</a></li>
+      <li><a id="toc-Options-13" href="#Options-13">8.5.1 Options</a></li>
       <li><a id="toc-Examples" href="#Examples">8.5.2 Examples</a></li>
     </ul></li>
     <li><a id="toc-libmp3lame-1" href="#libmp3lame-1">8.6 libmp3lame</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Options-13" href="#Options-13">8.6.1 Options</a></li>
+      <li><a id="toc-Options-14" href="#Options-14">8.6.1 Options</a></li>
     </ul></li>
     <li><a id="toc-libopencore_002damrnb-1" href="#libopencore_002damrnb-1">8.7 libopencore-amrnb</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Options-14" href="#Options-14">8.7.1 Options</a></li>
+      <li><a id="toc-Options-15" href="#Options-15">8.7.1 Options</a></li>
     </ul></li>
     <li><a id="toc-libopus-1" href="#libopus-1">8.8 libopus</a>
     <ul class="toc-numbered-mark">
@@ -165,27 +157,27 @@ ul.toc-numbered-mark {list-style: none}
     </ul></li>
     <li><a id="toc-libshine-1" href="#libshine-1">8.9 libshine</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Options-15" href="#Options-15">8.9.1 Options</a></li>
+      <li><a id="toc-Options-16" href="#Options-16">8.9.1 Options</a></li>
     </ul></li>
     <li><a id="toc-libtwolame" href="#libtwolame">8.10 libtwolame</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Options-16" href="#Options-16">8.10.1 Options</a></li>
+      <li><a id="toc-Options-17" href="#Options-17">8.10.1 Options</a></li>
     </ul></li>
     <li><a id="toc-libvo_002damrwbenc" href="#libvo_002damrwbenc">8.11 libvo-amrwbenc</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Options-17" href="#Options-17">8.11.1 Options</a></li>
+      <li><a id="toc-Options-18" href="#Options-18">8.11.1 Options</a></li>
     </ul></li>
     <li><a id="toc-libvorbis" href="#libvorbis">8.12 libvorbis</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Options-18" href="#Options-18">8.12.1 Options</a></li>
+      <li><a id="toc-Options-19" href="#Options-19">8.12.1 Options</a></li>
     </ul></li>
     <li><a id="toc-mjpeg" href="#mjpeg">8.13 mjpeg</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Options-19" href="#Options-19">8.13.1 Options</a></li>
+      <li><a id="toc-Options-20" href="#Options-20">8.13.1 Options</a></li>
     </ul></li>
     <li><a id="toc-wavpack" href="#wavpack">8.14 wavpack</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Options-20" href="#Options-20">8.14.1 Options</a>
+      <li><a id="toc-Options-21" href="#Options-21">8.14.1 Options</a>
       <ul class="toc-numbered-mark">
         <li><a id="toc-Shared-options" href="#Shared-options">8.14.1.1 Shared options</a></li>
         <li><a id="toc-Private-options" href="#Private-options">8.14.1.2 Private options</a></li>
@@ -197,124 +189,128 @@ ul.toc-numbered-mark {list-style: none}
     <li><a id="toc-a64_005fmulti_002c-a64_005fmulti5" href="#a64_005fmulti_002c-a64_005fmulti5">9.1 a64_multi, a64_multi5</a></li>
     <li><a id="toc-Cinepak" href="#Cinepak">9.2 Cinepak</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Options-21" href="#Options-21">9.2.1 Options</a></li>
+      <li><a id="toc-Options-22" href="#Options-22">9.2.1 Options</a></li>
     </ul></li>
     <li><a id="toc-GIF" href="#GIF">9.3 GIF</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Options-22" href="#Options-22">9.3.1 Options</a></li>
+      <li><a id="toc-Options-23" href="#Options-23">9.3.1 Options</a></li>
     </ul></li>
     <li><a id="toc-Hap" href="#Hap">9.4 Hap</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Options-23" href="#Options-23">9.4.1 Options</a></li>
+      <li><a id="toc-Options-24" href="#Options-24">9.4.1 Options</a></li>
     </ul></li>
     <li><a id="toc-jpeg2000" href="#jpeg2000">9.5 jpeg2000</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Options-24" href="#Options-24">9.5.1 Options</a></li>
+      <li><a id="toc-Options-25" href="#Options-25">9.5.1 Options</a></li>
     </ul></li>
     <li><a id="toc-librav1e" href="#librav1e">9.6 librav1e</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Options-25" href="#Options-25">9.6.1 Options</a></li>
+      <li><a id="toc-Options-26" href="#Options-26">9.6.1 Options</a></li>
     </ul></li>
     <li><a id="toc-libaom_002dav1" href="#libaom_002dav1">9.7 libaom-av1</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Options-26" href="#Options-26">9.7.1 Options</a></li>
+      <li><a id="toc-Options-27" href="#Options-27">9.7.1 Options</a></li>
     </ul></li>
     <li><a id="toc-libsvtav1" href="#libsvtav1">9.8 libsvtav1</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Options-27" href="#Options-27">9.8.1 Options</a></li>
+      <li><a id="toc-Options-28" href="#Options-28">9.8.1 Options</a></li>
     </ul></li>
     <li><a id="toc-libjxl" href="#libjxl">9.9 libjxl</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Options-28" href="#Options-28">9.9.1 Options</a></li>
+      <li><a id="toc-Options-29" href="#Options-29">9.9.1 Options</a></li>
     </ul></li>
     <li><a id="toc-libkvazaar" href="#libkvazaar">9.10 libkvazaar</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Options-29" href="#Options-29">9.10.1 Options</a></li>
+      <li><a id="toc-Options-30" href="#Options-30">9.10.1 Options</a></li>
     </ul></li>
     <li><a id="toc-libopenh264" href="#libopenh264">9.11 libopenh264</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Options-30" href="#Options-30">9.11.1 Options</a></li>
+      <li><a id="toc-Options-31" href="#Options-31">9.11.1 Options</a></li>
     </ul></li>
     <li><a id="toc-libtheora" href="#libtheora">9.12 libtheora</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Options-31" href="#Options-31">9.12.1 Options</a></li>
+      <li><a id="toc-Options-32" href="#Options-32">9.12.1 Options</a></li>
       <li><a id="toc-Examples-1" href="#Examples-1">9.12.2 Examples</a></li>
     </ul></li>
     <li><a id="toc-libvpx" href="#libvpx">9.13 libvpx</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Options-32" href="#Options-32">9.13.1 Options</a></li>
+      <li><a id="toc-Options-33" href="#Options-33">9.13.1 Options</a></li>
     </ul></li>
     <li><a id="toc-libwebp" href="#libwebp">9.14 libwebp</a>
     <ul class="toc-numbered-mark">
       <li><a id="toc-Pixel-Format" href="#Pixel-Format">9.14.1 Pixel Format</a></li>
-      <li><a id="toc-Options-33" href="#Options-33">9.14.2 Options</a></li>
+      <li><a id="toc-Options-34" href="#Options-34">9.14.2 Options</a></li>
     </ul></li>
     <li><a id="toc-libx264_002c-libx264rgb" href="#libx264_002c-libx264rgb">9.15 libx264, libx264rgb</a>
     <ul class="toc-numbered-mark">
       <li><a id="toc-Supported-Pixel-Formats" href="#Supported-Pixel-Formats">9.15.1 Supported Pixel Formats</a></li>
-      <li><a id="toc-Options-34" href="#Options-34">9.15.2 Options</a></li>
+      <li><a id="toc-Options-35" href="#Options-35">9.15.2 Options</a></li>
     </ul></li>
     <li><a id="toc-libx265" href="#libx265">9.16 libx265</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Options-35" href="#Options-35">9.16.1 Options</a></li>
+      <li><a id="toc-Options-36" href="#Options-36">9.16.1 Options</a></li>
     </ul></li>
     <li><a id="toc-libxavs2" href="#libxavs2">9.17 libxavs2</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Options-36" href="#Options-36">9.17.1 Options</a></li>
+      <li><a id="toc-Options-37" href="#Options-37">9.17.1 Options</a></li>
     </ul></li>
-    <li><a id="toc-libxvid" href="#libxvid">9.18 libxvid</a>
+    <li><a id="toc-libxeve" href="#libxeve">9.18 libxeve</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Options-37" href="#Options-37">9.18.1 Options</a></li>
+      <li><a id="toc-Options-38" href="#Options-38">9.18.1 Options</a></li>
     </ul></li>
-    <li><a id="toc-MediaFoundation" href="#MediaFoundation">9.19 MediaFoundation</a></li>
-    <li><a id="toc-Microsoft-RLE" href="#Microsoft-RLE">9.20 Microsoft RLE</a>
+    <li><a id="toc-libxvid" href="#libxvid">9.19 libxvid</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Options-38" href="#Options-38">9.20.1 Options</a></li>
+      <li><a id="toc-Options-39" href="#Options-39">9.19.1 Options</a></li>
     </ul></li>
-    <li><a id="toc-mpeg2" href="#mpeg2">9.21 mpeg2</a>
+    <li><a id="toc-MediaFoundation" href="#MediaFoundation">9.20 MediaFoundation</a></li>
+    <li><a id="toc-Microsoft-RLE" href="#Microsoft-RLE">9.21 Microsoft RLE</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Options-39" href="#Options-39">9.21.1 Options</a></li>
+      <li><a id="toc-Options-40" href="#Options-40">9.21.1 Options</a></li>
     </ul></li>
-    <li><a id="toc-png" href="#png">9.22 png</a>
+    <li><a id="toc-mpeg2" href="#mpeg2">9.22 mpeg2</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Private-options-1" href="#Private-options-1">9.22.1 Private options</a></li>
+      <li><a id="toc-Options-41" href="#Options-41">9.22.1 Options</a></li>
     </ul></li>
-    <li><a id="toc-ProRes" href="#ProRes">9.23 ProRes</a>
+    <li><a id="toc-png" href="#png">9.23 png</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Private-Options-for-prores_002dks" href="#Private-Options-for-prores_002dks">9.23.1 Private Options for prores-ks</a></li>
-      <li><a id="toc-Speed-considerations" href="#Speed-considerations">9.23.2 Speed considerations</a></li>
+      <li><a id="toc-Private-options-1" href="#Private-options-1">9.23.1 Private options</a></li>
     </ul></li>
-    <li><a id="toc-QSV-Encoders" href="#QSV-Encoders">9.24 QSV Encoders</a>
+    <li><a id="toc-ProRes" href="#ProRes">9.24 ProRes</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Ratecontrol-Method" href="#Ratecontrol-Method">9.24.1 Ratecontrol Method</a></li>
-      <li><a id="toc-Global-Options-_002d_003e-MSDK-Options" href="#Global-Options-_002d_003e-MSDK-Options">9.24.2 Global Options -&gt; MSDK Options</a></li>
-      <li><a id="toc-Common-Options-1" href="#Common-Options-1">9.24.3 Common Options</a></li>
-      <li><a id="toc-Runtime-Options" href="#Runtime-Options">9.24.4 Runtime Options</a></li>
-      <li><a id="toc-H264-options" href="#H264-options">9.24.5 H264 options</a></li>
-      <li><a id="toc-HEVC-Options-1" href="#HEVC-Options-1">9.24.6 HEVC Options</a></li>
-      <li><a id="toc-MPEG2-Options" href="#MPEG2-Options">9.24.7 MPEG2 Options</a></li>
-      <li><a id="toc-VP9-Options" href="#VP9-Options">9.24.8 VP9 Options</a></li>
-      <li><a id="toc-AV1-Options" href="#AV1-Options">9.24.9 AV1 Options</a></li>
+      <li><a id="toc-Private-Options-for-prores_002dks" href="#Private-Options-for-prores_002dks">9.24.1 Private Options for prores-ks</a></li>
+      <li><a id="toc-Speed-considerations" href="#Speed-considerations">9.24.2 Speed considerations</a></li>
     </ul></li>
-    <li><a id="toc-snow" href="#snow">9.25 snow</a>
+    <li><a id="toc-QSV-Encoders" href="#QSV-Encoders">9.25 QSV Encoders</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Options-40" href="#Options-40">9.25.1 Options</a></li>
+      <li><a id="toc-Ratecontrol-Method" href="#Ratecontrol-Method">9.25.1 Ratecontrol Method</a></li>
+      <li><a id="toc-Global-Options-_002d_003e-MSDK-Options" href="#Global-Options-_002d_003e-MSDK-Options">9.25.2 Global Options -&gt; MSDK Options</a></li>
+      <li><a id="toc-Common-Options-1" href="#Common-Options-1">9.25.3 Common Options</a></li>
+      <li><a id="toc-Runtime-Options" href="#Runtime-Options">9.25.4 Runtime Options</a></li>
+      <li><a id="toc-H264-options" href="#H264-options">9.25.5 H264 options</a></li>
+      <li><a id="toc-HEVC-Options-1" href="#HEVC-Options-1">9.25.6 HEVC Options</a></li>
+      <li><a id="toc-MPEG2-Options" href="#MPEG2-Options">9.25.7 MPEG2 Options</a></li>
+      <li><a id="toc-VP9-Options" href="#VP9-Options">9.25.8 VP9 Options</a></li>
+      <li><a id="toc-AV1-Options" href="#AV1-Options">9.25.9 AV1 Options</a></li>
     </ul></li>
-    <li><a id="toc-VAAPI-encoders" href="#VAAPI-encoders">9.26 VAAPI encoders</a></li>
-    <li><a id="toc-vbn" href="#vbn">9.27 vbn</a>
+    <li><a id="toc-snow" href="#snow">9.26 snow</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Options-41" href="#Options-41">9.27.1 Options</a></li>
+      <li><a id="toc-Options-42" href="#Options-42">9.26.1 Options</a></li>
     </ul></li>
-    <li><a id="toc-vc2" href="#vc2">9.28 vc2</a>
+    <li><a id="toc-VAAPI-encoders" href="#VAAPI-encoders">9.27 VAAPI encoders</a></li>
+    <li><a id="toc-vbn" href="#vbn">9.28 vbn</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Options-42" href="#Options-42">9.28.1 Options</a></li>
+      <li><a id="toc-Options-43" href="#Options-43">9.28.1 Options</a></li>
+    </ul></li>
+    <li><a id="toc-vc2" href="#vc2">9.29 vc2</a>
+    <ul class="toc-numbered-mark">
+      <li><a id="toc-Options-44" href="#Options-44">9.29.1 Options</a></li>
     </ul></li>
   </ul></li>
   <li><a id="toc-Subtitles-Encoders" href="#Subtitles-Encoders">10 Subtitles Encoders</a>
   <ul class="toc-numbered-mark">
     <li><a id="toc-dvdsub-1" href="#dvdsub-1">10.1 dvdsub</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Options-43" href="#Options-43">10.1.1 Options</a></li>
+      <li><a id="toc-Options-45" href="#Options-45">10.1.1 Options</a></li>
     </ul></li>
   </ul></li>
   <li><a id="toc-See-Also" href="#See-Also">11 See Also</a></li>
@@ -322,6 +318,21 @@ ul.toc-numbered-mark {list-style: none}
 </ul>
 </div>
 </div>
+
+<ul class="mini-toc">
+<li><a href="#Description" accesskey="1">Description</a></li>
+<li><a href="#Codec-Options" accesskey="2">Codec Options</a></li>
+<li><a href="#Decoders" accesskey="3">Decoders</a></li>
+<li><a href="#Video-Decoders" accesskey="4">Video Decoders</a></li>
+<li><a href="#Audio-Decoders" accesskey="5">Audio Decoders</a></li>
+<li><a href="#Subtitles-Decoders" accesskey="6">Subtitles Decoders</a></li>
+<li><a href="#Encoders" accesskey="7">Encoders</a></li>
+<li><a href="#Audio-Encoders" accesskey="8">Audio Encoders</a></li>
+<li><a href="#Video-Encoders" accesskey="9">Video Encoders</a></li>
+<li><a href="#Subtitles-Encoders">Subtitles Encoders</a></li>
+<li><a href="#See-Also">See Also</a></li>
+<li><a href="#Authors">Authors</a></li>
+</ul>
 <div class="chapter-level-extent" id="Description">
 <h2 class="chapter">1 Description</h2>
 
@@ -334,7 +345,7 @@ the libavcodec library.
 <h2 class="chapter">2 Codec Options</h2>
 
 <p>libavcodec provides some generic global options, which can be set on
-all the encoders and decoders. In addition each codec may support
+all the encoders and decoders. In addition, each codec may support
 so-called private options, which are specific for a given codec.
 </p>
 <p>Sometimes, a global option may only affect a specific kind of codec,
@@ -1190,6 +1201,10 @@ profiles are documented in the relevant encoder documentation.
 </dd>
 <dt><samp class="option">level <var class="var">integer</var> (<em class="emph">encoding,audio,video</em>)</samp></dt>
 <dd>
+<p>Set the encoder level. This level depends on the specific codec, and
+might correspond to the profile level. It is set by default to
+&lsquo;<samp class="samp">unknown</samp>&rsquo;.
+</p>
 <p>Possible values:
 </p><dl class="table">
 <dt>&lsquo;<samp class="samp">unknown</samp>&rsquo;</dt>
@@ -1272,13 +1287,10 @@ skips frame IDCT/dequantization, <samp class="option">skip_frame</samp> skips de
 <dt><samp class="option">compression_level <var class="var">integer</var> (<em class="emph">encoding,audio,video</em>)</samp></dt>
 <dt><samp class="option">bits_per_raw_sample <var class="var">integer</var></samp></dt>
 <dt><samp class="option">channel_layout <var class="var">integer</var> (<em class="emph">decoding/encoding,audio</em>)</samp></dt>
-<dd>
-<p>Possible values:
-</p></dd>
-<dt><samp class="option">request_channel_layout <var class="var">integer</var> (<em class="emph">decoding,audio</em>)</samp></dt>
-<dd>
-<p>Possible values:
-</p></dd>
+<dd><p>See <a data-manual="ffmpeg-utils" href="ffmpeg-utils.html#channel-layout-syntax">(ffmpeg-utils)the Channel Layout section in the ffmpeg-utils(1) manual</a>
+for the required syntax.
+</p>
+</dd>
 <dt><samp class="option">rc_max_vbv_use <var class="var">float</var> (<em class="emph">encoding,video</em>)</samp></dt>
 <dt><samp class="option">rc_min_vbv_use <var class="var">float</var> (<em class="emph">encoding,video</em>)</samp></dt>
 <dt><samp class="option">color_primaries <var class="var">integer</var> (<em class="emph">decoding/encoding,video</em>)</samp></dt>
@@ -1437,10 +1449,12 @@ Possible values:
 </p><dl class="table">
 <dt>&lsquo;<samp class="samp">tv</samp>&rsquo;</dt>
 <dt>&lsquo;<samp class="samp">mpeg</samp>&rsquo;</dt>
+<dt>&lsquo;<samp class="samp">limited</samp>&rsquo;</dt>
 <dd><p>MPEG (219*2^(n-8))
 </p></dd>
 <dt>&lsquo;<samp class="samp">pc</samp>&rsquo;</dt>
 <dt>&lsquo;<samp class="samp">jpeg</samp>&rsquo;</dt>
+<dt>&lsquo;<samp class="samp">full</samp>&rsquo;</dt>
 <dd><p>JPEG (2^n-1)
 </p></dd>
 </dl>
@@ -1630,8 +1644,9 @@ follows.
 <li><a href="#libdav1d" accesskey="3">libdav1d</a></li>
 <li><a href="#libdavs2" accesskey="4">libdavs2</a></li>
 <li><a href="#libuavs3d" accesskey="5">libuavs3d</a></li>
-<li><a href="#QSV-Decoders" accesskey="6">QSV Decoders</a></li>
-<li><a href="#v210" accesskey="7">v210</a></li>
+<li><a href="#libxevd" accesskey="6">libxevd</a></li>
+<li><a href="#QSV-Decoders" accesskey="7">QSV Decoders</a></li>
+<li><a href="#v210" accesskey="8">v210</a></li>
 </ul>
 <div class="section-level-extent" id="av1">
 <h3 class="section">4.1 av1</h3>
@@ -1776,8 +1791,40 @@ You need to explicitly configure the build with <code class="code">--enable-libu
 
 </div>
 </div>
+<div class="section-level-extent" id="libxevd">
+<h3 class="section">4.6 libxevd</h3>
+
+<p>eXtra-fast Essential Video Decoder (XEVD) MPEG-5 EVC decoder wrapper.
+</p>
+<p>This decoder requires the presence of the libxevd headers and library
+during configuration. You need to explicitly configure the build with
+<samp class="option">--enable-libxevd</samp>.
+</p>
+<p>The xevd project website is at <a class="url" href="https://github.com/mpeg5/xevd">https://github.com/mpeg5/xevd</a>.
+</p>
+<ul class="mini-toc">
+<li><a href="#Options-4" accesskey="1">Options</a></li>
+</ul>
+<div class="subsection-level-extent" id="Options-4">
+<h4 class="subsection">4.6.1 Options</h4>
+
+<p>The following options are supported by the libxevd wrapper.
+The xevd-equivalent options or values are listed in parentheses for easy migration.
+</p>
+<p>To get a more accurate and extensive documentation of the libxevd options,
+invoke the command  <code class="code">xevd_app --help</code> or consult the libxevd documentation.
+</p>
+<dl class="table">
+<dt><samp class="option">threads (<em class="emph">threads</em>)</samp></dt>
+<dd><p>Force to use a specific number of threads
+</p>
+</dd>
+</dl>
+
+</div>
+</div>
 <div class="section-level-extent" id="QSV-Decoders">
-<h3 class="section">4.6 QSV Decoders</h3>
+<h3 class="section">4.7 QSV Decoders</h3>
 
 <p>The family of Intel QuickSync Video decoders (VC1, MPEG-2, H.264, HEVC,
 JPEG/MJPEG, VP8, VP9, AV1).
@@ -1787,7 +1834,7 @@ JPEG/MJPEG, VP8, VP9, AV1).
 <li><a href="#HEVC-Options" accesskey="2">HEVC Options</a></li>
 </ul>
 <div class="subsection-level-extent" id="Common-Options">
-<h4 class="subsection">4.6.1 Common Options</h4>
+<h4 class="subsection">4.7.1 Common Options</h4>
 
 <p>The following options are supported by all qsv decoders.
 </p>
@@ -1809,7 +1856,7 @@ JPEG/MJPEG, VP8, VP9, AV1).
 
 </div>
 <div class="subsection-level-extent" id="HEVC-Options">
-<h4 class="subsection">4.6.2 HEVC Options</h4>
+<h4 class="subsection">4.7.2 HEVC Options</h4>
 <p>Extra options for hevc_qsv.
 </p>
 <dl class="table">
@@ -1831,15 +1878,15 @@ JPEG/MJPEG, VP8, VP9, AV1).
 </div>
 </div>
 <div class="section-level-extent" id="v210">
-<h3 class="section">4.7 v210</h3>
+<h3 class="section">4.8 v210</h3>
 
 <p>Uncompressed 4:2:2 10-bit decoder.
 </p>
 <ul class="mini-toc">
-<li><a href="#Options-4" accesskey="1">Options</a></li>
+<li><a href="#Options-5" accesskey="1">Options</a></li>
 </ul>
-<div class="subsection-level-extent" id="Options-4">
-<h4 class="subsection">4.7.1 Options</h4>
+<div class="subsection-level-extent" id="Options-5">
+<h4 class="subsection">4.8.1 Options</h4>
 
 <dl class="table">
 <dt><samp class="option">custom_stride</samp></dt>
@@ -1976,9 +2023,9 @@ configuration. You need to explicitly configure the build with
 <code class="code">--enable-libilbc</code>.
 </p>
 <ul class="mini-toc">
-<li><a href="#Options-5" accesskey="1">Options</a></li>
+<li><a href="#Options-6" accesskey="1">Options</a></li>
 </ul>
-<div class="subsection-level-extent" id="Options-5">
+<div class="subsection-level-extent" id="Options-6">
 <h4 class="subsection">5.6.1 Options</h4>
 
 <p>The following option is supported by the libilbc wrapper.
@@ -2128,7 +2175,7 @@ Some present players (e.g., <em class="dfn">mpv</em>) expect ASS format for ARIB
 </p>
 <dl class="table">
 <dt>&lsquo;<samp class="samp">auto</samp>&rsquo;</dt>
-<dd><p>Automatically detect text encoding.
+<dd><p>Automatically detect text encoding (default).
 </p></dd>
 <dt>&lsquo;<samp class="samp">jis</samp>&rsquo;</dt>
 <dd><p>8bit-char JIS encoding defined in ARIB STD B24.
@@ -2144,9 +2191,6 @@ This encoding is used in South America for SBTVD / ISDB-Tb captions.
 </p></dd>
 </dl>
 
-<p>The default is <em class="dfn">ass</em> as same as <em class="dfn">libaribb24</em> decoder.
-Some present players (e.g., <em class="dfn">mpv</em>) expect ASS format for ARIB caption.
-</p>
 </dd>
 <dt><samp class="option">-font <var class="var">font_name[,font_name2,...]</var></samp></dt>
 <dd><p>Specify comma-separated list of font family names to be used for <em class="dfn">bitmap</em>
@@ -2169,13 +2213,6 @@ all the texts are displayed in a single ASS rectangle.
 <p>If your player cannot handle AVSubtitles with multiple ASS rectangles properly,
 set this option to <var class="var">true</var> or define <code class="env">ASS_SINGLE_RECT=1</code> to change
 default behavior at compilation.
-</p>
-</dd>
-<dt><samp class="option">-replace_fullwidth_ascii <var class="var">boolean</var></samp></dt>
-<dd><p>Specify whether to replace MSZ (Middle Size, half width) fullwidth
-alphanumerics with halfwidth alphanumerics.
-</p>
-<p>The default is <var class="var">true</var>.
 </p>
 </dd>
 <dt><samp class="option">-force_outline_text <var class="var">boolean</var></samp></dt>
@@ -2205,6 +2242,31 @@ the indication by charactor style.
 </dd>
 <dt><samp class="option">-replace_drcs <var class="var">boolean</var></samp></dt>
 <dd><p>Specify whether to render replaced DRCS characters as Unicode characters.
+</p>
+<p>The default is <var class="var">true</var>.
+</p>
+</dd>
+<dt><samp class="option">-replace_msz_ascii <var class="var">boolean</var></samp></dt>
+<dd><p>Specify whether to replace MSZ (Middle Size; half width) fullwidth
+alphanumerics with halfwidth alphanumerics.
+</p>
+<p>The default is <var class="var">true</var>.
+</p>
+</dd>
+<dt><samp class="option">-replace_msz_japanese <var class="var">boolean</var></samp></dt>
+<dd><p>Specify whether to replace some MSZ (Middle Size; half width) fullwidth
+japanese special characters with halfwidth ones.
+</p>
+<p>The default is <var class="var">true</var>.
+</p>
+</dd>
+<dt><samp class="option">-replace_msz_glyph <var class="var">boolean</var></samp></dt>
+<dd><p>Specify whether to replace MSZ (Middle Size; half width) characters
+with halfwidth glyphs if the fonts supports it.
+This option works under FreeType or DirectWrite renderer
+with Adobe-Japan1 compliant fonts.
+e.g., IBM Plex Sans JP, Morisawa BIZ UDGothic, Morisawa BIZ UDMincho,
+Yu Gothic, Yu Mincho, and Meiryo.
 </p>
 <p>The default is <var class="var">true</var>.
 </p>
@@ -2260,9 +2322,9 @@ the caption will be stretched or shrunk as specified size with calculated SAR.
 <h3 class="section">6.3 dvbsub</h3>
 
 <ul class="mini-toc">
-<li><a href="#Options-6" accesskey="1">Options</a></li>
+<li><a href="#Options-7" accesskey="1">Options</a></li>
 </ul>
-<div class="subsection-level-extent" id="Options-6">
+<div class="subsection-level-extent" id="Options-7">
 <h4 class="subsection">6.3.1 Options</h4>
 
 <dl class="table">
@@ -2297,9 +2359,9 @@ the caption will be stretched or shrunk as specified size with calculated SAR.
 also be found in VobSub file pairs and in some Matroska files.
 </p>
 <ul class="mini-toc">
-<li><a href="#Options-7" accesskey="1">Options</a></li>
+<li><a href="#Options-8" accesskey="1">Options</a></li>
 </ul>
-<div class="subsection-level-extent" id="Options-7">
+<div class="subsection-level-extent" id="Options-8">
 <h4 class="subsection">6.4.1 Options</h4>
 
 <dl class="table">
@@ -2339,9 +2401,9 @@ configuration. You need to explicitly configure the build with
 <code class="code">--enable-libzvbi</code>.
 </p>
 <ul class="mini-toc">
-<li><a href="#Options-8" accesskey="1">Options</a></li>
+<li><a href="#Options-9" accesskey="1">Options</a></li>
 </ul>
-<div class="subsection-level-extent" id="Options-8">
+<div class="subsection-level-extent" id="Options-9">
 <h4 class="subsection">6.5.1 Options</h4>
 
 <dl class="table">
@@ -2462,9 +2524,9 @@ follows.
 <p>This encoder is the default AAC encoder, natively implemented into FFmpeg.
 </p>
 <ul class="mini-toc">
-<li><a href="#Options-9" accesskey="1">Options</a></li>
+<li><a href="#Options-10" accesskey="1">Options</a></li>
 </ul>
-<div class="subsection-level-extent" id="Options-9">
+<div class="subsection-level-extent" id="Options-10">
 <h4 class="subsection">8.1.1 Options</h4>
 
 <dl class="table">
@@ -3099,9 +3161,9 @@ has no effect if channel coupling is disabled.
 <p>FLAC (Free Lossless Audio Codec) Encoder
 </p>
 <ul class="mini-toc">
-<li><a href="#Options-10" accesskey="1">Options</a></li>
+<li><a href="#Options-11" accesskey="1">Options</a></li>
 </ul>
-<div class="subsection-level-extent" id="Options-10">
+<div class="subsection-level-extent" id="Options-11">
 <h4 class="subsection">8.3.1 Options</h4>
 
 <p>The following options are supported by FFmpeg&rsquo;s flac encoder.
@@ -3199,14 +3261,14 @@ and slightly improves compression.
 
 <p>Opus encoder.
 </p>
-<p>This is a native FFmpeg encoder for the Opus format. Currently its in development and
+<p>This is a native FFmpeg encoder for the Opus format. Currently, it&rsquo;s in development and
 only implements the CELT part of the codec. Its quality is usually worse and at best
 is equal to the libopus encoder.
 </p>
 <ul class="mini-toc">
-<li><a href="#Options-11" accesskey="1">Options</a></li>
+<li><a href="#Options-12" accesskey="1">Options</a></li>
 </ul>
-<div class="subsection-level-extent" id="Options-11">
+<div class="subsection-level-extent" id="Options-12">
 <h4 class="subsection">8.4.1 Options</h4>
 
 <dl class="table">
@@ -3250,10 +3312,10 @@ higher.
 <a class="url" href="http://sourceforge.net/p/opencore-amr/fdk-aac/">http://sourceforge.net/p/opencore-amr/fdk-aac/</a>.
 </p>
 <ul class="mini-toc">
-<li><a href="#Options-12" accesskey="1">Options</a></li>
+<li><a href="#Options-13" accesskey="1">Options</a></li>
 <li><a href="#Examples" accesskey="2">Examples</a></li>
 </ul>
-<div class="subsection-level-extent" id="Options-12">
+<div class="subsection-level-extent" id="Options-13">
 <h4 class="subsection">8.5.1 Options</h4>
 
 <p>The following options are mapped on the shared FFmpeg codec options.
@@ -3454,9 +3516,9 @@ configuration. You need to explicitly configure the build with
 lower quality.
 </p>
 <ul class="mini-toc">
-<li><a href="#Options-13" accesskey="1">Options</a></li>
+<li><a href="#Options-14" accesskey="1">Options</a></li>
 </ul>
-<div class="subsection-level-extent" id="Options-13">
+<div class="subsection-level-extent" id="Options-14">
 <h4 class="subsection">8.6.1 Options</h4>
 
 <p>The following options are supported by the libmp3lame wrapper. The
@@ -3529,9 +3591,9 @@ but you can override it by setting <samp class="option">strict</samp> to &lsquo;
 lower.
 </p>
 <ul class="mini-toc">
-<li><a href="#Options-14" accesskey="1">Options</a></li>
+<li><a href="#Options-15" accesskey="1">Options</a></li>
 </ul>
-<div class="subsection-level-extent" id="Options-14">
+<div class="subsection-level-extent" id="Options-15">
 <h4 class="subsection">8.7.1 Options</h4>
 
 <dl class="table">
@@ -3642,7 +3704,8 @@ Default is disabled.
 <dd><p>Favor faithfulness to the input (the default).
 </p></dd>
 <dt>&lsquo;<samp class="samp">lowdelay</samp>&rsquo;</dt>
-<dd><p>Restrict to only the lowest delay modes.
+<dd><p>Restrict to only the lowest delay modes by disabling voice-optimized
+modes.
 </p></dd>
 </dl>
 
@@ -3651,7 +3714,9 @@ Default is disabled.
 <dd><p>Set cutoff bandwidth in Hz. The argument must be exactly one of the
 following: 4000, 6000, 8000, 12000, or 20000, corresponding to
 narrowband, mediumband, wideband, super wideband, and fullband
-respectively. The default is 0 (cutoff disabled).
+respectively. The default is 0 (cutoff disabled). Note that libopus
+forces a wideband cutoff for bitrates &lt; 15 kbps, unless CELT-only
+(<samp class="option">application</samp> set to &lsquo;<samp class="samp">lowdelay</samp>&rsquo;) mode is used.
 </p>
 </dd>
 <dt><samp class="option">mapping_family (<em class="emph">mapping_family</em>)</samp></dt>
@@ -3701,9 +3766,9 @@ configuration. You need to explicitly configure the build with
 <p>See also <a class="ref" href="#libmp3lame">libmp3lame</a>.
 </p>
 <ul class="mini-toc">
-<li><a href="#Options-15" accesskey="1">Options</a></li>
+<li><a href="#Options-16" accesskey="1">Options</a></li>
 </ul>
-<div class="subsection-level-extent" id="Options-15">
+<div class="subsection-level-extent" id="Options-16">
 <h4 class="subsection">8.9.1 Options</h4>
 
 <p>The following options are supported by the libshine wrapper. The
@@ -3729,9 +3794,9 @@ configuration. You need to explicitly configure the build with
 <code class="code">--enable-libtwolame</code>.
 </p>
 <ul class="mini-toc">
-<li><a href="#Options-16" accesskey="1">Options</a></li>
+<li><a href="#Options-17" accesskey="1">Options</a></li>
 </ul>
-<div class="subsection-level-extent" id="Options-16">
+<div class="subsection-level-extent" id="Options-17">
 <h4 class="subsection">8.10.1 Options</h4>
 
 <p>The following options are supported by the libtwolame wrapper. The
@@ -3818,9 +3883,9 @@ rate, but you can override it by setting <samp class="option">strict</samp> to
 &lsquo;<samp class="samp">unofficial</samp>&rsquo; or lower.
 </p>
 <ul class="mini-toc">
-<li><a href="#Options-17" accesskey="1">Options</a></li>
+<li><a href="#Options-18" accesskey="1">Options</a></li>
 </ul>
-<div class="subsection-level-extent" id="Options-17">
+<div class="subsection-level-extent" id="Options-18">
 <h4 class="subsection">8.11.1 Options</h4>
 
 <dl class="table">
@@ -3860,9 +3925,9 @@ configuration. You need to explicitly configure the build with
 <code class="code">--enable-libvorbis</code>.
 </p>
 <ul class="mini-toc">
-<li><a href="#Options-18" accesskey="1">Options</a></li>
+<li><a href="#Options-19" accesskey="1">Options</a></li>
 </ul>
-<div class="subsection-level-extent" id="Options-18">
+<div class="subsection-level-extent" id="Options-19">
 <h4 class="subsection">8.12.1 Options</h4>
 
 <p>The following options are supported by the libvorbis wrapper. The
@@ -3921,9 +3986,9 @@ transient response is a higher bitrate.
 <p>Motion JPEG encoder.
 </p>
 <ul class="mini-toc">
-<li><a href="#Options-19" accesskey="1">Options</a></li>
+<li><a href="#Options-20" accesskey="1">Options</a></li>
 </ul>
-<div class="subsection-level-extent" id="Options-19">
+<div class="subsection-level-extent" id="Options-20">
 <h4 class="subsection">8.13.1 Options</h4>
 
 <dl class="table">
@@ -3951,9 +4016,9 @@ transient response is a higher bitrate.
 <p>WavPack lossless audio encoder.
 </p>
 <ul class="mini-toc">
-<li><a href="#Options-20" accesskey="1">Options</a></li>
+<li><a href="#Options-21" accesskey="1">Options</a></li>
 </ul>
-<div class="subsection-level-extent" id="Options-20">
+<div class="subsection-level-extent" id="Options-21">
 <h4 class="subsection">8.14.1 Options</h4>
 
 <p>The equivalent options for <code class="command">wavpack</code> command line utility are listed in
@@ -4048,6 +4113,7 @@ follows.
 <li><a href="#libx264_002c-libx264rgb">libx264, libx264rgb</a></li>
 <li><a href="#libx265">libx265</a></li>
 <li><a href="#libxavs2">libxavs2</a></li>
+<li><a href="#libxeve">libxeve</a></li>
 <li><a href="#libxvid">libxvid</a></li>
 <li><a href="#MediaFoundation">MediaFoundation</a></li>
 <li><a href="#Microsoft-RLE">Microsoft RLE</a></li>
@@ -4073,9 +4139,9 @@ follows.
 Compatible with Windows 3.1 and vintage MacOS.
 </p>
 <ul class="mini-toc">
-<li><a href="#Options-21" accesskey="1">Options</a></li>
+<li><a href="#Options-22" accesskey="1">Options</a></li>
 </ul>
-<div class="subsection-level-extent" id="Options-21">
+<div class="subsection-level-extent" id="Options-22">
 <h4 class="subsection">9.2.1 Options</h4>
 
 <dl class="table">
@@ -4134,9 +4200,9 @@ Higher is better but slower.
 <p>GIF image/animation encoder.
 </p>
 <ul class="mini-toc">
-<li><a href="#Options-22" accesskey="1">Options</a></li>
+<li><a href="#Options-23" accesskey="1">Options</a></li>
 </ul>
-<div class="subsection-level-extent" id="Options-22">
+<div class="subsection-level-extent" id="Options-23">
 <h4 class="subsection">9.3.1 Options</h4>
 
 <dl class="table">
@@ -4184,9 +4250,9 @@ is a global palette supplied.
 <p>Vidvox Hap video encoder.
 </p>
 <ul class="mini-toc">
-<li><a href="#Options-23" accesskey="1">Options</a></li>
+<li><a href="#Options-24" accesskey="1">Options</a></li>
 </ul>
-<div class="subsection-level-extent" id="Options-23">
+<div class="subsection-level-extent" id="Options-24">
 <h4 class="subsection">9.4.1 Options</h4>
 
 <dl class="table">
@@ -4235,9 +4301,9 @@ option can be used to set the encoding quality. Lossless encoding
 can be selected with <code class="code">-pred 1</code>.
 </p>
 <ul class="mini-toc">
-<li><a href="#Options-24" accesskey="1">Options</a></li>
+<li><a href="#Options-25" accesskey="1">Options</a></li>
 </ul>
-<div class="subsection-level-extent" id="Options-24">
+<div class="subsection-level-extent" id="Options-25">
 <h4 class="subsection">9.5.1 Options</h4>
 
 <dl class="table">
@@ -4314,9 +4380,9 @@ and shall contain all data while using all 3 layers.
 You need to explicitly configure the build with <code class="code">--enable-librav1e</code>.
 </p>
 <ul class="mini-toc">
-<li><a href="#Options-25" accesskey="1">Options</a></li>
+<li><a href="#Options-26" accesskey="1">Options</a></li>
 </ul>
-<div class="subsection-level-extent" id="Options-25">
+<div class="subsection-level-extent" id="Options-26">
 <h4 class="subsection">9.6.1 Options</h4>
 
 <dl class="table">
@@ -4373,9 +4439,9 @@ configuration.  You need to explicitly configure the build with
 <code class="code">--enable-libaom</code>.
 </p>
 <ul class="mini-toc">
-<li><a href="#Options-26" accesskey="1">Options</a></li>
+<li><a href="#Options-27" accesskey="1">Options</a></li>
 </ul>
-<div class="subsection-level-extent" id="Options-26">
+<div class="subsection-level-extent" id="Options-27">
 <h4 class="subsection">9.7.1 Options</h4>
 
 <p>The wrapper supports the following standard libavcodec options:
@@ -4725,9 +4791,9 @@ section &quot;AV1 Specific Options&quot;.
 You need to explicitly configure the build with <code class="code">--enable-libsvtav1</code>.
 </p>
 <ul class="mini-toc">
-<li><a href="#Options-27" accesskey="1">Options</a></li>
+<li><a href="#Options-28" accesskey="1">Options</a></li>
 </ul>
-<div class="subsection-level-extent" id="Options-27">
+<div class="subsection-level-extent" id="Options-28">
 <h4 class="subsection">9.8.1 Options</h4>
 
 <dl class="table">
@@ -4820,9 +4886,9 @@ configuration. You need to explicitly configure the build with
 <code class="code">--enable-libjxl</code>.
 </p>
 <ul class="mini-toc">
-<li><a href="#Options-28" accesskey="1">Options</a></li>
+<li><a href="#Options-29" accesskey="1">Options</a></li>
 </ul>
-<div class="subsection-level-extent" id="Options-28">
+<div class="subsection-level-extent" id="Options-29">
 <h4 class="subsection">9.9.1 Options</h4>
 
 <p>The libjxl wrapper supports the following options:
@@ -4864,9 +4930,9 @@ configuration. You need to explicitly configure the build with
 <samp class="option">--enable-libkvazaar</samp>.
 </p>
 <ul class="mini-toc">
-<li><a href="#Options-29" accesskey="1">Options</a></li>
+<li><a href="#Options-30" accesskey="1">Options</a></li>
 </ul>
-<div class="subsection-level-extent" id="Options-29">
+<div class="subsection-level-extent" id="Options-30">
 <h4 class="subsection">9.10.1 Options</h4>
 
 <dl class="table">
@@ -4897,9 +4963,9 @@ build with <code class="code">--enable-libopenh264</code>. The library is detect
 <a class="url" href="http://www.openh264.org">http://www.openh264.org</a>.
 </p>
 <ul class="mini-toc">
-<li><a href="#Options-30" accesskey="1">Options</a></li>
+<li><a href="#Options-31" accesskey="1">Options</a></li>
 </ul>
-<div class="subsection-level-extent" id="Options-30">
+<div class="subsection-level-extent" id="Options-31">
 <h4 class="subsection">9.11.1 Options</h4>
 
 <p>The following FFmpeg global options affect the configurations of the
@@ -4962,10 +5028,10 @@ configuration. You need to explicitly configure the build with
 <a class="url" href="http://www.theora.org/">http://www.theora.org/</a>.
 </p>
 <ul class="mini-toc">
-<li><a href="#Options-31" accesskey="1">Options</a></li>
+<li><a href="#Options-32" accesskey="1">Options</a></li>
 <li><a href="#Examples-1" accesskey="2">Examples</a></li>
 </ul>
-<div class="subsection-level-extent" id="Options-31">
+<div class="subsection-level-extent" id="Options-32">
 <h4 class="subsection">9.12.1 Options</h4>
 
 <p>The following global options are mapped to internal libtheora options
@@ -5036,9 +5102,9 @@ tool. For library interface users, use <samp class="option">global_quality</samp
 You need to explicitly configure the build with <code class="code">--enable-libvpx</code>.
 </p>
 <ul class="mini-toc">
-<li><a href="#Options-32" accesskey="1">Options</a></li>
+<li><a href="#Options-33" accesskey="1">Options</a></li>
 </ul>
-<div class="subsection-level-extent" id="Options-32">
+<div class="subsection-level-extent" id="Options-33">
 <h4 class="subsection">9.13.1 Options</h4>
 
 <p>The following options are supported by the libvpx wrapper. The
@@ -5260,6 +5326,14 @@ the two temporal layer 2 frames within the temporal period.
 </dl>
 
 </dd>
+<dt><samp class="option">VP8-specific options</samp></dt>
+<dd><dl class="table">
+<dt><samp class="option">screen-content-mode</samp></dt>
+<dd><p>Screen content mode, one of: 0 (off), 1 (screen), 2 (screen with more aggressive rate control).
+</p></dd>
+</dl>
+
+</dd>
 <dt><samp class="option">VP9-specific options</samp></dt>
 <dd><dl class="table">
 <dt><samp class="option">lossless</samp></dt>
@@ -5375,7 +5449,7 @@ frame. Lossless images are a separate codec developed by Google.
 </p>
 <ul class="mini-toc">
 <li><a href="#Pixel-Format" accesskey="1">Pixel Format</a></li>
-<li><a href="#Options-33" accesskey="2">Options</a></li>
+<li><a href="#Options-34" accesskey="2">Options</a></li>
 </ul>
 <div class="subsection-level-extent" id="Pixel-Format">
 <h4 class="subsection">9.14.1 Pixel Format</h4>
@@ -5388,7 +5462,7 @@ converted using functions from libwebp. This is not ideal and is done only for
 convenience.
 </p>
 </div>
-<div class="subsection-level-extent" id="Options-33">
+<div class="subsection-level-extent" id="Options-34">
 <h4 class="subsection">9.14.2 Options</h4>
 
 <dl class="table">
@@ -5472,7 +5546,7 @@ pixel formats as input instead of YUV.
 </p>
 <ul class="mini-toc">
 <li><a href="#Supported-Pixel-Formats" accesskey="1">Supported Pixel Formats</a></li>
-<li><a href="#Options-34" accesskey="2">Options</a></li>
+<li><a href="#Options-35" accesskey="2">Options</a></li>
 </ul>
 <div class="subsection-level-extent" id="Supported-Pixel-Formats">
 <h4 class="subsection">9.15.1 Supported Pixel Formats</h4>
@@ -5481,7 +5555,7 @@ pixel formats as input instead of YUV.
 x264&rsquo;s configure time.
 </p>
 </div>
-<div class="subsection-level-extent" id="Options-34">
+<div class="subsection-level-extent" id="Options-35">
 <h4 class="subsection">9.15.2 Options</h4>
 
 <p>The following options are supported by the libx264 wrapper. The
@@ -5497,6 +5571,10 @@ the documentation of the undocumented generic options, see
 options, invoke the command <code class="command">x264 --fullhelp</code> or consult
 the libx264 documentation.
 </p>
+<p>In the list below, note that the <code class="command">x264</code> option name is shown
+in parentheses after the libavcodec corresponding name, in case there
+is a direct mapping.
+</p>
 <dl class="table">
 <dt><samp class="option">b (<em class="emph">bitrate</em>)</samp></dt>
 <dd><p>Set bitrate in bits/s. Note that FFmpeg&rsquo;s <samp class="option">b</samp> option is
@@ -5505,17 +5583,23 @@ kilobits/s.
 </p>
 </dd>
 <dt><samp class="option">bf (<em class="emph">bframes</em>)</samp></dt>
+<dd><p>Number of B-frames between I and P-frames
+</p>
+</dd>
 <dt><samp class="option">g (<em class="emph">keyint</em>)</samp></dt>
+<dd><p>Maximum GOP size
+</p>
+</dd>
 <dt><samp class="option">qmin (<em class="emph">qpmin</em>)</samp></dt>
-<dd><p>Minimum quantizer scale.
+<dd><p>Minimum quantizer scale
 </p>
 </dd>
 <dt><samp class="option">qmax (<em class="emph">qpmax</em>)</samp></dt>
-<dd><p>Maximum quantizer scale.
+<dd><p>Maximum quantizer scale
 </p>
 </dd>
 <dt><samp class="option">qdiff (<em class="emph">qpstep</em>)</samp></dt>
-<dd><p>Maximum difference between quantizer scales.
+<dd><p>Maximum difference between quantizer scales
 </p>
 </dd>
 <dt><samp class="option">qblur (<em class="emph">qblur</em>)</samp></dt>
@@ -5527,7 +5611,22 @@ kilobits/s.
 </p>
 </dd>
 <dt><samp class="option">refs (<em class="emph">ref</em>)</samp></dt>
-<dd><p>Number of reference frames each P-frame can use. The range is from <var class="var">0-16</var>.
+<dd><p>Number of reference frames each P-frame can use. The range is <var class="var">0-16</var>.
+</p>
+</dd>
+<dt><samp class="option">level (<em class="emph">level</em>)</samp></dt>
+<dd><p>Set the <code class="code">x264_param_t.i_level_idc</code> value in case the value is
+positive, it is ignored otherwise.
+</p>
+<p>This value can be set using the <code class="code">AVCodecContext</code> API (e.g. by
+setting the <code class="code">AVCodecContext</code> value directly), and is specified as
+an integer mapped on a corresponding level (e.g. the value 31 maps
+to H.264 level IDC &quot;3.1&quot;, as defined in the <code class="code">x264_levels</code>
+table). It is ignored when set to a non positive value.
+</p>
+<p>Alternatively it can be set as a private option, overriding the value
+set in <code class="code">AVCodecContext</code>, and in this case must be specified as
+the level IDC identifier (e.g. &quot;3.1&quot;), as defined by H.264 Annex A.
 </p>
 </dd>
 <dt><samp class="option">sc_threshold (<em class="emph">scenecut</em>)</samp></dt>
@@ -5538,7 +5637,10 @@ kilobits/s.
 <dd><p>Performs Trellis quantization to increase efficiency. Enabled by default.
 </p>
 </dd>
-<dt><samp class="option">nr  (<em class="emph">nr</em>)</samp></dt>
+<dt><samp class="option">nr (<em class="emph">nr</em>)</samp></dt>
+<dd><p>Noise reduction
+</p>
+</dd>
 <dt><samp class="option">me_range (<em class="emph">merange</em>)</samp></dt>
 <dd><p>Maximum range of the motion search in pixels.
 </p>
@@ -5640,6 +5742,9 @@ the behavior of <code class="command">x264</code>&rsquo;s <samp class="option">-
 </p>
 </dd>
 <dt><samp class="option">rc_init_occupancy (<em class="emph">vbv-init</em>)</samp></dt>
+<dd><p>Initial VBV buffer occupancy
+</p>
+</dd>
 <dt><samp class="option">preset (<em class="emph">preset</em>)</samp></dt>
 <dd><p>Set the encoding preset.
 </p>
@@ -5697,7 +5802,7 @@ to 0, it has the same effect of <code class="command">x264</code>&rsquo;s
 same effect as <code class="command">x264</code>&rsquo;s <samp class="option">--no-psy</samp> option.
 </p>
 </dd>
-<dt><samp class="option">psy-rd  (<em class="emph">psy-rd</em>)</samp></dt>
+<dt><samp class="option">psy-rd (<em class="emph">psy-rd</em>)</samp></dt>
 <dd><p>Set strength of psychovisual optimization, in
 <var class="var">psy-rd</var>:<var class="var">psy-trellis</var> format.
 </p>
@@ -5738,7 +5843,7 @@ to 1.
 </dd>
 <dt><samp class="option">avcintra-class (<em class="emph">class</em>)</samp></dt>
 <dd><p>Configure the encoder to generate AVC-Intra.
-Valid values are 50,100 and 200
+Valid values are 50, 100 and 200
 </p>
 </dd>
 <dt><samp class="option">bluray-compat (<em class="emph">bluray-compat</em>)</samp></dt>
@@ -5803,8 +5908,8 @@ to 0, it has the same effect as <code class="command">x264</code>&rsquo;s
 </p>
 </dd>
 <dt><samp class="option">partitions (<em class="emph">partitions</em>)</samp></dt>
-<dd><p>Set partitions to consider as a comma-separated list of. Possible
-values in the list:
+<dd><p>Set partitions to consider as a comma-separated list of values.
+Possible values in the list:
 </p>
 <dl class="table">
 <dt>&lsquo;<samp class="samp">p8x8</samp>&rsquo;</dt>
@@ -5879,19 +5984,32 @@ Possible values:
 </dl>
 
 </dd>
-<dt><samp class="option">x264opts (N.A.)</samp></dt>
-<dd><p>Set any x264 option, see <code class="command">x264 --fullhelp</code> for a list.
+<dt><samp class="option">x264opts <var class="var">opts</var></samp></dt>
+<dt><samp class="option">x264-params <var class="var">opts</var></samp></dt>
+<dd><p>Override the x264 configuration using a :-separated list of key=value
+options.
 </p>
-<p>Argument is a list of <var class="var">key</var>=<var class="var">value</var> couples separated by
-&quot;:&quot;. In <var class="var">filter</var> and <var class="var">psy-rd</var> options that use &quot;:&quot; as a separator
-themselves, use &quot;,&quot; instead. They accept it as well since long ago but this
-is kept undocumented for some reason.
+<p>The argument for both options is a list of <var class="var">key</var>=<var class="var">value</var>
+couples separated by &quot;:&quot;. With <samp class="option">x264opts</samp> the value can be
+omitted, and the value <code class="code">1</code> is assumed in that case.
 </p>
+<p>For <var class="var">filter</var> and <var class="var">psy-rd</var> options values that use &quot;:&quot; as a
+separator themselves, use &quot;,&quot; instead. They accept it as well since
+long ago but this is kept undocumented for some reason.
+</p>
+<p>For example, the options might be provided as:
+</p><div class="example">
+<pre class="example-preformatted">level=30:bframes=0:weightp=0:cabac=0:ref=1:vbv-maxrate=768:vbv-bufsize=2000:analyse=all:me=umh:no-fast-pskip=1:subq=6:8x8dct=0:trellis=0
+</pre></div>
+
 <p>For example to specify libx264 encoding options with <code class="command">ffmpeg</code>:
 </p><div class="example">
 <pre class="example-preformatted">ffmpeg -i foo.mpg -c:v libx264 -x264opts keyint=123:min-keyint=20 -an out.mkv
 </pre></div>
 
+<p>To get the complete list of the libx264 options, invoke the command
+<code class="command">x264 --fullhelp</code> or consult the libx264 documentation.
+</p>
 </dd>
 <dt><samp class="option">a53cc <var class="var">boolean</var></samp></dt>
 <dd><p>Import closed captions (which must be ATSC compatible format) into output.
@@ -5902,20 +6020,10 @@ Only the mpeg2 and h264 decoders provide these. Default is 1 (on).
 <dd><p>Import user data unregistered SEI if available into output. Default is 0 (off).
 </p>
 </dd>
-<dt><samp class="option">x264-params (N.A.)</samp></dt>
-<dd><p>Override the x264 configuration using a :-separated list of key=value
-parameters.
-</p>
-<p>This option is functionally the same as the <samp class="option">x264opts</samp>, but is
-duplicated for compatibility with the Libav fork.
-</p>
-<p>For example to specify libx264 encoding options with <code class="command">ffmpeg</code>:
-</p><div class="example">
-<pre class="example-preformatted">ffmpeg -i INPUT -c:v libx264 -x264-params level=30:bframes=0:weightp=0:\
-cabac=0:ref=1:vbv-maxrate=768:vbv-bufsize=2000:analyse=all:me=umh:\
-no-fast-pskip=1:subq=6:8x8dct=0:trellis=0 OUTPUT
-</pre></div>
-</dd>
+<dt><samp class="option">mb_info <var class="var">boolean</var></samp></dt>
+<dd><p>Set mb_info data through AVFrameSideData, only useful when used from the
+API. Default is 0 (off).
+</p></dd>
 </dl>
 
 <p>Encoding ffpresets for common usages are provided so they can be used with the
@@ -5933,9 +6041,9 @@ during configuration. You need to explicitly configure the build with
 <samp class="option">--enable-libx265</samp>.
 </p>
 <ul class="mini-toc">
-<li><a href="#Options-35" accesskey="1">Options</a></li>
+<li><a href="#Options-36" accesskey="1">Options</a></li>
 </ul>
-<div class="subsection-level-extent" id="Options-35">
+<div class="subsection-level-extent" id="Options-36">
 <h4 class="subsection">9.16.1 Options</h4>
 
 <dl class="table">
@@ -6039,9 +6147,9 @@ during configuration. You need to explicitly configure the build with
 
 <p>The encoder also has its own specific options:
 </p><ul class="mini-toc">
-<li><a href="#Options-36" accesskey="1">Options</a></li>
+<li><a href="#Options-37" accesskey="1">Options</a></li>
 </ul>
-<div class="subsection-level-extent" id="Options-36">
+<div class="subsection-level-extent" id="Options-37">
 <h4 class="subsection">9.17.1 Options</h4>
 
 <dl class="table">
@@ -6090,8 +6198,90 @@ by &quot;:&quot;.
 
 </div>
 </div>
+<div class="section-level-extent" id="libxeve">
+<h3 class="section">9.18 libxeve</h3>
+
+<p>eXtra-fast Essential Video Encoder (XEVE) MPEG-5 EVC encoder wrapper.
+The xeve-equivalent options or values are listed in parentheses for easy migration.
+</p>
+<p>This encoder requires the presence of the libxeve headers and library
+during configuration. You need to explicitly configure the build with
+<samp class="option">--enable-libxeve</samp>.
+</p>
+<div class="info">
+<p>Many libxeve encoder options are mapped to FFmpeg global codec options,
+while unique encoder options are provided through private options.
+Additionally the xeve-params private options allows one to pass a list
+of key=value tuples as accepted by the libxeve <code class="code">parse_xeve_params</code> function.
+</p></div>
+<p>The xeve project website is at <a class="url" href="https://github.com/mpeg5/xeve">https://github.com/mpeg5/xeve</a>.
+</p>
+<ul class="mini-toc">
+<li><a href="#Options-38" accesskey="1">Options</a></li>
+</ul>
+<div class="subsection-level-extent" id="Options-38">
+<h4 class="subsection">9.18.1 Options</h4>
+
+<p>The following options are supported by the libxeve wrapper.
+The xeve-equivalent options or values are listed in parentheses for easy migration.
+</p>
+<div class="info">
+<p>To reduce the duplication of documentation, only the private options
+and some others requiring special attention are documented here. For
+the documentation of the undocumented generic options, see
+<a class="ref" href="#codec_002doptions">the Codec Options chapter</a>.
+</p></div>
+<div class="info">
+<p>To get a more accurate and extensive documentation of the libxeve options,
+invoke the command  <code class="code">xeve_app --help</code> or consult the libxeve documentation.
+</p></div>
+<dl class="table">
+<dt><samp class="option">b (<em class="emph">bitrate</em>)</samp></dt>
+<dd><p>Set target video bitrate in bits/s.
+Note that FFmpeg&rsquo;s b option is expressed in bits/s, while xeve&rsquo;s bitrate is in kilobits/s.
+</p>
+</dd>
+<dt><samp class="option">bf (<em class="emph">bframes</em>)</samp></dt>
+<dd><p>Set the maximum number of B frames (1,3,7,15).
+</p>
+</dd>
+<dt><samp class="option">g (<em class="emph">keyint</em>)</samp></dt>
+<dd><p>Set the GOP size (I-picture period).
+</p>
+</dd>
+<dt><samp class="option">preset (<em class="emph">preset</em>)</samp></dt>
+<dd><p>Set the xeve preset.
+Set the encoder preset value to determine encoding speed [fast, medium, slow, placebo]
+</p>
+</dd>
+<dt><samp class="option">tune (<em class="emph">tune</em>)</samp></dt>
+<dd><p>Set the encoder tune parameter [psnr, zerolatency]
+</p>
+</dd>
+<dt><samp class="option">profile (<em class="emph">profile</em>)</samp></dt>
+<dd><p>Set the encoder profile [0: baseline; 1: main]
+</p>
+</dd>
+<dt><samp class="option">crf (<em class="emph">crf</em>)</samp></dt>
+<dd><p>Set the quality for constant quality mode.
+Constant rate factor &lt;10..49&gt; [default: 32]
+</p>
+</dd>
+<dt><samp class="option">qp (<em class="emph">qp</em>)</samp></dt>
+<dd><p>Set constant quantization rate control method parameter.
+Quantization parameter qp &lt;0..51&gt; [default: 32]
+</p>
+</dd>
+<dt><samp class="option">threads (<em class="emph">threads</em>)</samp></dt>
+<dd><p>Force to use a specific number of threads
+</p>
+</dd>
+</dl>
+
+</div>
+</div>
 <div class="section-level-extent" id="libxvid">
-<h3 class="section">9.18 libxvid</h3>
+<h3 class="section">9.19 libxvid</h3>
 
 <p>Xvid MPEG-4 Part 2 encoder wrapper.
 </p>
@@ -6103,10 +6293,10 @@ during configuration. You need to explicitly configure the build with
 users can encode to this format without this library.
 </p>
 <ul class="mini-toc">
-<li><a href="#Options-37" accesskey="1">Options</a></li>
+<li><a href="#Options-39" accesskey="1">Options</a></li>
 </ul>
-<div class="subsection-level-extent" id="Options-37">
-<h4 class="subsection">9.18.1 Options</h4>
+<div class="subsection-level-extent" id="Options-39">
+<h4 class="subsection">9.19.1 Options</h4>
 
 <p>The following options are supported by the libxvid wrapper. Some of
 the following options are listed but are not documented, and
@@ -6160,30 +6350,27 @@ which are not listed have no effect for the libxvid encoder.
 
 </dd>
 <dt><samp class="option">trellis</samp></dt>
-<dt><samp class="option">me_method</samp></dt>
-<dd><p>Set motion estimation method. Possible values in decreasing order of
+<dt><samp class="option">me_quality</samp></dt>
+<dd><p>Set motion estimation quality level. Possible values in decreasing order of
 speed and increasing order of quality:
 </p>
 <dl class="table">
-<dt>&lsquo;<samp class="samp">zero</samp>&rsquo;</dt>
+<dt>&lsquo;<samp class="samp">0</samp>&rsquo;</dt>
 <dd><p>Use no motion estimation (default).
 </p>
 </dd>
-<dt>&lsquo;<samp class="samp">phods</samp>&rsquo;</dt>
-<dt>&lsquo;<samp class="samp">x1</samp>&rsquo;</dt>
-<dt>&lsquo;<samp class="samp">log</samp>&rsquo;</dt>
+<dt>&lsquo;<samp class="samp">1, 2</samp>&rsquo;</dt>
 <dd><p>Enable advanced diamond zonal search for 16x16 blocks and half-pixel
-refinement for 16x16 blocks. &lsquo;<samp class="samp">x1</samp>&rsquo; and &lsquo;<samp class="samp">log</samp>&rsquo; are aliases for
-&lsquo;<samp class="samp">phods</samp>&rsquo;.
+refinement for 16x16 blocks.
 </p>
 </dd>
-<dt>&lsquo;<samp class="samp">epzs</samp>&rsquo;</dt>
+<dt>&lsquo;<samp class="samp">3, 4</samp>&rsquo;</dt>
 <dd><p>Enable all of the things described above, plus advanced diamond zonal
-search for 8x8 blocks, half-pixel refinement for 8x8 blocks, and motion
-estimation on chroma planes.
+search for 8x8 blocks and half-pixel refinement for 8x8 blocks, also
+enable motion estimation on chroma planes for P and B-frames.
 </p>
 </dd>
-<dt>&lsquo;<samp class="samp">full</samp>&rsquo;</dt>
+<dt>&lsquo;<samp class="samp">5, 6</samp>&rsquo;</dt>
 <dd><p>Enable all of the things described above, plus extended 16x16 and 8x8
 blocks search.
 </p></dd>
@@ -6274,7 +6461,7 @@ fastest.
 </div>
 </div>
 <div class="section-level-extent" id="MediaFoundation">
-<h3 class="section">9.19 MediaFoundation</h3>
+<h3 class="section">9.20 MediaFoundation</h3>
 
 <p>This provides wrappers to encoders (both audio and video) in the
 MediaFoundation framework. It can access both SW and HW encoders.
@@ -6284,17 +6471,17 @@ nv12 is the safer choice, especially among HW encoders).
 </p>
 </div>
 <div class="section-level-extent" id="Microsoft-RLE">
-<h3 class="section">9.20 Microsoft RLE</h3>
+<h3 class="section">9.21 Microsoft RLE</h3>
 
 <p>Microsoft RLE aka MSRLE encoder.
 Only 8-bit palette mode supported.
 Compatible with Windows 3.1 and Windows 95.
 </p>
 <ul class="mini-toc">
-<li><a href="#Options-38" accesskey="1">Options</a></li>
+<li><a href="#Options-40" accesskey="1">Options</a></li>
 </ul>
-<div class="subsection-level-extent" id="Options-38">
-<h4 class="subsection">9.20.1 Options</h4>
+<div class="subsection-level-extent" id="Options-40">
+<h4 class="subsection">9.21.1 Options</h4>
 
 <dl class="table">
 <dt><samp class="option">g <var class="var">integer</var></samp></dt>
@@ -6306,15 +6493,15 @@ A keyframe is inserted at least every <code class="code">-g</code> frames, somet
 </div>
 </div>
 <div class="section-level-extent" id="mpeg2">
-<h3 class="section">9.21 mpeg2</h3>
+<h3 class="section">9.22 mpeg2</h3>
 
 <p>MPEG-2 video encoder.
 </p>
 <ul class="mini-toc">
-<li><a href="#Options-39" accesskey="1">Options</a></li>
+<li><a href="#Options-41" accesskey="1">Options</a></li>
 </ul>
-<div class="subsection-level-extent" id="Options-39">
-<h4 class="subsection">9.21.1 Options</h4>
+<div class="subsection-level-extent" id="Options-41">
+<h4 class="subsection">9.22.1 Options</h4>
 
 <dl class="table">
 <dt><samp class="option">profile</samp></dt>
@@ -6379,7 +6566,7 @@ Default is 1 (on).
 </div>
 </div>
 <div class="section-level-extent" id="png">
-<h3 class="section">9.22 png</h3>
+<h3 class="section">9.23 png</h3>
 
 <p>PNG image encoder.
 </p>
@@ -6387,7 +6574,7 @@ Default is 1 (on).
 <li><a href="#Private-options-1" accesskey="1">Private options</a></li>
 </ul>
 <div class="subsection-level-extent" id="Private-options-1">
-<h4 class="subsection">9.22.1 Private options</h4>
+<h4 class="subsection">9.23.1 Private options</h4>
 
 <dl class="table">
 <dt><samp class="option">dpi <var class="var">integer</var></samp></dt>
@@ -6401,7 +6588,7 @@ Default is 1 (on).
 </div>
 </div>
 <div class="section-level-extent" id="ProRes">
-<h3 class="section">9.23 ProRes</h3>
+<h3 class="section">9.24 ProRes</h3>
 
 <p>Apple ProRes encoder.
 </p>
@@ -6413,7 +6600,7 @@ The used encoder can be chosen with the <code class="code">-vcodec</code> option
 <li><a href="#Speed-considerations" accesskey="2">Speed considerations</a></li>
 </ul>
 <div class="subsection-level-extent" id="Private-Options-for-prores_002dks">
-<h4 class="subsection">9.23.1 Private Options for prores-ks</h4>
+<h4 class="subsection">9.24.1 Private Options for prores-ks</h4>
 
 <dl class="table">
 <dt><samp class="option">profile <var class="var">integer</var></samp></dt>
@@ -6469,7 +6656,7 @@ Use <var class="var">0</var> to disable alpha plane coding.
 
 </div>
 <div class="subsection-level-extent" id="Speed-considerations">
-<h4 class="subsection">9.23.2 Speed considerations</h4>
+<h4 class="subsection">9.24.2 Speed considerations</h4>
 
 <p>In the default mode of operation the encoder has to honor frame constraints
 (i.e. not produce frames with size bigger than requested) while still making
@@ -6485,7 +6672,7 @@ recommended value) and do not set a size constraint.
 </div>
 </div>
 <div class="section-level-extent" id="QSV-Encoders">
-<h3 class="section">9.24 QSV Encoders</h3>
+<h3 class="section">9.25 QSV Encoders</h3>
 
 <p>The family of Intel QuickSync Video encoders (MPEG-2, H.264, HEVC, JPEG/MJPEG,
 VP9, AV1)
@@ -6502,7 +6689,7 @@ VP9, AV1)
 <li><a href="#AV1-Options" accesskey="9">AV1 Options</a></li>
 </ul>
 <div class="subsection-level-extent" id="Ratecontrol-Method">
-<h4 class="subsection">9.24.1 Ratecontrol Method</h4>
+<h4 class="subsection">9.25.1 Ratecontrol Method</h4>
 <p>The ratecontrol method is selected as follows:
 </p><ul class="itemize mark-bullet">
 <li>When <samp class="option">global_quality</samp> is specified, a quality-based mode is used.
@@ -6543,7 +6730,7 @@ higher to see the actual settings used by the QSV runtime.
 </p>
 </div>
 <div class="subsection-level-extent" id="Global-Options-_002d_003e-MSDK-Options">
-<h4 class="subsection">9.24.2 Global Options -&gt; MSDK Options</h4>
+<h4 class="subsection">9.25.2 Global Options -&gt; MSDK Options</h4>
 <p>Additional libavcodec global options are mapped to MSDK options as follows:
 </p>
 <ul class="itemize mark-bullet">
@@ -6573,7 +6760,7 @@ encoder use CAVLC instead of CABAC.
 
 </div>
 <div class="subsection-level-extent" id="Common-Options-1">
-<h4 class="subsection">9.24.3 Common Options</h4>
+<h4 class="subsection">9.25.3 Common Options</h4>
 <p>Following options are used by all qsv encoders.
 </p>
 <dl class="table">
@@ -6608,7 +6795,7 @@ the value is not specified.
 
 </div>
 <div class="subsection-level-extent" id="Runtime-Options">
-<h4 class="subsection">9.24.4 Runtime Options</h4>
+<h4 class="subsection">9.25.4 Runtime Options</h4>
 <p>Following options can be used durning qsv encoding.
 </p>
 <dl class="table">
@@ -6674,7 +6861,7 @@ Change this value to reset qsv codec&rsquo;s pic_timing_sei configuration.
 
 </div>
 <div class="subsection-level-extent" id="H264-options">
-<h4 class="subsection">9.24.5 H264 options</h4>
+<h4 class="subsection">9.25.5 H264 options</h4>
 <p>These options are used by h264_qsv
 </p>
 <dl class="table">
@@ -6930,7 +7117,7 @@ frame.
 
 </div>
 <div class="subsection-level-extent" id="HEVC-Options-1">
-<h4 class="subsection">9.24.6 HEVC Options</h4>
+<h4 class="subsection">9.25.6 HEVC Options</h4>
 <p>These options are used by hevc_qsv
 </p>
 <dl class="table">
@@ -7182,7 +7369,7 @@ frame.
 
 </div>
 <div class="subsection-level-extent" id="MPEG2-Options">
-<h4 class="subsection">9.24.7 MPEG2 Options</h4>
+<h4 class="subsection">9.25.7 MPEG2 Options</h4>
 <p>These options are used by mpeg2_qsv
 </p><dl class="table">
 <dt><samp class="option"><var class="var">profile</var></samp></dt>
@@ -7197,7 +7384,7 @@ frame.
 
 </div>
 <div class="subsection-level-extent" id="VP9-Options">
-<h4 class="subsection">9.24.8 VP9 Options</h4>
+<h4 class="subsection">9.25.8 VP9 Options</h4>
 <p>These options are used by vp9_qsv
 </p><dl class="table">
 <dt><samp class="option"><var class="var">profile</var></samp></dt>
@@ -7221,7 +7408,7 @@ frame.
 
 </div>
 <div class="subsection-level-extent" id="AV1-Options">
-<h4 class="subsection">9.24.9 AV1 Options</h4>
+<h4 class="subsection">9.25.9 AV1 Options</h4>
 <p>These options are used by av1_qsv (requires libvpl).
 </p><dl class="table">
 <dt><samp class="option"><var class="var">profile</var></samp></dt>
@@ -7276,13 +7463,13 @@ Invalid in CQP rate control mode.
 </div>
 </div>
 <div class="section-level-extent" id="snow">
-<h3 class="section">9.25 snow</h3>
+<h3 class="section">9.26 snow</h3>
 
 <ul class="mini-toc">
-<li><a href="#Options-40" accesskey="1">Options</a></li>
+<li><a href="#Options-42" accesskey="1">Options</a></li>
 </ul>
-<div class="subsection-level-extent" id="Options-40">
-<h4 class="subsection">9.25.1 Options</h4>
+<div class="subsection-level-extent" id="Options-42">
+<h4 class="subsection">9.26.1 Options</h4>
 
 <dl class="table">
 <dt><samp class="option">iterative_dia_size</samp></dt>
@@ -7293,7 +7480,7 @@ Invalid in CQP rate control mode.
 </div>
 </div>
 <div class="section-level-extent" id="VAAPI-encoders">
-<h3 class="section">9.26 VAAPI encoders</h3>
+<h3 class="section">9.27 VAAPI encoders</h3>
 
 <p>Wrappers for hardware encoders accessible via VAAPI.
 </p>
@@ -7398,6 +7585,23 @@ This is the default.
 
 <p>Each encoder also has its own specific options:
 </p><dl class="table">
+<dt><samp class="option">av1_vaapi</samp></dt>
+<dd><p><samp class="option">profile</samp> sets the value of <em class="emph">seq_profile</em>.
+<samp class="option">tier</samp> sets the value of <em class="emph">seq_tier</em>.
+<samp class="option">level</samp> sets the value of <em class="emph">seq_level_idx</em>.
+</p>
+<dl class="table">
+<dt><samp class="option">tiles</samp></dt>
+<dd><p>Set the number of tiles to encode the input video with, as columns x rows.
+(default is auto, which means use minimal tile column/row number).
+</p></dd>
+<dt><samp class="option">tile_groups</samp></dt>
+<dd><p>Set tile groups number. All the tiles will be distributed as evenly as possible to
+each tile group. (default is 1).
+</p></dd>
+</dl>
+
+</dd>
 <dt><samp class="option">h264_vaapi</samp></dt>
 <dd><p><samp class="option">profile</samp> sets the value of <em class="emph">profile_idc</em> and the <em class="emph">constraint_set*_flag</em>s.
 <samp class="option">level</samp> sets the value of <em class="emph">level_idc</em>.
@@ -7538,7 +7742,7 @@ required to produce a stream usable with all decoders.
 
 </div>
 <div class="section-level-extent" id="vbn">
-<h3 class="section">9.27 vbn</h3>
+<h3 class="section">9.28 vbn</h3>
 
 <p>Vizrt Binary Image encoder.
 </p>
@@ -7547,10 +7751,10 @@ Advanced features of the format such as LZW compression of texture data or
 generation of mipmaps are not supported.
 </p>
 <ul class="mini-toc">
-<li><a href="#Options-41" accesskey="1">Options</a></li>
+<li><a href="#Options-43" accesskey="1">Options</a></li>
 </ul>
-<div class="subsection-level-extent" id="Options-41">
-<h4 class="subsection">9.27.1 Options</h4>
+<div class="subsection-level-extent" id="Options-43">
+<h4 class="subsection">9.28.1 Options</h4>
 
 <dl class="table">
 <dt><samp class="option">format <var class="var">string</var></samp></dt>
@@ -7562,7 +7766,7 @@ generation of mipmaps are not supported.
 </div>
 </div>
 <div class="section-level-extent" id="vc2">
-<h3 class="section">9.28 vc2</h3>
+<h3 class="section">9.29 vc2</h3>
 
 <p>SMPTE VC-2 (previously BBC Dirac Pro). This codec was primarily aimed at
 professional broadcasting but since it supports yuv420, yuv422 and yuv444 at
@@ -7571,10 +7775,10 @@ other tasks which require low overhead and low compression (like screen
 recording).
 </p>
 <ul class="mini-toc">
-<li><a href="#Options-42" accesskey="1">Options</a></li>
+<li><a href="#Options-44" accesskey="1">Options</a></li>
 </ul>
-<div class="subsection-level-extent" id="Options-42">
-<h4 class="subsection">9.28.1 Options</h4>
+<div class="subsection-level-extent" id="Options-44">
+<h4 class="subsection">9.29.1 Options</h4>
 
 <dl class="table">
 <dt><samp class="option">b</samp></dt>
@@ -7652,9 +7856,9 @@ Typically they are stored in VOBSUB file pairs (*.idx + *.sub),
 and they can also be used in Matroska files.
 </p>
 <ul class="mini-toc">
-<li><a href="#Options-43" accesskey="1">Options</a></li>
+<li><a href="#Options-45" accesskey="1">Options</a></li>
 </ul>
-<div class="subsection-level-extent" id="Options-43">
+<div class="subsection-level-extent" id="Options-45">
 <h4 class="subsection">10.1.1 Options</h4>
 
 <dl class="table">
@@ -7706,8 +7910,9 @@ online repository at <a class="url" href="https://git.ffmpeg.org/ffmpeg">https:/
 
 </div>
 </div>
-
-
-
-</body>
+      <p style="font-size: small;">
+        This document was generated using <a class="uref" href="https://www.gnu.org/software/texinfo/"><em class="emph">makeinfo</em></a>.
+      </p>
+    </div>
+  </body>
 </html>

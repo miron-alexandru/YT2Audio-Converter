@@ -1,36 +1,25 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- Created by GNU Texinfo 7.0.1, https://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>FFmpeg Automated Testing Environment</title>
-
-<meta name="description" content="FFmpeg Automated Testing Environment">
-<meta name="keywords" content="FFmpeg Automated Testing Environment">
-<meta name="resource-type" content="document">
-<meta name="distribution" content="global">
-<meta name="Generator" content="makeinfo">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-
-<link href="#Top" rel="start" title="Top">
-<link href="#SEC_Contents" rel="contents" title="Table of Contents">
-<style type="text/css">
-<!--
-div.example {margin-left: 3.2em}
-ul.mark-bullet {list-style-type: disc}
-ul.toc-numbered-mark {list-style: none}
--->
-</style>
+<!-- Created by , GNU Texinfo 7.0.1 -->
+  <head>
+    <meta charset="utf-8">
+    <title>
+      FFmpeg Automated Testing Environment
+    </title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>
+      FFmpeg Automated Testing Environment
+      </h1>
 
 
-</head>
-
-<body lang="en">
-
-
-<div class="top-level-extent" id="Top">
+<a name="Top"></a>
+<h4 class="Top">1</h4>
 <a class="top" id="SEC_Top"></a>
-
 <div class="element-contents" id="SEC_Contents">
 <h2 class="contents-heading">Table of Contents</h2>
 
@@ -50,6 +39,14 @@ ul.toc-numbered-mark {list-style: none}
 </ul>
 </div>
 </div>
+
+<ul class="mini-toc">
+<li><a href="#Introduction" accesskey="1">Introduction</a></li>
+<li><a href="#Using-FATE-from-your-FFmpeg-source-directory" accesskey="2">Using FATE from your FFmpeg source directory</a></li>
+<li><a href="#Submitting-the-results-to-the-FFmpeg-result-aggregation-server" accesskey="3">Submitting the results to the FFmpeg result aggregation server</a></li>
+<li><a href="#Uploading-new-samples-to-the-fate-suite" accesskey="4">Uploading new samples to the fate suite</a></li>
+<li><a href="#FATE-makefile-targets-and-variables" accesskey="5">FATE makefile targets and variables</a></li>
+</ul>
 <div class="chapter-level-extent" id="Introduction">
 <h2 class="chapter">1 Introduction</h2>
 
@@ -116,11 +113,10 @@ it in your interactive session.
 <pre class="example-preformatted">FATE_SAMPLES=fate-suite/ make fate
 </pre></div>
 
-<div class="float">
+<div class="info">
 <p>Do not put a &rsquo;~&rsquo; character in the samples path to indicate a home
 directory. Because of shell nuances, this will cause FATE to fail.
-</p><div class="type-number-float"><p><strong class="strong">NOTE
-</strong></p></div></div>
+</p></div>
 <p>To get the complete list of tests, run the command:
 </p><div class="example">
 <pre class="example-preformatted">make fate-list
@@ -189,6 +185,28 @@ makeopts=       # extra options passed to 'make'
                 # defaulting to makeopts above if this is not set
 #tar=           # command to create a tar archive from its arguments on stdout,
                 # defaults to 'tar c'
+#fate_targets=  # targets to make when running fate; defaults to &quot;fate&quot;,
+                # can be set to run a subset of tests, e.g. &quot;fate-checkasm&quot;.
+
+#fate_environments=  # a list of names of configurations to run tests for;
+                     # each round is run with variables from ${${name}_env} set.
+
+# One example of using fate_environments:
+
+# target_exec=&quot;qemu-aarch64-static&quot;
+# fate_targets=&quot;fate-checkasm fate-cpu&quot;
+# fate_environments=&quot;sve128 sve256&quot;
+# sve128_env=&quot;QEMU_CPU=max,sve128=on&quot;
+# sve256_env=&quot;QEMU_CPU=max,sve256=on&quot;
+
+# The variables set by fate_environments can also be used explicitly
+# by target_exec, e.g. like this:
+
+# target_exec=&quot;qemu-aarch64-static -cpu \$(MY_CPU)&quot;
+# fate_targets=&quot;fate-checkasm fate-cpu&quot;
+# fate_environments=&quot;sve128 sve256&quot;
+# sve128_env=&quot;MY_CPU=max,sve128=on&quot;
+# sve256_env=&quot;MY_CPU=max,sve256=on&quot;
 </pre>
 <p>Create a configuration that suits your needs, based on the configuration
 template. The <code class="env">slot</code> configuration variable can be any string that is not
@@ -316,6 +334,14 @@ meaning only while running the regression tests.
 <dd><p>Specify how many threads to use while running regression tests, it is
 quite useful to detect thread-related regressions.
 </p>
+<p>This variable may be set to the string &quot;random&quot;, optionally followed by a
+number, like &quot;random99&quot;, This will cause each test to use a random number of
+threads. If a number is specified, it is used as a maximum number of threads,
+otherwise 16 is the maximum.
+</p>
+<p>In case a test fails, the thread count used for it will be written into the
+errfile.
+</p>
 </dd>
 <dt><code class="env">THREAD_TYPE</code></dt>
 <dd><p>Specify which threading strategy test, either &lsquo;<samp class="samp">slice</samp>&rsquo; or &lsquo;<samp class="samp">frame</samp>&rsquo;,
@@ -359,9 +385,9 @@ fails.
 </pre></div>
 </div>
 </div>
-</div>
-
-
-
-</body>
+      <p style="font-size: small;">
+        This document was generated using <a class="uref" href="https://www.gnu.org/software/texinfo/"><em class="emph">makeinfo</em></a>.
+      </p>
+    </div>
+  </body>
 </html>

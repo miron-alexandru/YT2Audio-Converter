@@ -1,35 +1,23 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- Created by GNU Texinfo 7.0.1, https://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>FFmpeg Devices Documentation</title>
-
-<meta name="description" content="FFmpeg Devices Documentation">
-<meta name="keywords" content="FFmpeg Devices Documentation">
-<meta name="resource-type" content="document">
-<meta name="distribution" content="global">
-<meta name="Generator" content="makeinfo">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-
-<link href="#SEC_Contents" rel="contents" title="Table of Contents">
-<style type="text/css">
-<!--
-div.example {margin-left: 3.2em}
-kbd.key {font-style: normal}
-ul.mark-bullet {list-style-type: disc}
-ul.toc-numbered-mark {list-style: none}
--->
-</style>
-
-
-</head>
-
-<body lang="en">
+<!-- Created by , GNU Texinfo 7.0.1 -->
+  <head>
+    <meta charset="utf-8">
+    <title>
+      FFmpeg Devices Documentation
+    </title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>
+      FFmpeg Devices Documentation
+      </h1>
 
 
 <div class="top-level-extent" id="SEC_Top">
-
 
 <div class="element-contents" id="SEC_Contents">
 <h2 class="contents-heading">Table of Contents</h2>
@@ -190,6 +178,15 @@ ul.toc-numbered-mark {list-style: none}
 </ul>
 </div>
 </div>
+
+<ul class="mini-toc">
+<li><a href="#Description" accesskey="1">Description</a></li>
+<li><a href="#Device-Options" accesskey="2">Device Options</a></li>
+<li><a href="#Input-Devices" accesskey="3">Input Devices</a></li>
+<li><a href="#Output-Devices" accesskey="4">Output Devices</a></li>
+<li><a href="#See-Also" accesskey="5">See Also</a></li>
+<li><a href="#Authors" accesskey="6">Authors</a></li>
+</ul>
 <div class="chapter-level-extent" id="Description">
 <h2 class="chapter">1 Description</h2>
 
@@ -496,7 +493,8 @@ Using this option may result in receiving the underlying data delivered to the A
 <div class="section-level-extent" id="bktr">
 <h3 class="section">3.4 bktr</h3>
 
-<p>BSD video input device.
+<p>BSD video input device. Deprecated and will be removed - please contact
+the developers if you are interested in maintaining it.
 </p>
 <ul class="mini-toc">
 <li><a href="#Options-3" accesskey="1">Options</a></li>
@@ -1061,7 +1059,7 @@ Documentation/fb/framebuffer.txt included in the Linux source tree.
 </p>
 <p>This device allows you to capture a region of the display on Windows.
 </p>
-<p>There are two options for the input filename:
+<p>Amongst options for the imput filenames are such elements as:
 </p><div class="example">
 <pre class="example-preformatted">desktop
 </pre></div>
@@ -1069,9 +1067,13 @@ Documentation/fb/framebuffer.txt included in the Linux source tree.
 </p><div class="example">
 <pre class="example-preformatted">title=<var class="var">window_title</var>
 </pre></div>
+<p>or
+</p><div class="example">
+<pre class="example-preformatted">hwnd=<var class="var">window_hwnd</var>
+</pre></div>
 
 <p>The first option will capture the entire desktop, or a fixed region of the
-desktop. The second option will instead capture the contents of a single
+desktop. The second and third options will instead capture the contents of a single
 window, regardless of its position on the screen.
 </p>
 <p>For example, to grab the entire desktop using <code class="command">ffmpeg</code>:
@@ -2396,6 +2398,12 @@ Must be &lsquo;<samp class="samp">unset</samp>&rsquo;, &lsquo;<samp class="samp"
 Defaults to <samp class="option">unset</samp>.
 </p>
 </dd>
+<dt><samp class="option">vanc_queue_size</samp></dt>
+<dd><p>Sets maximum output buffer size in bytes for VANC data. If the buffering reaches this value,
+outgoing VANC data will be dropped.
+Defaults to &lsquo;<samp class="samp">1048576</samp>&rsquo;.
+</p>
+</dd>
 </dl>
 
 </div>
@@ -2810,8 +2818,9 @@ online repository at <a class="url" href="https://git.ffmpeg.org/ffmpeg">https:/
 
 </div>
 </div>
-
-
-
-</body>
+      <p style="font-size: small;">
+        This document was generated using <a class="uref" href="https://www.gnu.org/software/texinfo/"><em class="emph">makeinfo</em></a>.
+      </p>
+    </div>
+  </body>
 </html>

@@ -1,34 +1,23 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- Created by GNU Texinfo 7.0.1, https://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Developer Documentation</title>
-
-<meta name="description" content="Developer Documentation">
-<meta name="keywords" content="Developer Documentation">
-<meta name="resource-type" content="document">
-<meta name="distribution" content="global">
-<meta name="Generator" content="makeinfo">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-
-<link href="#SEC_Contents" rel="contents" title="Table of Contents">
-<style type="text/css">
-<!--
-div.example {margin-left: 3.2em}
-ul.mark-bullet {list-style-type: disc}
-ul.toc-numbered-mark {list-style: none}
--->
-</style>
-
-
-</head>
-
-<body lang="en">
+<!-- Created by , GNU Texinfo 7.0.1 -->
+  <head>
+    <meta charset="utf-8">
+    <title>
+      Developer Documentation
+    </title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>
+      Developer Documentation
+      </h1>
 
 
 <div class="top-level-extent" id="SEC_Top">
-
 
 <div class="element-contents" id="SEC_Contents">
 <h2 class="contents-heading">Table of Contents</h2>
@@ -36,10 +25,7 @@ ul.toc-numbered-mark {list-style: none}
 <div class="contents">
 
 <ul class="toc-numbered-mark">
-  <li><a id="toc-Introduction" href="#Introduction">1 Introduction</a>
-  <ul class="toc-numbered-mark">
-    <li><a id="toc-Contributing-code" href="#Contributing-code">1.1 Contributing code</a></li>
-  </ul></li>
+  <li><a id="toc-Introduction" href="#Introduction">1 Introduction</a></li>
   <li><a id="toc-Coding-Rules-1" href="#Coding-Rules-1">2 Coding Rules</a>
   <ul class="toc-numbered-mark">
     <li><a id="toc-Language" href="#Language">2.1 Language</a>
@@ -58,15 +44,16 @@ ul.toc-numbered-mark {list-style: none}
   </ul></li>
   <li><a id="toc-Development-Policy-1" href="#Development-Policy-1">3 Development Policy</a>
   <ul class="toc-numbered-mark">
-    <li><a id="toc-Patches_002fCommitting" href="#Patches_002fCommitting">3.1 Patches/Committing</a></li>
-    <li><a id="toc-Code" href="#Code">3.2 Code</a></li>
-    <li><a id="toc-Library-public-interfaces" href="#Library-public-interfaces">3.3 Library public interfaces</a>
+    <li><a id="toc-Code-behaviour" href="#Code-behaviour">3.1 Code behaviour</a></li>
+    <li><a id="toc-Patches_002fCommitting" href="#Patches_002fCommitting">3.2 Patches/Committing</a></li>
+    <li><a id="toc-Code" href="#Code">3.3 Code</a></li>
+    <li><a id="toc-Library-public-interfaces" href="#Library-public-interfaces">3.4 Library public interfaces</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Adding-new-interfaces" href="#Adding-new-interfaces">3.3.1 Adding new interfaces</a></li>
-      <li><a id="toc-Removing-interfaces-1" href="#Removing-interfaces-1">3.3.2 Removing interfaces</a></li>
-      <li><a id="toc-Major-version-bumps-1" href="#Major-version-bumps-1">3.3.3 Major version bumps</a></li>
+      <li><a id="toc-Adding-new-interfaces" href="#Adding-new-interfaces">3.4.1 Adding new interfaces</a></li>
+      <li><a id="toc-Removing-interfaces-1" href="#Removing-interfaces-1">3.4.2 Removing interfaces</a></li>
+      <li><a id="toc-Major-version-bumps-1" href="#Major-version-bumps-1">3.4.3 Major version bumps</a></li>
     </ul></li>
-    <li><a id="toc-Documentation_002fOther" href="#Documentation_002fOther">3.4 Documentation/Other</a></li>
+    <li><a id="toc-Documentation_002fOther" href="#Documentation_002fOther">3.5 Documentation/Other</a></li>
   </ul></li>
   <li><a id="toc-Submitting-patches-1" href="#Submitting-patches-1">4 Submitting patches</a></li>
   <li><a id="toc-New-codecs-or-formats-checklist" href="#New-codecs-or-formats-checklist">5 New codecs or formats checklist</a></li>
@@ -86,6 +73,18 @@ ul.toc-numbered-mark {list-style: none}
 </ul>
 </div>
 </div>
+
+<ul class="mini-toc">
+<li><a href="#Introduction" accesskey="1">Introduction</a></li>
+<li><a href="#Coding-Rules-1" accesskey="2">Coding Rules</a></li>
+<li><a href="#Development-Policy-1" accesskey="3">Development Policy</a></li>
+<li><a href="#Submitting-patches-1" accesskey="4">Submitting patches</a></li>
+<li><a href="#New-codecs-or-formats-checklist" accesskey="5">New codecs or formats checklist</a></li>
+<li><a href="#Patch-submission-checklist" accesskey="6">Patch submission checklist</a></li>
+<li><a href="#Patch-review-process" accesskey="7">Patch review process</a></li>
+<li><a href="#Regression-tests-1" accesskey="8">Regression tests</a></li>
+<li><a href="#Release-process-1" accesskey="9">Release process</a></li>
+</ul>
 <div class="chapter-level-extent" id="Introduction">
 <h2 class="chapter">1 Introduction</h2>
 
@@ -98,6 +97,10 @@ generated from the headers
 </li><li>the examples under <samp class="file">doc/examples</samp>
 </li></ul>
 
+<p>For more detailed legal information about the use of FFmpeg in
+external programs read the <samp class="file">LICENSE</samp> file in the source tree and
+consult <a class="url" href="https://ffmpeg.org/legal.html">https://ffmpeg.org/legal.html</a>.
+</p>
 <p>If you modify FFmpeg code for your own use case, you are highly encouraged to
 <em class="emph">submit your changes back to us</em>, using this document as a guide. There are
 both pragmatic and ideological reasons to do so:
@@ -111,16 +114,6 @@ design flaws in your code.
 maintained and developed.
 </li></ul>
 
-<p>For more detailed legal information about the use of FFmpeg in
-external programs read the <samp class="file">LICENSE</samp> file in the source tree and
-consult <a class="url" href="https://ffmpeg.org/legal.html">https://ffmpeg.org/legal.html</a>.
-</p>
-<ul class="mini-toc">
-<li><a href="#Contributing-code" accesskey="1">Contributing code</a></li>
-</ul>
-<div class="section-level-extent" id="Contributing-code">
-<h3 class="section">1.1 Contributing code</h3>
-
 <p>All proposed code changes should be submitted for review to
 <a class="url" href="mailto:ffmpeg-devel@ffmpeg.org">the development mailing list</a>, as
 described in more detail in the <a class="ref" href="#Submitting-patches">Submitting patches</a> chapter. The code
@@ -129,7 +122,6 @@ The developer making the commit and the author are responsible for their changes
 and should try to fix issues their commit causes.
 </p>
 <a class="anchor" id="Coding-Rules"></a></div>
-</div>
 <div class="chapter-level-extent" id="Coding-Rules-1">
 <h2 class="chapter">2 Coding Rules</h2>
 
@@ -143,14 +135,9 @@ and should try to fix issues their commit causes.
 <div class="section-level-extent" id="Language">
 <h3 class="section">2.1 Language</h3>
 
-<p>FFmpeg is mainly programmed in the ISO C99 language, extended with:
-</p><ul class="itemize mark-bullet">
-<li>Atomic operations from C11 <samp class="file">stdatomic.h</samp>. They are emulated on
-architectures/compilers that do not support them, so all FFmpeg-internal code
-may use atomics without any extra checks. However, <samp class="file">stdatomic.h</samp> must not
-be included in public headers, so they stay C99-compatible.
-</li></ul>
-
+<p>FFmpeg is mainly programmed in the ISO C11 language, except for the public
+headers which must stay C99 compatible.
+</p>
 <p>Compiler-specific extensions may be used with good reason, but must not be
 depended on, i.e. the code must still compile and work with compilers lacking
 the extension.
@@ -184,7 +171,7 @@ pointer; the function in question is then always called through this pointer.
 </p><ul class="itemize mark-bullet">
 <li>NASM on x86;
 
-</li><li>GAS on ARM.
+</li><li>GAS on ARM and RISC-V.
 </li></ul>
 
 <p>A unit testing framework for assembly called <code class="code">checkasm</code> lives under
@@ -365,10 +352,7 @@ symbols. If in doubt, just avoid names starting with <code class="code">_</code>
 <h3 class="section">2.5 Miscellaneous conventions</h3>
 
 <ul class="itemize mark-bullet">
-<li>fprintf and printf are forbidden in libavformat and libavcodec,
-please use av_log() instead.
-
-</li><li>Casts should be used only when necessary. Unneeded parentheses
+<li>Casts should be used only when necessary. Unneeded parentheses
 should also be avoided if they don&rsquo;t make the code easier to understand.
 </li></ul>
 
@@ -378,13 +362,52 @@ should also be avoided if they don&rsquo;t make the code easier to understand.
 <h2 class="chapter">3 Development Policy</h2>
 
 <ul class="mini-toc">
-<li><a href="#Patches_002fCommitting" accesskey="1">Patches/Committing</a></li>
-<li><a href="#Code" accesskey="2">Code</a></li>
-<li><a href="#Library-public-interfaces" accesskey="3">Library public interfaces</a></li>
-<li><a href="#Documentation_002fOther" accesskey="4">Documentation/Other</a></li>
+<li><a href="#Code-behaviour" accesskey="1">Code behaviour</a></li>
+<li><a href="#Patches_002fCommitting" accesskey="2">Patches/Committing</a></li>
+<li><a href="#Code" accesskey="3">Code</a></li>
+<li><a href="#Library-public-interfaces" accesskey="4">Library public interfaces</a></li>
+<li><a href="#Documentation_002fOther" accesskey="5">Documentation/Other</a></li>
 </ul>
+<div class="section-level-extent" id="Code-behaviour">
+<h3 class="section">3.1 Code behaviour</h3>
+
+<h4 class="subheading" id="Correctness">Correctness</h4>
+<p>The code must be valid. It must not crash, abort, access invalid pointers, leak
+memory, cause data races or signed integer overflow, or otherwise cause
+undefined behaviour. Error codes should be checked and, when applicable,
+forwarded to the caller.
+</p>
+<h4 class="subheading" id="Thread_002d-and-library_002dsafety">Thread- and library-safety</h4>
+<p>Our libraries may be called by multiple independent callers in the same process.
+These calls may happen from any number of threads and the different call sites
+may not be aware of each other - e.g. a user program may be calling our
+libraries directly, and use one or more libraries that also call our libraries.
+The code must behave correctly under such conditions.
+</p>
+<h4 class="subheading" id="Robustness">Robustness</h4>
+<p>The code must treat as untrusted any bytestream received from a caller or read
+from a file, network, etc. It must not misbehave when arbitrary data is sent to
+it - typically it should print an error message and return
+<code class="code">AVERROR_INVALIDDATA</code> on encountering invalid input data.
+</p>
+<h4 class="subheading" id="Memory-allocation">Memory allocation</h4>
+<p>The code must use the <code class="code">av_malloc()</code> family of functions from
+<samp class="file">libavutil/mem.h</samp> to perform all memory allocation, except in special cases
+(e.g. when interacting with an external library that requires a specific
+allocator to be used).
+</p>
+<p>All allocations should be checked and <code class="code">AVERROR(ENOMEM)</code> returned on
+failure. A common mistake is that error paths leak memory - make sure that does
+not happen.
+</p>
+<h4 class="subheading" id="stdio">stdio</h4>
+<p>Our libraries must not access the stdio streams stdin/stdout/stderr directly
+(e.g. via <code class="code">printf()</code> family of functions), as that is not library-safe. For
+logging, use <code class="code">av_log()</code>.
+</p>
+</div>
 <div class="section-level-extent" id="Patches_002fCommitting">
-<h3 class="section">3.1 Patches/Committing</h3>
+<h3 class="section">3.2 Patches/Committing</h3>
 <h4 class="subheading" id="Licenses-for-patches-must-be-compatible-with-FFmpeg_002e">Licenses for patches must be compatible with FFmpeg.</h4>
 <p>Contributions should be licensed under the
 <a class="uref" href="http://www.gnu.org/licenses/lgpl-2.1.html">LGPL 2.1</a>,
@@ -406,13 +429,24 @@ missing samples or an implementation with a small subset of features.
 Always check the mailing list for any reviewers with issues and test
 FATE before you push.
 </p>
-<h4 class="subheading" id="Keep-the-main-commit-message-short-with-an-extended-description-below_002e">Keep the main commit message short with an extended description below.</h4>
-<p>The commit message should have a short first line in the form of
-a &lsquo;<samp class="samp">topic: short description</samp>&rsquo; as a header, separated by a newline
-from the body consisting of an explanation of why the change is necessary.
-If the commit fixes a known bug on the bug tracker, the commit message
-should include its bug ID. Referring to the issue on the bug tracker does
-not exempt you from writing an excerpt of the bug in the commit message.
+<h4 class="subheading" id="Commit-messages">Commit messages</h4>
+<p>Commit messages are highly important tools for informing other developers on
+what a given change does and why. Every commit must always have a properly
+filled out commit message with the following format:
+</p><div class="example">
+<pre class="example-preformatted">area changed: short 1 line description
+
+details describing what and why and giving references.
+</pre></div>
+
+<p>If the commit addresses a known bug on our bug tracker or other external issue
+(e.g. CVE), the commit message should include the relevant bug ID(s) or other
+external identifiers. Note that this should be done in addition to a proper
+explanation and not instead of it. Comments such as &quot;fixed!&quot; or &quot;Changed it.&quot;
+are not acceptable.
+</p>
+<p>When applying patches that have been discussed at length on the mailing list,
+reference the thread in the commit message.
 </p>
 <h4 class="subheading" id="Testing-must-be-adequate-but-not-excessive_002e">Testing must be adequate but not excessive.</h4>
 <p>If it works for you, others, and passes FATE then it should be OK to commit
@@ -431,15 +465,6 @@ later on.
 Also if you have doubts about splitting or not splitting, do not hesitate to
 ask/discuss it on the developer mailing list.
 </p>
-<h4 class="subheading" id="Ask-before-you-change-the-build-system-_0028configure_002c-etc_0029_002e">Ask before you change the build system (configure, etc).</h4>
-<p>Do not commit changes to the build system (Makefiles, configure script)
-which change behavior, defaults etc, without asking first. The same
-applies to compiler warning fixes, trivial looking fixes and to code
-maintained by other developers. We usually have a reason for doing things
-the way we do. Send your changes as patches to the ffmpeg-devel mailing
-list, and if the code maintainers say OK, you may commit. This does not
-apply to files you wrote and/or maintain.
-</p>
 <h4 class="subheading" id="Cosmetic-changes-should-be-kept-in-separate-patches_002e">Cosmetic changes should be kept in separate patches.</h4>
 <p>We refuse source indentation and other cosmetic changes if they are mixed
 with functional changes, such commits will be rejected and removed. Every
@@ -454,27 +479,11 @@ changes.
 then either do NOT change the indentation of the inner part within (do not
 move it to the right)! or do so in a separate commit
 </p>
-<h4 class="subheading" id="Commit-messages-should-always-be-filled-out-properly_002e">Commit messages should always be filled out properly.</h4>
-<p>Always fill out the commit log message. Describe in a few lines what you
-changed and why. You can refer to mailing list postings if you fix a
-particular bug. Comments such as &quot;fixed!&quot; or &quot;Changed it.&quot; are unacceptable.
-Recommended format:
-</p>
-<div class="example">
-<pre class="example-preformatted">area changed: Short 1 line description
-
-details describing what and why and giving references.
-</pre></div>
-
 <h4 class="subheading" id="Credit-the-author-of-the-patch_002e">Credit the author of the patch.</h4>
 <p>Make sure the author of the commit is set correctly. (see git commit &ndash;author)
 If you apply a patch, send an
 answer to ffmpeg-devel (or wherever you got the patch from) saying that
 you applied the patch.
-</p>
-<h4 class="subheading" id="Complex-patches-should-refer-to-discussion-surrounding-them_002e">Complex patches should refer to discussion surrounding them.</h4>
-<p>When applying patches that have been discussed (at length) on the mailing
-list, reference the thread in the log message.
 </p>
 <h4 class="subheading" id="Always-wait-long-enough-before-pushing-changes">Always wait long enough before pushing changes</h4>
 <p>Do NOT commit to code actively maintained by others without permission.
@@ -485,7 +494,7 @@ Also note, the maintainer can simply ask for more time to review!
 </p>
 </div>
 <div class="section-level-extent" id="Code">
-<h3 class="section">3.2 Code</h3>
+<h3 class="section">3.3 Code</h3>
 <h4 class="subheading" id="Warnings-for-correct-code-may-be-disabled-if-there-is-no-other-option_002e">Warnings for correct code may be disabled if there is no other option.</h4>
 <p>Compiler warnings indicate potential bugs or code with bad style. If a type of
 warning always points to correct and clean code, that warning should
@@ -495,14 +504,9 @@ If it is a bug, the bug has to be fixed. If it is not, the code should
 be changed to not generate a warning unless that causes a slowdown
 or obfuscates the code.
 </p>
-<h4 class="subheading" id="Check-untrusted-input-properly_002e">Check untrusted input properly.</h4>
-<p>Never write to unallocated memory, never write over the end of arrays,
-always check values read from some untrusted source before using them
-as array index or other risky things.
-</p>
 </div>
 <div class="section-level-extent" id="Library-public-interfaces">
-<h3 class="section">3.3 Library public interfaces</h3>
+<h3 class="section">3.4 Library public interfaces</h3>
 <p>Every library in FFmpeg provides a set of public APIs in its installed headers,
 which are those listed in the variable <code class="code">HEADERS</code> in that library&rsquo;s
 <samp class="file">Makefile</samp>. All identifiers defined in those headers (except for those
@@ -530,10 +534,10 @@ number remains unchanged.
 <li><a href="#Major-version-bumps-1" accesskey="3">Major version bumps</a></li>
 </ul>
 <div class="subsection-level-extent" id="Adding-new-interfaces">
-<h4 class="subsection">3.3.1 Adding new interfaces</h4>
+<h4 class="subsection">3.4.1 Adding new interfaces</h4>
 <p>Any new public identifiers in installed headers are considered new API - this
 includes new functions, structs, macros, enum values, typedefs, new fields in
-existing functions, new installed headers, etc. Consider the following
+existing structs, new installed headers, etc. Consider the following
 guidelines when adding new APIs.
 </p>
 <h4 class="subsubheading" id="Motivation">Motivation</h4>
@@ -610,7 +614,7 @@ component always starts at 100 to distinguish FFmpeg from Libav.
 </p>
 <a class="anchor" id="Removing-interfaces"></a></div>
 <div class="subsection-level-extent" id="Removing-interfaces-1">
-<h4 class="subsection">3.3.2 Removing interfaces</h4>
+<h4 class="subsection">3.4.2 Removing interfaces</h4>
 <p>Due to abovementioned compatibility guarantees, removing APIs is an involved
 process that should only be undertaken with good reason. Typically a deficient,
 restrictive, or otherwise inadequate API is replaced by a superior one, though
@@ -643,7 +647,7 @@ and false.
 </p>
 <a class="anchor" id="Major-version-bumps"></a></div>
 <div class="subsection-level-extent" id="Major-version-bumps-1">
-<h4 class="subsection">3.3.3 Major version bumps</h4>
+<h4 class="subsection">3.4.3 Major version bumps</h4>
 <p>A major version bump signifies an API and/or ABI compatibility break. To reduce
 the negative effects on our callers, who are required to adapt their code,
 backward-incompatible changes during a major bump should be limited to:
@@ -656,7 +660,7 @@ backward-incompatible changes during a major bump should be limited to:
 </div>
 </div>
 <div class="section-level-extent" id="Documentation_002fOther">
-<h3 class="section">3.4 Documentation/Other</h3>
+<h3 class="section">3.5 Documentation/Other</h3>
 <h4 class="subheading" id="Subscribe-to-the-ffmpeg_002ddevel-mailing-list_002e">Subscribe to the ffmpeg-devel mailing list.</h4>
 <p>It is important to be subscribed to the
 <a class="uref" href="https://lists.ffmpeg.org/mailman/listinfo/ffmpeg-devel">ffmpeg-devel</a>
@@ -887,10 +891,6 @@ an explanation why to your patchset, its ok to not test if theres a reason.
 
 </li><li> If you added YASM code please check that things still work with &ndash;disable-yasm.
 
-</li><li> Make sure you check the return values of function and return appropriate
-error codes. Especially memory allocation functions like <code class="code">av_malloc()</code>
-are notoriously left unchecked, which is a serious problem.
-
 </li><li> Test your code with valgrind and or Address Sanitizer to ensure it&rsquo;s free
 of leaks, out of array accesses, etc.
 </li></ol>
@@ -1095,8 +1095,9 @@ with a news entry for the website.
 </div>
 </div>
 </div>
-
-
-
-</body>
+      <p style="font-size: small;">
+        This document was generated using <a class="uref" href="https://www.gnu.org/software/texinfo/"><em class="emph">makeinfo</em></a>.
+      </p>
+    </div>
+  </body>
 </html>

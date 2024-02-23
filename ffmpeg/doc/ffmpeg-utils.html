@@ -1,34 +1,23 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- Created by GNU Texinfo 7.0.1, https://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>FFmpeg Utilities Documentation</title>
-
-<meta name="description" content="FFmpeg Utilities Documentation">
-<meta name="keywords" content="FFmpeg Utilities Documentation">
-<meta name="resource-type" content="document">
-<meta name="distribution" content="global">
-<meta name="Generator" content="makeinfo">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-
-<link href="#SEC_Contents" rel="contents" title="Table of Contents">
-<style type="text/css">
-<!--
-div.example {margin-left: 3.2em}
-ul.mark-bullet {list-style-type: disc}
-ul.toc-numbered-mark {list-style: none}
--->
-</style>
-
-
-</head>
-
-<body lang="en">
+<!-- Created by , GNU Texinfo 7.0.1 -->
+  <head>
+    <meta charset="utf-8">
+    <title>
+      FFmpeg Utilities Documentation
+    </title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>
+      FFmpeg Utilities Documentation
+      </h1>
 
 
 <div class="top-level-extent" id="SEC_Top">
-
 
 <div class="element-contents" id="SEC_Contents">
 <h2 class="contents-heading">Table of Contents</h2>
@@ -60,6 +49,14 @@ ul.toc-numbered-mark {list-style: none}
 </ul>
 </div>
 </div>
+
+<ul class="mini-toc">
+<li><a href="#Description" accesskey="1">Description</a></li>
+<li><a href="#Syntax" accesskey="2">Syntax</a></li>
+<li><a href="#Expression-Evaluation" accesskey="3">Expression Evaluation</a></li>
+<li><a href="#See-Also" accesskey="4">See Also</a></li>
+<li><a href="#Authors" accesskey="5">Authors</a></li>
+</ul>
 <div class="chapter-level-extent" id="Description">
 <h2 class="chapter">1 Description</h2>
 
@@ -1031,6 +1028,9 @@ following identifiers:
 <dt>&lsquo;<samp class="samp">6.0(front)</samp>&rsquo;</dt>
 <dd><p>FL+FR+FLC+FRC+SL+SR
 </p></dd>
+<dt>&lsquo;<samp class="samp">3.1.2</samp>&rsquo;</dt>
+<dd><p>FL+FR+FC+LFE+TFL+TFR
+</p></dd>
 <dt>&lsquo;<samp class="samp">hexagonal</samp>&rsquo;</dt>
 <dd><p>FL+FR+FC+BL+BR+BC
 </p></dd>
@@ -1058,7 +1058,7 @@ following identifiers:
 <dt>&lsquo;<samp class="samp">7.1(wide-side)</samp>&rsquo;</dt>
 <dd><p>FL+FR+FC+LFE+FLC+FRC+SL+SR
 </p></dd>
-<dt>&lsquo;<samp class="samp">7.1(top)</samp>&rsquo;</dt>
+<dt>&lsquo;<samp class="samp">5.1.2</samp>&rsquo;</dt>
 <dd><p>FL+FR+FC+LFE+BL+BR+TFL+TFR
 </p></dd>
 <dt>&lsquo;<samp class="samp">octagonal</samp>&rsquo;</dt>
@@ -1066,6 +1066,21 @@ following identifiers:
 </p></dd>
 <dt>&lsquo;<samp class="samp">cube</samp>&rsquo;</dt>
 <dd><p>FL+FR+BL+BR+TFL+TFR+TBL+TBR
+</p></dd>
+<dt>&lsquo;<samp class="samp">5.1.4</samp>&rsquo;</dt>
+<dd><p>FL+FR+FC+LFE+BL+BR+TFL+TFR+TBL+TBR
+</p></dd>
+<dt>&lsquo;<samp class="samp">7.1.2</samp>&rsquo;</dt>
+<dd><p>FL+FR+FC+LFE+BL+BR+SL+SR+TFL+TFR
+</p></dd>
+<dt>&lsquo;<samp class="samp">7.1.4</samp>&rsquo;</dt>
+<dd><p>FL+FR+FC+LFE+BL+BR+SL+SR+TFL+TFR+TBL+TBR
+</p></dd>
+<dt>&lsquo;<samp class="samp">7.2.3</samp>&rsquo;</dt>
+<dd><p>FL+FR+FC+LFE+BL+BR+SL+SR+TFL+TFR+TBC+LFE2
+</p></dd>
+<dt>&lsquo;<samp class="samp">9.1.4</samp>&rsquo;</dt>
+<dd><p>FL+FR+FC+LFE+BL+BR+FLC+FRC+SL+SR+TFL+TFR+TBL+TBR
 </p></dd>
 <dt>&lsquo;<samp class="samp">hexadecagonal</samp>&rsquo;</dt>
 <dd><p>FL+FR+FC+BL+BR+BC+SL+SR+WL+WR+TBL+TBR+TBC+TFC+TFL+TFR
@@ -1153,7 +1168,7 @@ expression evaluates to the value of <var class="var">expr2</var>.
 <dd><p>Compute arctangent of <var class="var">x</var>.
 </p>
 </dd>
-<dt><samp class="option">atan2(x, y)</samp></dt>
+<dt><samp class="option">atan2(y, x)</samp></dt>
 <dd><p>Compute principal value of the arc tangent of <var class="var">y</var>/<var class="var">x</var>.
 </p>
 </dd>
@@ -1309,9 +1324,16 @@ Returns the value of the expression printed.
 <p>Prints t with loglevel l
 </p>
 </dd>
-<dt><samp class="option">random(x)</samp></dt>
-<dd><p>Return a pseudo random value between 0.0 and 1.0. <var class="var">x</var> is the index of the
-internal variable which will be used to save the seed/state.
+<dt><samp class="option">random(idx)</samp></dt>
+<dd><p>Return a pseudo random value between 0.0 and 1.0. <var class="var">idx</var> is the
+index of the internal variable which will be used to save the
+seed/state.
+</p>
+</dd>
+<dt><samp class="option">randomi(idx, min, max)</samp></dt>
+<dd><p>Return a pseudo random value in the interval between <var class="var">min</var> and
+<var class="var">max</var>. <var class="var">idx</var> is the index of the internal variable which will
+be used to save the seed/state.
 </p>
 </dd>
 <dt><samp class="option">root(expr, max)</samp></dt>
@@ -1532,8 +1554,9 @@ online repository at <a class="url" href="https://git.ffmpeg.org/ffmpeg">https:/
 
 </div>
 </div>
-
-
-
-</body>
+      <p style="font-size: small;">
+        This document was generated using <a class="uref" href="https://www.gnu.org/software/texinfo/"><em class="emph">makeinfo</em></a>.
+      </p>
+    </div>
+  </body>
 </html>

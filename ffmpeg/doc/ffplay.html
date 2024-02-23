@@ -1,34 +1,23 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- Created by GNU Texinfo 7.0.1, https://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>ffplay Documentation</title>
-
-<meta name="description" content="ffplay Documentation">
-<meta name="keywords" content="ffplay Documentation">
-<meta name="resource-type" content="document">
-<meta name="distribution" content="global">
-<meta name="Generator" content="makeinfo">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-
-<link href="#SEC_Contents" rel="contents" title="Table of Contents">
-<style type="text/css">
-<!--
-div.example {margin-left: 3.2em}
-kbd.key {font-style: normal}
-ul.toc-numbered-mark {list-style: none}
--->
-</style>
-
-
-</head>
-
-<body lang="en">
+<!-- Created by , GNU Texinfo 7.0.1 -->
+  <head>
+    <meta charset="utf-8">
+    <title>
+      ffplay Documentation
+    </title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>
+      ffplay Documentation
+      </h1>
 
 
 <div class="top-level-extent" id="SEC_Top">
-
 
 <div class="element-contents" id="SEC_Contents">
 <h2 class="contents-heading">Table of Contents</h2>
@@ -52,6 +41,14 @@ ul.toc-numbered-mark {list-style: none}
 </ul>
 </div>
 </div>
+
+<ul class="mini-toc">
+<li><a href="#Synopsis" accesskey="1">Synopsis</a></li>
+<li><a href="#Description" accesskey="2">Description</a></li>
+<li><a href="#Options" accesskey="3">Options</a></li>
+<li><a href="#See-Also" accesskey="4">See Also</a></li>
+<li><a href="#Authors" accesskey="5">Authors</a></li>
+</ul>
 <div class="chapter-level-extent" id="Synopsis">
 <h2 class="chapter">1 Synopsis</h2>
 
@@ -83,6 +80,15 @@ prefix multiplies the value by 8. This allows using, for example:
 corresponding value to true. They can be set to false by prefixing
 the option name with &quot;no&quot;. For example using &quot;-nofoo&quot;
 will set the boolean option with name &quot;foo&quot; to false.
+</p>
+<p>Options that take arguments support a special syntax where the argument given on
+the command line is interpreted as a path to the file from which the actual
+argument value is loaded. To use this feature, add a forward slash &rsquo;/&rsquo;
+immediately before the option name (after the leading dash). E.g.
+</p><div class="example">
+<pre class="example-preformatted">ffmpeg -i INPUT -/filter:v filter.script OUTPUT
+</pre></div>
+<p>will load a filtergraph description from the file named <samp class="file">filter.script</samp>.
 </p>
 <a class="anchor" id="Stream-specifiers"></a><ul class="mini-toc">
 <li><a href="#Stream-specifiers-1" accesskey="1">Stream specifiers</a></li>
@@ -116,9 +122,9 @@ or <code class="code">-codec: copy</code> would copy all the streams without ree
 thread count for the second stream to 4. If <var class="var">stream_index</var> is used as an
 additional stream specifier (see below), then it selects stream number
 <var class="var">stream_index</var> from the matching streams. Stream numbering is based on the
-order of the streams as detected by libavformat except when a program ID is
-also specified. In this case it is based on the ordering of the streams in the
-program.
+order of the streams as detected by libavformat except when a stream group
+specifier or program ID is also specified. In this case it is based on the
+ordering of the streams in the group or program.
 </p></dd>
 <dt><samp class="option"><var class="var">stream_type</var>[:<var class="var">additional_stream_specifier</var>]</samp></dt>
 <dd><p><var class="var">stream_type</var> is one of following: &rsquo;v&rsquo; or &rsquo;V&rsquo; for video, &rsquo;a&rsquo; for audio, &rsquo;s&rsquo;
@@ -129,6 +135,20 @@ it matches streams which both have this type and match the
 <var class="var">additional_stream_specifier</var>. Otherwise, it matches all streams of the
 specified type.
 </p></dd>
+<dt><samp class="option">g:<var class="var">group_specifier</var>[:<var class="var">additional_stream_specifier</var>]</samp></dt>
+<dd><p>Matches streams which are in the group with the specifier <var class="var">group_specifier</var>.
+if <var class="var">additional_stream_specifier</var> is used, then it matches streams which both
+are part of the group and match the <var class="var">additional_stream_specifier</var>.
+<var class="var">group_specifier</var> may be one of the following:
+</p><dl class="table">
+<dt><samp class="option"><var class="var">group_index</var></samp></dt>
+<dd><p>Match the stream with this group index.
+</p></dd>
+<dt><samp class="option">#<var class="var">group_id</var> or i:<var class="var">group_id</var></samp></dt>
+<dd><p>Match the stream with this group id.
+</p></dd>
+</dl>
+</dd>
 <dt><samp class="option">p:<var class="var">program_id</var>[:<var class="var">additional_stream_specifier</var>]</samp></dt>
 <dd><p>Matches streams which are in the program with the id <var class="var">program_id</var>. If
 <var class="var">additional_stream_specifier</var> is used, then it matches streams which both
@@ -770,6 +790,21 @@ processing. The default is 0 which means that the thread count will be
 determined by the number of available CPUs.
 </p>
 </dd>
+<dt><samp class="option">-enable_vulkan</samp></dt>
+<dd><p>Use vulkan renderer rather than SDL builtin renderer. Depends on libplacebo.
+</p>
+</dd>
+<dt><samp class="option">-vulkan_params</samp></dt>
+<dd>
+<p>Vulkan configuration using a list of <var class="var">key</var>=<var class="var">value</var> pairs separated by
+&quot;:&quot;.
+</p>
+</dd>
+<dt><samp class="option">-hwaccel</samp></dt>
+<dd><p>Use HW accelerated decoding. Enable this option will enable vulkan renderer
+automatically.
+</p>
+</dd>
 </dl>
 
 </div>
@@ -886,8 +921,9 @@ online repository at <a class="url" href="https://git.ffmpeg.org/ffmpeg">https:/
 
 </div>
 </div>
-
-
-
-</body>
+      <p style="font-size: small;">
+        This document was generated using <a class="uref" href="https://www.gnu.org/software/texinfo/"><em class="emph">makeinfo</em></a>.
+      </p>
+    </div>
+  </body>
 </html>

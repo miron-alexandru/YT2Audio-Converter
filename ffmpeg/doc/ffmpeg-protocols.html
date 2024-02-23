@@ -1,34 +1,23 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- Created by GNU Texinfo 7.0.1, https://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>FFmpeg Protocols Documentation</title>
-
-<meta name="description" content="FFmpeg Protocols Documentation">
-<meta name="keywords" content="FFmpeg Protocols Documentation">
-<meta name="resource-type" content="document">
-<meta name="distribution" content="global">
-<meta name="Generator" content="makeinfo">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-
-<link href="#SEC_Contents" rel="contents" title="Table of Contents">
-<style type="text/css">
-<!--
-div.example {margin-left: 3.2em}
-ul.mark-bullet {list-style-type: disc}
-ul.toc-numbered-mark {list-style: none}
--->
-</style>
-
-
-</head>
-
-<body lang="en">
+<!-- Created by , GNU Texinfo 7.0.1 -->
+  <head>
+    <meta charset="utf-8">
+    <title>
+      FFmpeg Protocols Documentation
+    </title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>
+      FFmpeg Protocols Documentation
+      </h1>
 
 
 <div class="top-level-extent" id="SEC_Top">
-
 
 <div class="element-contents" id="SEC_Contents">
 <h2 class="contents-heading">Table of Contents</h2>
@@ -106,6 +95,14 @@ ul.toc-numbered-mark {list-style: none}
 </ul>
 </div>
 </div>
+
+<ul class="mini-toc">
+<li><a href="#Description" accesskey="1">Description</a></li>
+<li><a href="#Protocol-Options" accesskey="2">Protocol Options</a></li>
+<li><a href="#Protocols" accesskey="3">Protocols</a></li>
+<li><a href="#See-Also" accesskey="4">See Also</a></li>
+<li><a href="#Authors" accesskey="5">Authors</a></li>
+</ul>
 <div class="chapter-level-extent" id="Description">
 <h2 class="chapter">1 Description</h2>
 
@@ -1191,6 +1188,14 @@ FALSE or TRUE, respectively.  Likewise for Objects the data must be 0 or
 be named, by prefixing the type with &rsquo;N&rsquo; and specifying the name before
 the value (i.e. <code class="code">NB:myFlag:1</code>). This option may be used multiple
 times to construct arbitrary AMF sequences.
+</p>
+</dd>
+<dt><samp class="option">rtmp_enhanced_codecs</samp></dt>
+<dd><p>Specify the list of codecs the client advertises to support in an
+enhanced RTMP stream. This option should be set to a comma separated
+list of fourcc values, like <code class="code">hvc1,av01,vp09</code> for multiple codecs
+or <code class="code">hvc1</code> for only one codec. The specified list will be presented
+in the &quot;fourCcLive&quot; property of the Connect Command Message.
 </p>
 </dd>
 <dt><samp class="option">rtmp_flashver</samp></dt>
@@ -2680,8 +2685,9 @@ online repository at <a class="url" href="https://git.ffmpeg.org/ffmpeg">https:/
 
 </div>
 </div>
-
-
-
-</body>
+      <p style="font-size: small;">
+        This document was generated using <a class="uref" href="https://www.gnu.org/software/texinfo/"><em class="emph">makeinfo</em></a>.
+      </p>
+    </div>
+  </body>
 </html>

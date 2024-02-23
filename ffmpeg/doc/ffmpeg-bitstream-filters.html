@@ -1,33 +1,23 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- Created by GNU Texinfo 7.0.1, https://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>FFmpeg Bitstream Filters Documentation</title>
-
-<meta name="description" content="FFmpeg Bitstream Filters Documentation">
-<meta name="keywords" content="FFmpeg Bitstream Filters Documentation">
-<meta name="resource-type" content="document">
-<meta name="distribution" content="global">
-<meta name="Generator" content="makeinfo">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-
-<link href="#SEC_Contents" rel="contents" title="Table of Contents">
-<style type="text/css">
-<!--
-div.example {margin-left: 3.2em}
-ul.toc-numbered-mark {list-style: none}
--->
-</style>
-
-
-</head>
-
-<body lang="en">
+<!-- Created by , GNU Texinfo 7.0.1 -->
+  <head>
+    <meta charset="utf-8">
+    <title>
+      FFmpeg Bitstream Filters Documentation
+    </title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>
+      FFmpeg Bitstream Filters Documentation
+      </h1>
 
 
 <div class="top-level-extent" id="SEC_Top">
-
 
 <div class="element-contents" id="SEC_Contents">
 <h2 class="contents-heading">Table of Contents</h2>
@@ -70,19 +60,27 @@ ul.toc-numbered-mark {list-style: none}
     <li><a id="toc-prores_005fmetadata" href="#prores_005fmetadata">2.27 prores_metadata</a></li>
     <li><a id="toc-remove_005fextra" href="#remove_005fextra">2.28 remove_extra</a></li>
     <li><a id="toc-setts" href="#setts">2.29 setts</a></li>
-    <li><a id="toc-text2movsub-1" href="#text2movsub-1">2.30 text2movsub</a></li>
-    <li><a id="toc-trace_005fheaders" href="#trace_005fheaders">2.31 trace_headers</a></li>
-    <li><a id="toc-truehd_005fcore" href="#truehd_005fcore">2.32 truehd_core</a></li>
-    <li><a id="toc-vp9_005fmetadata" href="#vp9_005fmetadata">2.33 vp9_metadata</a></li>
-    <li><a id="toc-vp9_005fsuperframe" href="#vp9_005fsuperframe">2.34 vp9_superframe</a></li>
-    <li><a id="toc-vp9_005fsuperframe_005fsplit" href="#vp9_005fsuperframe_005fsplit">2.35 vp9_superframe_split</a></li>
-    <li><a id="toc-vp9_005fraw_005freorder" href="#vp9_005fraw_005freorder">2.36 vp9_raw_reorder</a></li>
+    <li><a id="toc-showinfo" href="#showinfo">2.30 showinfo</a></li>
+    <li><a id="toc-text2movsub-1" href="#text2movsub-1">2.31 text2movsub</a></li>
+    <li><a id="toc-trace_005fheaders" href="#trace_005fheaders">2.32 trace_headers</a></li>
+    <li><a id="toc-truehd_005fcore" href="#truehd_005fcore">2.33 truehd_core</a></li>
+    <li><a id="toc-vp9_005fmetadata" href="#vp9_005fmetadata">2.34 vp9_metadata</a></li>
+    <li><a id="toc-vp9_005fsuperframe" href="#vp9_005fsuperframe">2.35 vp9_superframe</a></li>
+    <li><a id="toc-vp9_005fsuperframe_005fsplit" href="#vp9_005fsuperframe_005fsplit">2.36 vp9_superframe_split</a></li>
+    <li><a id="toc-vp9_005fraw_005freorder" href="#vp9_005fraw_005freorder">2.37 vp9_raw_reorder</a></li>
   </ul></li>
   <li><a id="toc-See-Also" href="#See-Also">3 See Also</a></li>
   <li><a id="toc-Authors" href="#Authors">4 Authors</a></li>
 </ul>
 </div>
 </div>
+
+<ul class="mini-toc">
+<li><a href="#Description" accesskey="1">Description</a></li>
+<li><a href="#Bitstream-Filters" accesskey="2">Bitstream Filters</a></li>
+<li><a href="#See-Also" accesskey="3">See Also</a></li>
+<li><a href="#Authors" accesskey="4">Authors</a></li>
+</ul>
 <div class="chapter-level-extent" id="Description">
 <h2 class="chapter">1 Description</h2>
 
@@ -150,6 +148,7 @@ with their parameters, if any.
 <li><a href="#prores_005fmetadata">prores_metadata</a></li>
 <li><a href="#remove_005fextra">remove_extra</a></li>
 <li><a href="#setts">setts</a></li>
+<li><a href="#showinfo">showinfo</a></li>
 <li><a href="#text2movsub-1">text2movsub</a></li>
 <li><a href="#trace_005fheaders">trace_headers</a></li>
 <li><a href="#truehd_005fcore">truehd_core</a></li>
@@ -1194,9 +1193,20 @@ for the current packet
 </p></dd>
 </dl>
 
+<p>For example, to set PTS equal to DTS (not recommended if B-frames are involved):
+</p><div class="example">
+<pre class="example-preformatted">ffmpeg -i INPUT -c:a copy -bsf:a setts=pts=DTS out.mkv
+</pre></div>
+
+</div>
+<div class="section-level-extent" id="showinfo">
+<h3 class="section">2.30 showinfo</h3>
+<p>Log basic packet information. Mainly useful for testing, debugging,
+and development.
+</p>
 <a class="anchor" id="text2movsub"></a></div>
 <div class="section-level-extent" id="text2movsub-1">
-<h3 class="section">2.30 text2movsub</h3>
+<h3 class="section">2.31 text2movsub</h3>
 
 <p>Convert text subtitles to MOV subtitles (as used by the <code class="code">mov_text</code>
 codec) with metadata headers.
@@ -1205,7 +1215,7 @@ codec) with metadata headers.
 </p>
 </div>
 <div class="section-level-extent" id="trace_005fheaders">
-<h3 class="section">2.31 trace_headers</h3>
+<h3 class="section">2.32 trace_headers</h3>
 
 <p>Log trace output containing all syntax elements in the coded stream
 headers (everything above the level of individual coded blocks).
@@ -1216,13 +1226,13 @@ on the build only a subset of these may be available.
 </p>
 </div>
 <div class="section-level-extent" id="truehd_005fcore">
-<h3 class="section">2.32 truehd_core</h3>
+<h3 class="section">2.33 truehd_core</h3>
 
 <p>Extract the core from a TrueHD stream, dropping ATMOS data.
 </p>
 </div>
 <div class="section-level-extent" id="vp9_005fmetadata">
-<h3 class="section">2.33 vp9_metadata</h3>
+<h3 class="section">2.34 vp9_metadata</h3>
 
 <p>Modify metadata embedded in a VP9 stream.
 </p>
@@ -1254,7 +1264,7 @@ imposed by the color space will take precedence over this value.
 
 </div>
 <div class="section-level-extent" id="vp9_005fsuperframe">
-<h3 class="section">2.34 vp9_superframe</h3>
+<h3 class="section">2.35 vp9_superframe</h3>
 
 <p>Merge VP9 invisible (alt-ref) frames back into VP9 superframes. This
 fixes merging of split/segmented VP9 streams where the alt-ref frame
@@ -1262,13 +1272,13 @@ was split from its visible counterpart.
 </p>
 </div>
 <div class="section-level-extent" id="vp9_005fsuperframe_005fsplit">
-<h3 class="section">2.35 vp9_superframe_split</h3>
+<h3 class="section">2.36 vp9_superframe_split</h3>
 
 <p>Split VP9 superframes into single frames.
 </p>
 </div>
 <div class="section-level-extent" id="vp9_005fraw_005freorder">
-<h3 class="section">2.36 vp9_raw_reorder</h3>
+<h3 class="section">2.37 vp9_raw_reorder</h3>
 
 <p>Given a VP9 stream with correct timestamps but possibly out of order,
 insert additional show-existing-frame packets to correct the ordering.
@@ -1300,8 +1310,9 @@ online repository at <a class="url" href="https://git.ffmpeg.org/ffmpeg">https:/
 
 </div>
 </div>
-
-
-
-</body>
+      <p style="font-size: small;">
+        This document was generated using <a class="uref" href="https://www.gnu.org/software/texinfo/"><em class="emph">makeinfo</em></a>.
+      </p>
+    </div>
+  </body>
 </html>
