@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- Created by , GNU Texinfo 7.0.1 -->
+<!-- Created by , GNU Texinfo 7.1.1 -->
   <head>
     <meta charset="utf-8">
     <title>
@@ -17,7 +17,7 @@
       </h1>
 
 
-<div class="top-level-extent" id="SEC_Top">
+<a name="SEC_Top"></a>
 
 <div class="element-contents" id="SEC_Contents">
 <h2 class="contents-heading">Table of Contents</h2>
@@ -29,14 +29,16 @@
   <li><a id="toc-Description" href="#Description">2 Description</a></li>
   <li><a id="toc-Detailed-description" href="#Detailed-description">3 Detailed description</a>
   <ul class="toc-numbered-mark">
-    <li><a id="toc-Filtering" href="#Filtering">3.1 Filtering</a>
+    <li><a id="toc-Streamcopy" href="#Streamcopy">3.1 Streamcopy</a></li>
+    <li><a id="toc-Trancoding" href="#Trancoding">3.2 Trancoding</a></li>
+    <li><a id="toc-Filtering" href="#Filtering">3.3 Filtering</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Simple-filtergraphs" href="#Simple-filtergraphs">3.1.1 Simple filtergraphs</a></li>
-      <li><a id="toc-Complex-filtergraphs" href="#Complex-filtergraphs">3.1.2 Complex filtergraphs</a></li>
+      <li><a id="toc-Simple-filtergraphs" href="#Simple-filtergraphs">3.3.1 Simple filtergraphs</a></li>
+      <li><a id="toc-Complex-filtergraphs" href="#Complex-filtergraphs">3.3.2 Complex filtergraphs</a></li>
     </ul></li>
-    <li><a id="toc-Stream-copy" href="#Stream-copy">3.2 Stream copy</a></li>
+    <li><a id="toc-Loopback-decoders-1" href="#Loopback-decoders-1">3.4 Loopback decoders</a></li>
   </ul></li>
-  <li><a id="toc-Stream-selection" href="#Stream-selection">4 Stream selection</a>
+  <li><a id="toc-Stream-selection-1" href="#Stream-selection-1">4 Stream selection</a>
   <ul class="toc-numbered-mark">
     <li><a id="toc-Description-1" href="#Description-1">4.1 Description</a>
     <ul class="toc-numbered-mark">
@@ -79,45 +81,36 @@
 </div>
 </div>
 
-<ul class="mini-toc">
-<li><a href="#Synopsis" accesskey="1">Synopsis</a></li>
-<li><a href="#Description" accesskey="2">Description</a></li>
-<li><a href="#Detailed-description" accesskey="3">Detailed description</a></li>
-<li><a href="#Stream-selection" accesskey="4">Stream selection</a></li>
-<li><a href="#Options" accesskey="5">Options</a></li>
-<li><a href="#Examples-1" accesskey="6">Examples</a></li>
-<li><a href="#See-Also" accesskey="7">See Also</a></li>
-<li><a href="#Authors" accesskey="8">Authors</a></li>
-</ul>
-<div class="chapter-level-extent" id="Synopsis">
-<h2 class="chapter">1 Synopsis</h2>
+<a name="Synopsis"></a>
+<h2 class="chapter">1 Synopsis<span class="pull-right"><a class="anchor hidden-xs" href="#Synopsis" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Synopsis" aria-hidden="true">TOC</a></span></h2>
 
 <p>ffmpeg [<var class="var">global_options</var>] {[<var class="var">input_file_options</var>] -i <samp class="file">input_url</samp>} ... {[<var class="var">output_file_options</var>] <samp class="file">output_url</samp>} ...
 </p>
-</div>
-<div class="chapter-level-extent" id="Description">
-<h2 class="chapter">2 Description</h2>
+<a name="Description"></a>
+<h2 class="chapter">2 Description<span class="pull-right"><a class="anchor hidden-xs" href="#Description" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Description" aria-hidden="true">TOC</a></span></h2>
 
 <p><code class="command">ffmpeg</code> is a universal media converter. It can read a wide variety of
 inputs - including live grabbing/recording devices - filter, and transcode them
 into a plethora of output formats.
 </p>
-<p><code class="command">ffmpeg</code> reads from an arbitrary number of input &quot;files&quot; (which can be regular
+<p><code class="command">ffmpeg</code> reads from an arbitrary number of inputs (which can be regular
 files, pipes, network streams, grabbing devices, etc.), specified by the
-<code class="code">-i</code> option, and writes to an arbitrary number of output &quot;files&quot;, which are
-specified by a plain output url. Anything found on the command line which
-cannot be interpreted as an option is considered to be an output url.
+<code class="code">-i</code> option, and writes to an arbitrary number of outputs, which are
+specified by a plain output url. Anything found on the command line which cannot
+be interpreted as an option is considered to be an output url.
 </p>
-<p>Each input or output url can, in principle, contain any number of streams of
-different types (video/audio/subtitle/attachment/data). The allowed number and/or
-types of streams may be limited by the container format. Selecting which
-streams from which inputs will go into which output is either done automatically
-or with the <code class="code">-map</code> option (see the Stream selection chapter).
+<p>Each input or output can, in principle, contain any number of elementary streams
+of different types (video/audio/subtitle/attachment/data), though the allowed
+stream counts and/or types may be limited by the container format. Selecting
+which streams from which inputs will go into which output is either done
+automatically or with the <code class="code">-map</code> option (see the <a class="ref" href="#Stream-selection">Stream selection</a>
+chapter).
 </p>
-<p>To refer to input files in options, you must use their indices (0-based). E.g.
-the first input file is <code class="code">0</code>, the second is <code class="code">1</code>, etc. Similarly, streams
-within a file are referred to by their indices. E.g. <code class="code">2:3</code> refers to the
-fourth stream in the third input file. Also see the Stream specifiers chapter.
+<p>To refer to inputs/outputs in options, you must use their indices (0-based).
+E.g. the first input is <code class="code">0</code>, the second is <code class="code">1</code>, etc. Similarly,
+streams within an input/output are referred to by their indices. E.g. <code class="code">2:3</code>
+refers to the fourth stream in the third input or output. Also see the
+<a class="ref" href="#Stream-specifiers">Stream specifiers</a> chapter.
 </p>
 <p>As a general rule, options are applied to the next specified
 file. Therefore, order is important, and you can have the same
@@ -158,154 +151,444 @@ the frame rate of the output file to 24 fps:
 <p>The format option may be needed for raw input files.
 </p>
 
-</div>
-<div class="chapter-level-extent" id="Detailed-description">
-<h2 class="chapter">3 Detailed description</h2>
+<a name="Detailed-description"></a>
+<h2 class="chapter">3 Detailed description<span class="pull-right"><a class="anchor hidden-xs" href="#Detailed-description" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Detailed-description" aria-hidden="true">TOC</a></span></h2>
 
-<p>The transcoding process in <code class="command">ffmpeg</code> for each output can be described by
-the following diagram:
+<p><code class="command">ffmpeg</code> builds a transcoding pipeline out of the components listed
+below. The program&rsquo;s operation then consists of input data chunks flowing from
+the sources down the pipes towards the sinks, while being transformed by the
+components they encounter along the way.
 </p>
-<pre class="verbatim"> _______              ______________
-|       |            |              |
-| input |  demuxer   | encoded data |   decoder
-| file  | ---------&gt; | packets      | -----+
-|_______|            |______________|      |
-                                           v
-                                       _________
-                                      |         |
-                                      | decoded |
-                                      | frames  |
-                                      |_________|
- ________             ______________       |
-|        |           |              |      |
-| output | &lt;-------- | encoded data | &lt;----+
-| file   |   muxer   | packets      |   encoder
-|________|           |______________|
+<p>The following kinds of components are available:
+</p><ul class="itemize mark-bullet">
+<li><em class="emph">Demuxers</em> (short for &quot;demultiplexers&quot;) read an input source in order to
+extract
 
+<ul class="itemize mark-bullet">
+<li>global properties such as metadata or chapters;
+</li><li>list of input elementary streams and their properties
+</li></ul>
 
+<p>One demuxer instance is created for each <samp class="option">-i</samp> option, and sends encoded
+<em class="emph">packets</em> to <em class="emph">decoders</em> or <em class="emph">muxers</em>.
+</p>
+<p>In other literature, demuxers are sometimes called <em class="emph">splitters</em>, because
+their main function is splitting a file into elementary streams (though some
+files only contain one elementary stream).
+</p>
+<p>A schematic representation of a demuxer looks like this:
+</p><pre class="verbatim">┌──────────┬───────────────────────┐
+│ demuxer  │                       │ packets for stream 0
+╞══════════╡ elementary stream 0   ├──────────────────────►
+│          │                       │
+│  global  ├───────────────────────┤
+│properties│                       │ packets for stream 1
+│   and    │ elementary stream 1   ├──────────────────────►
+│ metadata │                       │
+│          ├───────────────────────┤
+│          │                       │
+│          │     ...........       │
+│          │                       │
+│          ├───────────────────────┤
+│          │                       │ packets for stream N
+│          │ elementary stream N   ├──────────────────────►
+│          │                       │
+└──────────┴───────────────────────┘
+     ▲
+     │
+     │ read from file, network stream,
+     │     grabbing device, etc.
+     │
 </pre>
-<p><code class="command">ffmpeg</code> calls the libavformat library (containing demuxers) to read
-input files and get packets containing encoded data from them. When there are
-multiple input files, <code class="command">ffmpeg</code> tries to keep them synchronized by
-tracking lowest timestamp on any active input stream.
+</li><li><em class="emph">Decoders</em> receive encoded (compressed) <em class="emph">packets</em> for an audio, video,
+or subtitle elementary stream, and decode them into raw <em class="emph">frames</em> (arrays of
+pixels for video, PCM for audio). A decoder is typically associated with (and
+receives its input from) an elementary stream in a <em class="emph">demuxer</em>, but sometimes
+may also exist on its own (see <a class="ref" href="#Loopback-decoders">Loopback decoders</a>).
+
+<p>A schematic representation of a decoder looks like this:
+</p><pre class="verbatim">          ┌─────────┐
+ packets  │         │ raw frames
+─────────►│ decoder ├────────────►
+          │         │
+          └─────────┘
+</pre>
+</li><li><em class="emph">Filtergraphs</em> process and transform raw audio or video <em class="emph">frames</em>. A
+filtergraph consists of one or more individual <em class="emph">filters</em> linked into a
+graph. Filtergraphs come in two flavors - <em class="emph">simple</em> and <em class="emph">complex</em>,
+configured with the <samp class="option">-filter</samp> and <samp class="option">-filter_complex</samp> options,
+respectively.
+
+<p>A simple filtergraph is associated with an <em class="emph">output elementary stream</em>; it
+receives the input to be filtered from a <em class="emph">decoder</em> and sends filtered
+output to that output stream&rsquo;s <em class="emph">encoder</em>.
 </p>
-<p>Encoded packets are then passed to the decoder (unless streamcopy is selected
-for the stream, see further for a description). The decoder produces
-uncompressed frames (raw video/PCM audio/...) which can be processed further by
-filtering (see next section). After filtering, the frames are passed to the
-encoder, which encodes them and outputs encoded packets. Finally, those are
-passed to the muxer, which writes the encoded packets to the output file.
+<p>A simple video filtergraph that performs deinterlacing (using the <code class="code">yadif</code>
+deinterlacer) followed by resizing (using the <code class="code">scale</code> filter) can look like
+this:
+</p><pre class="verbatim">
+             ┌────────────────────────┐
+             │  simple filtergraph    │
+ frames from ╞════════════════════════╡ frames for
+ a decoder   │  ┌───────┐  ┌───────┐  │ an encoder
+────────────►├─►│ yadif ├─►│ scale ├─►│────────────►
+             │  └───────┘  └───────┘  │
+             └────────────────────────┘
+</pre>
+<p>A complex filtergraph is standalone and not associated with any specific stream.
+It may have multiple (or zero) inputs, potentially of different types (audio or
+video), each of which receiving data either from a decoder or another complex
+filtergraph&rsquo;s output. It also has one or more outputs that feed either an
+encoder or another complex filtergraph&rsquo;s input.
 </p>
-<ul class="mini-toc">
-<li><a href="#Filtering" accesskey="1">Filtering</a></li>
-<li><a href="#Stream-copy" accesskey="2">Stream copy</a></li>
-</ul>
-<div class="section-level-extent" id="Filtering">
-<h3 class="section">3.1 Filtering</h3>
-<p>Before encoding, <code class="command">ffmpeg</code> can process raw audio and video frames using
-filters from the libavfilter library. Several chained filters form a filter
-graph. <code class="command">ffmpeg</code> distinguishes between two types of filtergraphs:
-simple and complex.
+<p>The following example diagram represents a complex filtergraph with 3 inputs and
+2 outputs (all video):
+</p><pre class="verbatim">          ┌─────────────────────────────────────────────────┐
+          │               complex filtergraph               │
+          ╞═════════════════════════════════════════════════╡
+ frames   ├───────┐  ┌─────────┐      ┌─────────┐  ┌────────┤ frames
+─────────►│input 0├─►│ overlay ├─────►│ overlay ├─►│output 0├────────►
+          ├───────┘  │         │      │         │  └────────┤
+ frames   ├───────┐╭►│         │    ╭►│         │           │
+─────────►│input 1├╯ └─────────┘    │ └─────────┘           │
+          ├───────┘                 │                       │
+ frames   ├───────┐ ┌─────┐ ┌─────┬─╯              ┌────────┤ frames
+─────────►│input 2├►│scale├►│split├───────────────►│output 1├────────►
+          ├───────┘ └─────┘ └─────┘                └────────┤
+          └─────────────────────────────────────────────────┘
+</pre><p>Frames from second input are overlaid over those from the first. Frames from the
+third input are rescaled, then the duplicated into two identical streams. One of
+them is overlaid over the combined first two inputs, with the result exposed as
+the filtergraph&rsquo;s first output. The other duplicate ends up being the
+filtergraph&rsquo;s second output.
 </p>
-<ul class="mini-toc">
-<li><a href="#Simple-filtergraphs" accesskey="1">Simple filtergraphs</a></li>
-<li><a href="#Complex-filtergraphs" accesskey="2">Complex filtergraphs</a></li>
-</ul>
-<div class="subsection-level-extent" id="Simple-filtergraphs">
-<h4 class="subsection">3.1.1 Simple filtergraphs</h4>
+</li><li><em class="emph">Encoders</em> receive raw audio, video, or subtitle <em class="emph">frames</em> and encode
+them into encoded <em class="emph">packets</em>. The encoding (compression) process is
+typically <em class="emph">lossy</em> - it degrades stream quality to make the output smaller;
+some encoders are <em class="emph">lossless</em>, but at the cost of much higher output size. A
+video or audio encoder receives its input from some filtergraph&rsquo;s output,
+subtitle encoders receive input from a decoder (since subtitle filtering is not
+supported yet). Every encoder is associated with some muxer&rsquo;s <em class="emph">output
+elementary stream</em> and sends its output to that muxer.
+
+<p>A schematic representation of an encoder looks like this:
+</p><pre class="verbatim">             ┌─────────┐
+ raw frames  │         │ packets
+────────────►│ encoder ├─────────►
+             │         │
+             └─────────┘
+</pre>
+</li><li><em class="emph">Muxers</em> (short for &quot;multiplexers&quot;) receive encoded <em class="emph">packets</em> for
+their elementary streams from encoders (the <em class="emph">transcoding</em> path) or directly
+from demuxers (the <em class="emph">streamcopy</em> path), interleave them (when there is more
+than one elementary stream), and write the resulting bytes into the output file
+(or pipe, network stream, etc.).
+
+<p>A schematic representation of a muxer looks like this:
+</p><pre class="verbatim">                       ┌──────────────────────┬───────────┐
+ packets for stream 0  │                      │   muxer   │
+──────────────────────►│  elementary stream 0 ╞═══════════╡
+                       │                      │           │
+                       ├──────────────────────┤  global   │
+ packets for stream 1  │                      │properties │
+──────────────────────►│  elementary stream 1 │   and     │
+                       │                      │ metadata  │
+                       ├──────────────────────┤           │
+                       │                      │           │
+                       │     ...........      │           │
+                       │                      │           │
+                       ├──────────────────────┤           │
+ packets for stream N  │                      │           │
+──────────────────────►│  elementary stream N │           │
+                       │                      │           │
+                       └──────────────────────┴─────┬─────┘
+                                                    │
+                     write to file, network stream, │
+                         grabbing device, etc.      │
+                                                    │
+                                                    ▼
+</pre>
+</li></ul>
+
+<a name="Streamcopy"></a>
+<h3 class="section">3.1 Streamcopy<span class="pull-right"><a class="anchor hidden-xs" href="#Streamcopy" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Streamcopy" aria-hidden="true">TOC</a></span></h3>
+<p>The simplest pipeline in <code class="command">ffmpeg</code> is single-stream
+<em class="emph">streamcopy</em>, that is copying one <em class="emph">input elementary stream</em>&rsquo;s packets
+without decoding, filtering, or encoding them. As an example, consider an input
+file called <samp class="file">INPUT.mkv</samp> with 3 elementary streams, from which we take the
+second and write it to file <samp class="file">OUTPUT.mp4</samp>. A schematic representation of
+such a pipeline looks like this:
+</p><pre class="verbatim">┌──────────┬─────────────────────┐
+│ demuxer  │                     │ unused
+╞══════════╡ elementary stream 0 ├────────╳
+│          │                     │
+│INPUT.mkv ├─────────────────────┤          ┌──────────────────────┬───────────┐
+│          │                     │ packets  │                      │   muxer   │
+│          │ elementary stream 1 ├─────────►│  elementary stream 0 ╞═══════════╡
+│          │                     │          │                      │OUTPUT.mp4 │
+│          ├─────────────────────┤          └──────────────────────┴───────────┘
+│          │                     │ unused
+│          │ elementary stream 2 ├────────╳
+│          │                     │
+└──────────┴─────────────────────┘
+</pre>
+<p>The above pipeline can be constructed with the following commandline:
+</p><div class="example">
+<pre class="example-preformatted">ffmpeg -i INPUT.mkv -map 0:1 -c copy OUTPUT.mp4
+</pre></div>
+
+<p>In this commandline
+</p><ul class="itemize mark-bullet">
+<li>there is a single input <samp class="file">INPUT.mkv</samp>;
+
+</li><li>there are no input options for this input;
+
+</li><li>there is a single output <samp class="file">OUTPUT.mp4</samp>;
+
+</li><li>there are two output options for this output:
+
+<ul class="itemize mark-bullet">
+<li><code class="code">-map 0:1</code> selects the input stream to be used - from input with index 0
+(i.e. the first one) the stream with index 1 (i.e. the second one);
+
+</li><li><code class="code">-c copy</code> selects the <code class="code">copy</code> encoder, i.e. streamcopy with no decoding
+or encoding.
+</li></ul>
+
+</li></ul>
+
+<p>Streamcopy is useful for changing the elementary stream count, container format,
+or modifying container-level metadata. Since there is no decoding or encoding,
+it is very fast and there is no quality loss. However, it might not work in some
+cases because of a variety of factors (e.g. certain information required by the
+target container is not available in the source). Applying filters is obviously
+also impossible, since filters work on decoded frames.
+</p>
+<p>More complex streamcopy scenarios can be constructed - e.g. combining streams
+from two input files into a single output:
+</p><pre class="verbatim">┌──────────┬────────────────────┐         ┌────────────────────┬───────────┐
+│ demuxer 0│                    │ packets │                    │   muxer   │
+╞══════════╡elementary stream 0 ├────────►│elementary stream 0 ╞═══════════╡
+│INPUT0.mkv│                    │         │                    │OUTPUT.mp4 │
+└──────────┴────────────────────┘         ├────────────────────┤           │
+┌──────────┬────────────────────┐         │                    │           │
+│ demuxer 1│                    │ packets │elementary stream 1 │           │
+╞══════════╡elementary stream 0 ├────────►│                    │           │
+│INPUT1.aac│                    │         └────────────────────┴───────────┘
+└──────────┴────────────────────┘
+</pre><p>that can be built by the commandline
+</p><div class="example">
+<pre class="example-preformatted">ffmpeg -i INPUT0.mkv -i INPUT1.aac -map 0:0 -map 1:0 -c copy OUTPUT.mp4
+</pre></div>
+
+<p>The output <samp class="option">-map</samp> option is used twice here, creating two streams in the
+output file - one fed by the first input and one by the second. The single
+instance of the <samp class="option">-c</samp> option selects streamcopy for both of those streams.
+You could also use multiple instances of this option together with
+<a class="ref" href="#Stream-specifiers">Stream specifiers</a> to apply different values to each stream, as will be
+demonstrated in following sections.
+</p>
+<p>A converse scenario is splitting multiple streams from a single input into
+multiple outputs:
+</p><pre class="verbatim">┌──────────┬─────────────────────┐          ┌───────────────────┬───────────┐
+│ demuxer  │                     │ packets  │                   │ muxer 0   │
+╞══════════╡ elementary stream 0 ├─────────►│elementary stream 0╞═══════════╡
+│          │                     │          │                   │OUTPUT0.mp4│
+│INPUT.mkv ├─────────────────────┤          └───────────────────┴───────────┘
+│          │                     │ packets  ┌───────────────────┬───────────┐
+│          │ elementary stream 1 ├─────────►│                   │ muxer 1   │
+│          │                     │          │elementary stream 0╞═══════════╡
+└──────────┴─────────────────────┘          │                   │OUTPUT1.mp4│
+                                            └───────────────────┴───────────┘
+</pre><p>built with
+</p><div class="example">
+<pre class="example-preformatted">ffmpeg -i INPUT.mkv -map 0:0 -c copy OUTPUT0.mp4 -map 0:1 -c copy OUTPUT1.mp4
+</pre></div>
+<p>Note how a separate instance of the <samp class="option">-c</samp> option is needed for every
+output file even though their values are the same. This is because non-global
+options (which is most of them) only apply in the context of the file before
+which they are placed.
+</p>
+<p>These  examples can of course be further generalized into arbitrary remappings
+of any number of inputs into any number of outputs.
+</p>
+<a name="Trancoding"></a>
+<h3 class="section">3.2 Trancoding<span class="pull-right"><a class="anchor hidden-xs" href="#Trancoding" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Trancoding" aria-hidden="true">TOC</a></span></h3>
+<p><em class="emph">Transcoding</em> is the process of decoding a stream and then encoding it
+again. Since encoding tends to be computationally expensive and in most cases
+degrades the stream quality (i.e. it is <em class="emph">lossy</em>), you should only transcode
+when you need to and perform streamcopy otherwise. Typical reasons to transcode
+are:
+</p>
+<ul class="itemize mark-bullet">
+<li>applying filters - e.g. resizing, deinterlacing, or overlaying video; resampling
+or mixing audio;
+
+</li><li>you want to feed the stream to something that cannot decode the original codec.
+</li></ul>
+<p>Note that <code class="command">ffmpeg</code> will transcode all audio, video, and subtitle streams
+unless you specify <samp class="option">-c copy</samp> for them.
+</p>
+<p>Consider an example pipeline that reads an input file with one audio and one
+video stream, transcodes the video and copies the audio into a single output
+file. This can be schematically represented as follows
+</p><pre class="verbatim">┌──────────┬─────────────────────┐
+│ demuxer  │                     │       audio packets
+╞══════════╡ stream 0 (audio)    ├─────────────────────────────────────╮
+│          │                     │                                     │
+│INPUT.mkv ├─────────────────────┤ video    ┌─────────┐     raw        │
+│          │                     │ packets  │  video  │ video frames   │
+│          │ stream 1 (video)    ├─────────►│ decoder ├──────────────╮ │
+│          │                     │          │         │              │ │
+└──────────┴─────────────────────┘          └─────────┘              │ │
+                                                                     ▼ ▼
+                                                                     │ │
+┌──────────┬─────────────────────┐ video    ┌─────────┐              │ │
+│ muxer    │                     │ packets  │  video  │              │ │
+╞══════════╡ stream 0 (video)    │◄─────────┤ encoder ├──────────────╯ │
+│          │                     │          │(libx264)│                │
+│OUTPUT.mp4├─────────────────────┤          └─────────┘                │
+│          │                     │                                     │
+│          │ stream 1 (audio)    │◄────────────────────────────────────╯
+│          │                     │
+└──────────┴─────────────────────┘
+</pre><p>and implemented with the following commandline:
+</p><div class="example">
+<pre class="example-preformatted">ffmpeg -i INPUT.mkv -map 0:v -map 0:a -c:v libx264 -c:a copy OUTPUT.mp4
+</pre></div>
+<p>Note how it uses stream specifiers <code class="code">:v</code> and <code class="code">:a</code> to select input
+streams and apply different values of the <samp class="option">-c</samp> option to them; see the
+<a class="ref" href="#Stream-specifiers">Stream specifiers</a> section for more details.
+</p>
+
+<a name="Filtering"></a>
+<h3 class="section">3.3 Filtering<span class="pull-right"><a class="anchor hidden-xs" href="#Filtering" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Filtering" aria-hidden="true">TOC</a></span></h3>
+
+<p>When transcoding, audio and video streams can be filtered before encoding, with
+either a <em class="emph">simple</em> or <em class="emph">complex</em> filtergraph.
+</p>
+<a name="Simple-filtergraphs"></a>
+<h4 class="subsection">3.3.1 Simple filtergraphs<span class="pull-right"><a class="anchor hidden-xs" href="#Simple-filtergraphs" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Simple-filtergraphs" aria-hidden="true">TOC</a></span></h4>
+
 <p>Simple filtergraphs are those that have exactly one input and output, both of
-the same type. In the above diagram they can be represented by simply inserting
-an additional step between decoding and encoding:
+the same type (audio or video). They are configured with the per-stream
+<samp class="option">-filter</samp> option (with <samp class="option">-vf</samp> and <samp class="option">-af</samp> aliases for
+<samp class="option">-filter:v</samp> (video) and <samp class="option">-filter:a</samp> (audio) respectively). Note
+that simple filtergraphs are tied to their output stream, so e.g. if you have
+multiple audio streams, <samp class="option">-af</samp> will create a separate filtergraph for each
+one.
 </p>
-<pre class="verbatim"> _________                        ______________
-|         |                      |              |
-| decoded |                      | encoded data |
-| frames  |\                   _ | packets      |
-|_________| \                  /||______________|
-             \   __________   /
-  simple     _\||          | /  encoder
-  filtergraph   | filtered |/
-                | frames   |
-                |__________|
-
+<p>Taking the trancoding example from above, adding filtering (and omitting audio,
+for clarity) makes it look like this:
+</p><pre class="verbatim">┌──────────┬───────────────┐
+│ demuxer  │               │          ┌─────────┐
+╞══════════╡ video stream  │ packets  │  video  │ frames
+│INPUT.mkv │               ├─────────►│ decoder ├─────►───╮
+│          │               │          └─────────┘         │
+└──────────┴───────────────┘                              │
+                                  ╭───────────◄───────────╯
+                                  │   ┌────────────────────────┐
+                                  │   │  simple filtergraph    │
+                                  │   ╞════════════════════════╡
+                                  │   │  ┌───────┐  ┌───────┐  │
+                                  ╰──►├─►│ yadif ├─►│ scale ├─►├╮
+                                      │  └───────┘  └───────┘  ││
+                                      └────────────────────────┘│
+                                                                │
+                                                                │
+┌──────────┬───────────────┐ video    ┌─────────┐               │
+│ muxer    │               │ packets  │  video  │               │
+╞══════════╡ video stream  │◄─────────┤ encoder ├───────◄───────╯
+│OUTPUT.mp4│               │          │         │
+│          │               │          └─────────┘
+└──────────┴───────────────┘
 </pre>
-<p>Simple filtergraphs are configured with the per-stream <samp class="option">-filter</samp> option
-(with <samp class="option">-vf</samp> and <samp class="option">-af</samp> aliases for video and audio respectively).
-A simple filtergraph for video can look for example like this:
-</p>
-<pre class="verbatim"> _______        _____________        _______        ________
-|       |      |             |      |       |      |        |
-| input | ---&gt; | deinterlace | ---&gt; | scale | ---&gt; | output |
-|_______|      |_____________|      |_______|      |________|
+<a name="Complex-filtergraphs"></a>
+<h4 class="subsection">3.3.2 Complex filtergraphs<span class="pull-right"><a class="anchor hidden-xs" href="#Complex-filtergraphs" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Complex-filtergraphs" aria-hidden="true">TOC</a></span></h4>
 
-</pre>
-<p>Note that some filters change frame properties but not frame contents. E.g. the
-<code class="code">fps</code> filter in the example above changes number of frames, but does not
-touch the frame contents. Another example is the <code class="code">setpts</code> filter, which
-only sets timestamps and otherwise passes the frames unchanged.
-</p>
-</div>
-<div class="subsection-level-extent" id="Complex-filtergraphs">
-<h4 class="subsection">3.1.2 Complex filtergraphs</h4>
 <p>Complex filtergraphs are those which cannot be described as simply a linear
-processing chain applied to one stream. This is the case, for example, when the graph has
-more than one input and/or output, or when output stream type is different from
-input. They can be represented with the following diagram:
-</p>
-<pre class="verbatim"> _________
-|         |
-| input 0 |\                    __________
-|_________| \                  |          |
-             \   _________    /| output 0 |
-              \ |         |  / |__________|
- _________     \| complex | /
-|         |     |         |/
-| input 1 |----&gt;| filter  |\
-|_________|     |         | \   __________
-               /| graph   |  \ |          |
-              / |         |   \| output 1 |
- _________   /  |_________|    |__________|
-|         | /
-| input 2 |/
-|_________|
-
-</pre>
-<p>Complex filtergraphs are configured with the <samp class="option">-filter_complex</samp> option.
-Note that this option is global, since a complex filtergraph, by its nature,
-cannot be unambiguously associated with a single stream or file.
-</p>
-<p>The <samp class="option">-lavfi</samp> option is equivalent to <samp class="option">-filter_complex</samp>.
+processing chain applied to one stream. This is the case, for example, when the
+graph has more than one input and/or output, or when output stream type is
+different from input. Complex filtergraphs are configured with the
+<samp class="option">-filter_complex</samp> option. Note that this option is global, since a
+complex filtergraph, by its nature, cannot be unambiguously associated with a
+single stream or file. Each instance of <samp class="option">-filter_complex</samp> creates a new
+complex filtergraph, and there can be any number of them.
 </p>
 <p>A trivial example of a complex filtergraph is the <code class="code">overlay</code> filter, which
 has two video inputs and one video output, containing one video overlaid on top
 of the other. Its audio counterpart is the <code class="code">amix</code> filter.
 </p>
-</div>
-</div>
-<div class="section-level-extent" id="Stream-copy">
-<h3 class="section">3.2 Stream copy</h3>
-<p>Stream copy is a mode selected by supplying the <code class="code">copy</code> parameter to the
-<samp class="option">-codec</samp> option. It makes <code class="command">ffmpeg</code> omit the decoding and encoding
-step for the specified stream, so it does only demuxing and muxing. It is useful
-for changing the container format or modifying container-level metadata. The
-diagram above will, in this case, simplify to this:
+<a class="anchor" id="Loopback-decoders"></a><a name="Loopback-decoders-1"></a>
+<h3 class="section">3.4 Loopback decoders<span class="pull-right"><a class="anchor hidden-xs" href="#Loopback-decoders-1" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Loopback-decoders-1" aria-hidden="true">TOC</a></span></h3>
+<p>While decoders are normally associated with demuxer streams, it is also possible
+to create &quot;loopback&quot; decoders that decode the output from some encoder and allow
+it to be fed back to complex filtergraphs. This is done with the <code class="code">-dec</code>
+directive, which takes as a parameter the index of the output stream that should
+be decoded. Every such directive creates a new loopback decoder, indexed with
+successive integers starting at zero. These indices should then be used to refer
+to loopback decoders in complex filtergraph link labels, as described in the
+documentation for <samp class="option">-filter_complex</samp>.
 </p>
-<pre class="verbatim"> _______              ______________            ________
-|       |            |              |          |        |
-| input |  demuxer   | encoded data |  muxer   | output |
-| file  | ---------&gt; | packets      | -------&gt; | file   |
-|_______|            |______________|          |________|
+<p>Decoding AVOptions can be passed to loopback decoders by placing them before
+<code class="code">-dec</code>, analogously to input/output options.
+</p>
+<p>E.g. the following example:
+</p>
+<div class="example">
+<pre class="example-preformatted">ffmpeg -i INPUT                                        \
+  -map 0:v:0 -c:v libx264 -crf 45 -f null -            \
+  -threads 3 -dec 0:0                                  \
+  -filter_complex '[0:v][dec:0]hstack[stack]'          \
+  -map '[stack]' -c:v ffv1 OUTPUT
+</pre></div>
 
+<p>reads an input video and
+</p><ul class="itemize mark-bullet">
+<li>(line 2) encodes it with <code class="code">libx264</code> at low quality;
+
+</li><li>(line 3) decodes this encoded stream using 3 threads;
+
+</li><li>(line 4) places decoded video side by side with the original input video;
+
+</li><li>(line 5) combined video is then losslessly encoded and written into
+<samp class="file">OUTPUT</samp>.
+
+</li></ul>
+
+<p>Such a transcoding pipeline can be represented with the following diagram:
+</p><pre class="verbatim">┌──────────┬───────────────┐
+│ demuxer  │               │   ┌─────────┐            ┌─────────┐    ┌────────────────────┐
+╞══════════╡ video stream  │   │  video  │            │  video  │    │ null muxer         │
+│   INPUT  │               ├──►│ decoder ├──┬────────►│ encoder ├─┬─►│(discards its input)│
+│          │               │   └─────────┘  │         │(libx264)│ │  └────────────────────┘
+└──────────┴───────────────┘                │         └─────────┘ │
+                                 ╭───────◄──╯   ┌─────────┐       │
+                                 │              │loopback │       │
+                                 │ ╭─────◄──────┤ decoder ├────◄──╯
+                                 │ │            └─────────┘
+                                 │ │
+                                 │ │
+                                 │ │  ┌───────────────────┐
+                                 │ │  │complex filtergraph│
+                                 │ │  ╞═══════════════════╡
+                                 │ │  │  ┌─────────────┐  │
+                                 ╰─╫─►├─►│   hstack    ├─►├╮
+                                   ╰─►├─►│             │  ││
+                                      │  └─────────────┘  ││
+                                      └───────────────────┘│
+                                                           │
+┌──────────┬───────────────┐  ┌─────────┐                  │
+│ muxer    │               │  │  video  │                  │
+╞══════════╡ video stream  │◄─┤ encoder ├───────◄──────────╯
+│  OUTPUT  │               │  │ (ffv1)  │
+│          │               │  └─────────┘
+└──────────┴───────────────┘
 </pre>
-<p>Since there is no decoding or encoding, it is very fast and there is no quality
-loss. However, it might not work in some cases because of many factors. Applying
-filters is obviously also impossible, since filters work on uncompressed data.
-</p>
 
-</div>
-</div>
-<div class="chapter-level-extent" id="Stream-selection">
-<h2 class="chapter">4 Stream selection</h2>
+
+<a class="anchor" id="Stream-selection"></a><a name="Stream-selection-1"></a>
+<h2 class="chapter">4 Stream selection<span class="pull-right"><a class="anchor hidden-xs" href="#Stream-selection-1" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Stream-selection-1" aria-hidden="true">TOC</a></span></h2>
 
 <p><code class="command">ffmpeg</code> provides the <code class="code">-map</code> option for manual control of stream selection in each
 output file. Users can skip <code class="code">-map</code> and let ffmpeg perform automatic stream selection as
@@ -313,26 +596,16 @@ described below. The <code class="code">-vn / -an / -sn / -dn</code> options can
 video, audio, subtitle and data streams respectively, whether manually mapped or automatically
 selected, except for those streams which are outputs of complex filtergraphs.
 </p>
-<ul class="mini-toc">
-<li><a href="#Description-1" accesskey="1">Description</a></li>
-<li><a href="#Examples" accesskey="2">Examples</a></li>
-</ul>
-<div class="section-level-extent" id="Description-1">
-<h3 class="section">4.1 Description</h3>
+<a name="Description-1"></a>
+<h3 class="section">4.1 Description<span class="pull-right"><a class="anchor hidden-xs" href="#Description-1" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Description-1" aria-hidden="true">TOC</a></span></h3>
 <p>The sub-sections that follow describe the various rules that are involved in stream selection.
 The examples that follow next show how these rules are applied in practice.
 </p>
 <p>While every effort is made to accurately reflect the behavior of the program, FFmpeg is under
 continuous development and the code may have changed since the time of this writing.
 </p>
-<ul class="mini-toc">
-<li><a href="#Automatic-stream-selection" accesskey="1">Automatic stream selection</a></li>
-<li><a href="#Manual-stream-selection" accesskey="2">Manual stream selection</a></li>
-<li><a href="#Complex-filtergraphs-1" accesskey="3">Complex filtergraphs</a></li>
-<li><a href="#Stream-handling" accesskey="4">Stream handling</a></li>
-</ul>
-<div class="subsection-level-extent" id="Automatic-stream-selection">
-<h4 class="subsection">4.1.1 Automatic stream selection</h4>
+<a name="Automatic-stream-selection"></a>
+<h4 class="subsection">4.1.1 Automatic stream selection<span class="pull-right"><a class="anchor hidden-xs" href="#Automatic-stream-selection" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Automatic-stream-selection" aria-hidden="true">TOC</a></span></h4>
 
 <p>In the absence of any map options for a particular output file, ffmpeg inspects the output
 format to check which type of streams can be included in it, viz. video, audio and/or
@@ -353,16 +626,14 @@ index is chosen.
 </p>
 <p>Data or attachment streams are not automatically selected and can only be included
 using <code class="code">-map</code>.
-</p></div>
-<div class="subsection-level-extent" id="Manual-stream-selection">
-<h4 class="subsection">4.1.2 Manual stream selection</h4>
+</p><a name="Manual-stream-selection"></a>
+<h4 class="subsection">4.1.2 Manual stream selection<span class="pull-right"><a class="anchor hidden-xs" href="#Manual-stream-selection" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Manual-stream-selection" aria-hidden="true">TOC</a></span></h4>
 
 <p>When <code class="code">-map</code> is used, only user-mapped streams are included in that output file,
 with one possible exception for filtergraph outputs described below.
 </p>
-</div>
-<div class="subsection-level-extent" id="Complex-filtergraphs-1">
-<h4 class="subsection">4.1.3 Complex filtergraphs</h4>
+<a name="Complex-filtergraphs-1"></a>
+<h4 class="subsection">4.1.3 Complex filtergraphs<span class="pull-right"><a class="anchor hidden-xs" href="#Complex-filtergraphs-1" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Complex-filtergraphs-1" aria-hidden="true">TOC</a></span></h4>
 
 <p>If there are any complex filtergraph output streams with unlabeled pads, they will be added
 to the first output file. This will lead to a fatal error if the stream type is not supported
@@ -372,9 +643,8 @@ these filtergraph streams are included in addition to the mapped streams.
 </p>
 <p>Complex filtergraph output streams with labeled pads must be mapped once and exactly once.
 </p>
-</div>
-<div class="subsection-level-extent" id="Stream-handling">
-<h4 class="subsection">4.1.4 Stream handling</h4>
+<a name="Stream-handling"></a>
+<h4 class="subsection">4.1.4 Stream handling<span class="pull-right"><a class="anchor hidden-xs" href="#Stream-handling" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Stream-handling" aria-hidden="true">TOC</a></span></h4>
 
 <p>Stream handling is independent of stream selection, with an exception for subtitles described
 below. Stream handling is set via the <code class="code">-codec</code> option addressed to streams within a
@@ -390,10 +660,8 @@ within the output format. This applies generally as well: when the user sets an 
 the stream selection process cannot check if the encoded stream can be muxed into the output file.
 If it cannot, ffmpeg will abort and <em class="emph">all</em> output files will fail to be processed.
 </p>
-</div>
-</div>
-<div class="section-level-extent" id="Examples">
-<h3 class="section">4.2 Examples</h3>
+<a name="Examples"></a>
+<h3 class="section">4.2 Examples<span class="pull-right"><a class="anchor hidden-xs" href="#Examples" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Examples" aria-hidden="true">TOC</a></span></h3>
 
 <p>The following examples illustrate the behavior, quirks and limitations of ffmpeg&rsquo;s stream
 selection methods.
@@ -417,7 +685,7 @@ input file 'C.mkv'
       stream 1: audio 2 channels
       stream 2: subtitles (image)
 </pre>
-<h4 class="subsubheading" id="Example_003a-automatic-stream-selection">Example: automatic stream selection</h4>
+<a name="Example_003a-automatic-stream-selection"></a>
 <div class="example">
 <pre class="example-preformatted">ffmpeg -i A.avi -i B.mp4 out1.mkv out2.wav -map 1:a -c:a copy out3.mov
 </pre></div>
@@ -449,7 +717,7 @@ to <code class="code">copy</code>, so no decoding-filtering-encoding operations 
 Packets of selected streams shall be conveyed from the input file and muxed within the output
 file.
 </p>
-<h4 class="subsubheading" id="Example_003a-automatic-subtitles-selection">Example: automatic subtitles selection</h4>
+<a name="Example_003a-automatic-subtitles-selection"></a>
 <div class="example">
 <pre class="example-preformatted">ffmpeg -i C.mkv out1.mkv -c:s dvdsub -an out2.mkv
 </pre></div>
@@ -461,7 +729,7 @@ for the subtitles is expected to fail and hence the stream isn&rsquo;t selected.
 selected, in addition to the video stream. The presence of <code class="code">-an</code> disables audio stream
 selection for <samp class="file">out2.mkv</samp>.
 </p>
-<h4 class="subsubheading" id="Example_003a-unlabeled-filtergraph-outputs">Example: unlabeled filtergraph outputs</h4>
+<a name="Example_003a-unlabeled-filtergraph-outputs"></a>
 <div class="example">
 <pre class="example-preformatted">ffmpeg -i A.avi -i C.mkv -i B.mp4 -filter_complex &quot;overlay&quot; out1.mp4 out2.srt
 </pre></div>
@@ -478,7 +746,7 @@ format has no default subtitle encoder registered, and the user hasn&rsquo;t spe
 the first subtitle stream available belongs to <samp class="file">C.mkv</samp>, it is image-based and hence skipped.
 The selected stream, <code class="code">stream 2</code> in <samp class="file">B.mp4</samp>, is the first text-based subtitle stream.
 </p>
-<h4 class="subsubheading" id="Example_003a-labeled-filtergraph-outputs">Example: labeled filtergraph outputs</h4>
+<a name="Example_003a-labeled-filtergraph-outputs"></a>
 <div class="example">
 <pre class="example-preformatted">ffmpeg -i A.avi -i B.mp4 -i C.mkv -filter_complex &quot;[1:v]hue=s=0[outv];overlay;aresample&quot; \
        -map '[outv]' -an        out1.mp4 \
@@ -527,10 +795,8 @@ stream from <samp class="file">B.mp4</samp>.
 <br>
 </p>
 
-</div>
-</div>
-<div class="chapter-level-extent" id="Options">
-<h2 class="chapter">5 Options</h2>
+<a name="Options"></a>
+<h2 class="chapter">5 Options<span class="pull-right"><a class="anchor hidden-xs" href="#Options" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Options" aria-hidden="true">TOC</a></span></h2>
 
 <p>All the numerical options, if not specified otherwise, accept a string
 representing a number as input, which may be followed by one of the SI
@@ -556,23 +822,8 @@ immediately before the option name (after the leading dash). E.g.
 </pre></div>
 <p>will load a filtergraph description from the file named <samp class="file">filter.script</samp>.
 </p>
-<a class="anchor" id="Stream-specifiers"></a><ul class="mini-toc">
-<li><a href="#Stream-specifiers-1" accesskey="1">Stream specifiers</a></li>
-<li><a href="#Generic-options" accesskey="2">Generic options</a></li>
-<li><a href="#AVOptions" accesskey="3">AVOptions</a></li>
-<li><a href="#Main-options" accesskey="4">Main options</a></li>
-<li><a href="#Video-Options" accesskey="5">Video Options</a></li>
-<li><a href="#Advanced-Video-options" accesskey="6">Advanced Video options</a></li>
-<li><a href="#Audio-Options" accesskey="7">Audio Options</a></li>
-<li><a href="#Advanced-Audio-options" accesskey="8">Advanced Audio options</a></li>
-<li><a href="#Subtitle-options" accesskey="9">Subtitle options</a></li>
-<li><a href="#Advanced-Subtitle-options">Advanced Subtitle options</a></li>
-<li><a href="#Advanced-options">Advanced options</a></li>
-<li><a href="#Preset-files">Preset files</a></li>
-<li><a href="#vstats-file-format">vstats file format</a></li>
-</ul>
-<div class="section-level-extent" id="Stream-specifiers-1">
-<h3 class="section">5.1 Stream specifiers</h3>
+<a class="anchor" id="Stream-specifiers"></a><a name="Stream-specifiers-1"></a>
+<h3 class="section">5.1 Stream specifiers<span class="pull-right"><a class="anchor hidden-xs" href="#Stream-specifiers-1" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Stream-specifiers-1" aria-hidden="true">TOC</a></span></h3>
 <p>Some options are applied per-stream, e.g. bitrate or codec. Stream specifiers
 are used to precisely specify which stream(s) a given option belongs to.
 </p>
@@ -634,7 +885,13 @@ are part of the program and match the <var class="var">additional_stream_specifi
 <dt><samp class="option">m:<var class="var">key</var>[:<var class="var">value</var>]</samp></dt>
 <dd><p>Matches streams with the metadata tag <var class="var">key</var> having the specified value. If
 <var class="var">value</var> is not given, matches streams that contain the given tag with any
-value.
+value. The colon character &rsquo;:&rsquo; in <var class="var">key</var> or <var class="var">value</var> needs to be
+backslash-escaped.
+</p></dd>
+<dt><samp class="option">disp:<var class="var">dispositions</var>[:<var class="var">additional_stream_specifier</var>]</samp></dt>
+<dd><p>Matches streams with the given disposition(s). <var class="var">dispositions</var> is a list of
+one or more dispositions (as printed by the <samp class="option">-dispositions</samp> option)
+joined with &rsquo;+&rsquo;.
 </p></dd>
 <dt><samp class="option">u</samp></dt>
 <dd><p>Matches streams with usable configuration, the codec must be defined and the
@@ -645,9 +902,8 @@ input files.
 </p></dd>
 </dl>
 
-</div>
-<div class="section-level-extent" id="Generic-options">
-<h3 class="section">5.2 Generic options</h3>
+<a name="Generic-options"></a>
+<h3 class="section">5.2 Generic options<span class="pull-right"><a class="anchor hidden-xs" href="#Generic-options" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Generic-options" aria-hidden="true">TOC</a></span></h3>
 
 <p>These options are shared amongst the ff* tools.
 </p>
@@ -1002,9 +1258,8 @@ Default is INT_MAX.
 </p></dd>
 </dl>
 
-</div>
-<div class="section-level-extent" id="AVOptions">
-<h3 class="section">5.3 AVOptions</h3>
+<a name="AVOptions"></a>
+<h3 class="section">5.3 AVOptions<span class="pull-right"><a class="anchor hidden-xs" href="#AVOptions" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-AVOptions" aria-hidden="true">TOC</a></span></h3>
 
 <p>These options are provided directly by the libavformat, libavdevice and
 libavcodec libraries. To see the list of available AVOptions, use the
@@ -1046,9 +1301,8 @@ AVOptions, use <samp class="option">-option 0</samp>/<samp class="option">-optio
 prepending v/a/s to the options name is now obsolete and will be
 removed soon.
 </p>
-</div>
-<div class="section-level-extent" id="Main-options">
-<h3 class="section">5.4 Main options</h3>
+<a name="Main-options"></a>
+<h3 class="section">5.4 Main options<span class="pull-right"><a class="anchor hidden-xs" href="#Main-options" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Main-options" aria-hidden="true">TOC</a></span></h3>
 
 <dl class="table">
 <dt><samp class="option">-f <var class="var">fmt</var> (<em class="emph">input/output</em>)</samp></dt>
@@ -1110,7 +1364,7 @@ data read from the input file.
 output after its duration reaches <var class="var">duration</var>.
 </p>
 <p><var class="var">duration</var> must be a time duration specification,
-see <a data-manual="ffmpeg-utils" href="ffmpeg-utils.html#time-duration-syntax">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>.
+see <a data-manual="ffmpeg-utils" href="ffmpeg-utils.html#time-duration-syntax">the Time duration section in the ffmpeg-utils(1) manual</a>.
 </p>
 <p>-to and -t are mutually exclusive and -t has priority.
 </p>
@@ -1118,7 +1372,7 @@ see <a data-manual="ffmpeg-utils" href="ffmpeg-utils.html#time-duration-syntax">
 <dt><samp class="option">-to <var class="var">position</var> (<em class="emph">input/output</em>)</samp></dt>
 <dd><p>Stop writing the output or reading the input at <var class="var">position</var>.
 <var class="var">position</var> must be a time duration specification,
-see <a data-manual="ffmpeg-utils" href="ffmpeg-utils.html#time-duration-syntax">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>.
+see <a data-manual="ffmpeg-utils" href="ffmpeg-utils.html#time-duration-syntax">the Time duration section in the ffmpeg-utils(1) manual</a>.
 </p>
 <p>-to and -t are mutually exclusive and -t has priority.
 </p>
@@ -1142,7 +1396,7 @@ will be preserved.
 input until the timestamps reach <var class="var">position</var>.
 </p>
 <p><var class="var">position</var> must be a time duration specification,
-see <a data-manual="ffmpeg-utils" href="ffmpeg-utils.html#time-duration-syntax">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>.
+see <a data-manual="ffmpeg-utils" href="ffmpeg-utils.html#time-duration-syntax">the Time duration section in the ffmpeg-utils(1) manual</a>.
 </p>
 </dd>
 <dt><samp class="option">-sseof <var class="var">position</var> (<em class="emph">input</em>)</samp></dt>
@@ -1171,7 +1425,7 @@ reference may not itself be synced to any other input.
 <dd><p>Set the input time offset.
 </p>
 <p><var class="var">offset</var> must be a time duration specification,
-see <a data-manual="ffmpeg-utils" href="ffmpeg-utils.html#time-duration-syntax">(ffmpeg-utils)the Time duration section in the ffmpeg-utils(1) manual</a>.
+see <a data-manual="ffmpeg-utils" href="ffmpeg-utils.html#time-duration-syntax">the Time duration section in the ffmpeg-utils(1) manual</a>.
 </p>
 <p>The offset is added to the timestamps of the input files. Specifying
 a positive offset means that the corresponding streams are delayed by
@@ -1186,7 +1440,7 @@ the time duration specified in <var class="var">offset</var>.
 <dd><p>Set the recording timestamp in the container.
 </p>
 <p><var class="var">date</var> must be a date specification,
-see <a data-manual="ffmpeg-utils" href="ffmpeg-utils.html#date-syntax">(ffmpeg-utils)the Date section in the ffmpeg-utils(1) manual</a>.
+see <a data-manual="ffmpeg-utils" href="ffmpeg-utils.html#date-syntax">the Date section in the ffmpeg-utils(1) manual</a>.
 </p>
 </dd>
 <dt><samp class="option">-metadata[:metadata_specifier] <var class="var">key</var>=<var class="var">value</var> (<em class="emph">output,per-metadata</em>)</samp></dt>
@@ -1211,24 +1465,25 @@ also possible to delete metadata by using an empty value.
 
 </dd>
 <dt><samp class="option">-disposition[:stream_specifier] <var class="var">value</var> (<em class="emph">output,per-stream</em>)</samp></dt>
-<dd><p>Sets the disposition for a stream.
+<dd><p>Sets the disposition flags for a stream.
 </p>
-<p>By default, the disposition is copied from the input stream, unless the output
-stream this option applies to is fed by a complex filtergraph - in that case the
-disposition is unset by default.
+<p>Default value: by default, all disposition flags are copied from the input stream,
+unless the output stream this option applies to is fed by a complex filtergraph
+- in that case no disposition flags are set by default.
 </p>
-<p><var class="var">value</var> is a sequence of items separated by &rsquo;+&rsquo; or &rsquo;-&rsquo;. The first item may
-also be prefixed with &rsquo;+&rsquo; or &rsquo;-&rsquo;, in which case this option modifies the default
-value. Otherwise (the first item is not prefixed) this options overrides the
-default value. A &rsquo;+&rsquo; prefix adds the given disposition, &rsquo;-&rsquo; removes it. It is
-also possible to clear the disposition by setting it to 0.
+<p><var class="var">value</var> is a sequence of disposition flags separated by &rsquo;+&rsquo; or &rsquo;-&rsquo;. A &rsquo;+&rsquo;
+prefix adds the given disposition, &rsquo;-&rsquo; removes it. If the first flag is also
+prefixed with &rsquo;+&rsquo; or &rsquo;-&rsquo;, the resulting disposition is the default value
+updated by <var class="var">value</var>. If the first flag is not prefixed, the resulting
+disposition is <var class="var">value</var>. It is also possible to clear the disposition by
+setting it to 0.
 </p>
 <p>If no <code class="code">-disposition</code> options were specified for an output file, ffmpeg will
-automatically set the &rsquo;default&rsquo; disposition on the first stream of each type,
+automatically set the &rsquo;default&rsquo; disposition flag on the first stream of each type,
 when there are multiple streams of this type in the output file and no stream of
 that type is already marked as default.
 </p>
-<p>The <code class="code">-dispositions</code> option lists the known dispositions.
+<p>The <code class="code">-dispositions</code> option lists the known disposition flags.
 </p>
 <p>For example, to make the second audio stream the default stream:
 </p><div class="example">
@@ -1246,6 +1501,29 @@ disposition from the first subtitle stream:
 <pre class="example-preformatted">ffmpeg -i in.mp4 -i IMAGE -map 0 -map 1 -c copy -c:v:1 png -disposition:v:1 attached_pic out.mp4
 </pre></div>
 
+<p>To add the &rsquo;original&rsquo; and remove the &rsquo;comment&rsquo; disposition flag from the first
+audio stream without removing its other disposition flags:
+</p><div class="example">
+<pre class="example-preformatted">ffmpeg -i in.mkv -c copy -disposition:a:0 +original-comment out.mkv
+</pre></div>
+
+<p>To remove the &rsquo;original&rsquo; and add the &rsquo;comment&rsquo; disposition flag to the first
+audio stream without removing its other disposition flags:
+</p><div class="example">
+<pre class="example-preformatted">ffmpeg -i in.mkv -c copy -disposition:a:0 -original+comment out.mkv
+</pre></div>
+
+<p>To set only the &rsquo;original&rsquo; and &rsquo;comment&rsquo; disposition flags on the first audio
+stream (and remove its other disposition flags):
+</p><div class="example">
+<pre class="example-preformatted">ffmpeg -i in.mkv -c copy -disposition:a:0 original+comment out.mkv
+</pre></div>
+
+<p>To remove all disposition flags from the first audio stream:
+</p><div class="example">
+<pre class="example-preformatted">ffmpeg -i in.mkv -c copy -disposition:a:0 0 out.mkv
+</pre></div>
+
 <p>Not all muxers support embedded thumbnails, and those who do, only support a few formats, like JPEG or PNG.
 </p>
 </dd>
@@ -1255,10 +1533,11 @@ disposition from the first subtitle stream:
 <var class="var">stream</var>(s) to it.
 </p>
 </dd>
-<dt><samp class="option">-stream_group type=<var class="var">type</var>:st=<var class="var">stream</var>[:st=<var class="var">stream</var>][:stg=<var class="var">stream_group</var>][:id=<var class="var">stream_group_id</var>...] (<em class="emph">output</em>)</samp></dt>
+<dt><samp class="option">-stream_group [map=<var class="var">input_file_id</var>=<var class="var">stream_group</var>][type=<var class="var">type</var>:]st=<var class="var">stream</var>[:st=<var class="var">stream</var>][:stg=<var class="var">stream_group</var>][:id=<var class="var">stream_group_id</var>...] (<em class="emph">output</em>)</samp></dt>
 <dd>
-<p>Creates a stream group of the specified <var class="var">type</var>, <var class="var">stream_group_id</var> and adds the specified
-<var class="var">stream</var>(s) and/or previously defined <var class="var">stream_group</var>(s) to it.
+<p>Creates a stream group of the specified <var class="var">type</var> and <var class="var">stream_group_id</var>, or by
+<var class="var">map</var>ping an input group, adding the specified <var class="var">stream</var>(s) and/or previously
+defined <var class="var">stream_group</var>(s) to it.
 </p>
 <p><var class="var">type</var> can be one of the following:
 </p><dl class="table">
@@ -1494,6 +1773,27 @@ all sub-mix element&rsquo;s <var class="var">annotations</var>s
 </dd>
 </dl>
 
+<p>E.g. to create an scalable 5.1 IAMF file from several WAV input files
+</p><div class="example">
+<pre class="example-preformatted">ffmpeg -i front.wav -i back.wav -i center.wav -i lfe.wav
+-map 0:0 -map 1:0 -map 2:0 -map 3:0 -c:a opus
+-stream_group type=iamf_audio_element:id=1:st=0:st=1:st=2:st=3,
+demixing=parameter_id=998,
+recon_gain=parameter_id=101,
+layer=ch_layout=stereo,
+layer=ch_layout=5.1(side),
+-stream_group type=iamf_mix_presentation:id=2:stg=0:annotations=en-us=Mix_Presentation,
+submix=parameter_id=100:parameter_rate=48000|element=stg=0:parameter_id=100:annotations=en-us=Scalable_Submix|layout=sound_system=stereo|layout=sound_system=5.1(side)
+-streamid 0:0 -streamid 1:1 -streamid 2:2 -streamid 3:3 output.iamf
+</pre></div>
+
+<p>To copy the two stream groups (Audio Element and Mix Presentation) from an input IAMF file with four
+streams into an mp4 output
+</p><div class="example">
+<pre class="example-preformatted">ffmpeg -i input.iamf -c:a copy -stream_group map=0=0:st=0:st=1:st=2:st=3 -stream_group map=0=1:stg=0
+-streamid 0:0 -streamid 1:1 -streamid 2:2 -streamid 3:3 output.mp4
+</pre></div>
+
 </dd>
 <dt><samp class="option">-target <var class="var">type</var> (<em class="emph">output</em>)</samp></dt>
 <dd><p>Specify target file type (<code class="code">vcd</code>, <code class="code">svcd</code>, <code class="code">dvd</code>, <code class="code">dv</code>,
@@ -1676,8 +1976,8 @@ The default is the number of available CPUs.
 </p>
 </dd>
 <dt><samp class="option">-stats (<em class="emph">global</em>)</samp></dt>
-<dd><p>Print encoding progress/statistics. It is on by default, to explicitly
-disable it you need to specify <code class="code">-nostats</code>.
+<dd><p>Log encoding progress/statistics as &quot;info&quot;-level log (see <code class="code">-loglevel</code>).
+It is on by default, to explicitly disable it you need to specify <code class="code">-nostats</code>.
 </p>
 </dd>
 <dt><samp class="option">-stats_period <var class="var">time</var> (<em class="emph">global</em>)</samp></dt>
@@ -1690,10 +1990,16 @@ disable it you need to specify <code class="code">-nostats</code>.
 <p>Progress information is written periodically and at the end of
 the encoding process. It is made of &quot;<var class="var">key</var>=<var class="var">value</var>&quot; lines. <var class="var">key</var>
 consists of only alphanumeric characters. The last key of a sequence of
-progress information is always &quot;progress&quot;.
+progress information is always &quot;progress&quot; with the value &quot;continue&quot; or &quot;end&quot;.
 </p>
 <p>The update period is set using <code class="code">-stats_period</code>.
 </p>
+<p>For example, log progress information to stdout:
+</p>
+<div class="example">
+<pre class="example-preformatted">ffmpeg -progress pipe:1 -i in.mkv out.mkv
+</pre></div>
+
 <a class="anchor" id="stdin-option"></a></dd>
 <dt><samp class="option">-stdin</samp></dt>
 <dd><p>Enable interaction on standard input. On by default unless standard input is
@@ -1751,9 +2057,8 @@ attachments.
 </p></dd>
 </dl>
 
-</div>
-<div class="section-level-extent" id="Video-Options">
-<h3 class="section">5.5 Video Options</h3>
+<a name="Video-Options"></a>
+<h3 class="section">5.5 Video Options<span class="pull-right"><a class="anchor hidden-xs" href="#Video-Options" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Video-Options" aria-hidden="true">TOC</a></span></h3>
 
 <dl class="table">
 <dt><samp class="option">-vframes <var class="var">number</var> (<em class="emph">output</em>)</samp></dt>
@@ -1907,9 +2212,8 @@ Disable autoscale at your own risk.
 </p></dd>
 </dl>
 
-</div>
-<div class="section-level-extent" id="Advanced-Video-options">
-<h3 class="section">5.6 Advanced Video options</h3>
+<a name="Advanced-Video-options"></a>
+<h3 class="section">5.6 Advanced Video options<span class="pull-right"><a class="anchor hidden-xs" href="#Advanced-Video-options" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Advanced-Video-options" aria-hidden="true">TOC</a></span></h3>
 
 <dl class="table">
 <dt><samp class="option">-pix_fmt[:<var class="var">stream_specifier</var>] <var class="var">format</var> (<em class="emph">input/output,per-stream</em>)</samp></dt>
@@ -1929,7 +2233,7 @@ as the input (or graph output) and automatic conversions are disabled.
 automatically inserted <code class="code">scale</code> filters and those within simple
 filtergraphs, if not overridden within the filtergraph definition.
 </p>
-<p>See the <a data-manual="ffmpeg-scaler" href="ffmpeg-scaler.html#scaler_005foptions">(ffmpeg-scaler)ffmpeg-scaler manual</a> for a list
+<p>See the <a data-manual="ffmpeg-scaler" href="ffmpeg-scaler.html#scaler_005foptions">ffmpeg-scaler manual</a> for a list
 of scaler options.
 </p>
 </dd>
@@ -1938,11 +2242,6 @@ of scaler options.
 list separated with slashes. Two first values are the beginning and
 end frame numbers, last one is quantizer to use if positive, or quality
 factor if negative.
-</p>
-</dd>
-<dt><samp class="option">-psnr</samp></dt>
-<dd><p>Calculate PSNR of compressed frames. This option is deprecated, pass the
-PSNR flag to the encoder instead, using <code class="code">-flags +psnr</code>.
 </p>
 </dd>
 <dt><samp class="option">-vstats</samp></dt>
@@ -2044,6 +2343,26 @@ algorithms of certain encoders: using fixed-GOP options or similar
 would be more efficient.
 </p>
 </dd>
+<dt><samp class="option">-apply_cropping[:<var class="var">stream_specifier</var>] <var class="var">source</var> (<em class="emph">input,per-stream</em>)</samp></dt>
+<dd><p>Automatically crop the video after decoding according to file metadata.
+Default is <em class="emph">all</em>.
+</p>
+<dl class="table">
+<dt><samp class="option">none (0)</samp></dt>
+<dd><p>Don&rsquo;t apply any cropping metadata.
+</p></dd>
+<dt><samp class="option">all (1)</samp></dt>
+<dd><p>Apply both codec and container level croppping. This is the default mode.
+</p></dd>
+<dt><samp class="option">codec (2)</samp></dt>
+<dd><p>Apply codec level croppping.
+</p></dd>
+<dt><samp class="option">container (3)</samp></dt>
+<dd><p>Apply container level croppping.
+</p></dd>
+</dl>
+
+</dd>
 <dt><samp class="option">-copyinkf[:<var class="var">stream_specifier</var>] (<em class="emph">output,per-stream</em>)</samp></dt>
 <dd><p>When doing stream copy, copy also non-key frames found at the
 beginning.
@@ -2118,6 +2437,12 @@ DirectX adapter on Windows.
 driver associated with the desired device. This option is available only when
 the hardware acceleration method <em class="emph">drm</em> and <em class="emph">vaapi</em> are enabled.
 </p></dd>
+<dt><samp class="option">vendor_id</samp></dt>
+<dd><p>When <var class="var">device</var> and <var class="var">kernel_driver</var> are not specified, use this option to specify
+the vendor id associated with the desired device. This option is available only when the
+hardware acceleration method <em class="emph">drm</em> and <em class="emph">vaapi</em> are enabled and <em class="emph">kernel_driver</em>
+is not specified.
+</p></dd>
 </dl>
 
 <p>Examples:
@@ -2136,6 +2461,10 @@ the hardware acceleration method <em class="emph">drm</em> and <em class="emph">
 </dd>
 <dt><em class="emph">-init_hw_device vaapi:,kernel_driver=i915</em></dt>
 <dd><p>Create a vaapi device on a device associated with kernel driver &lsquo;<samp class="samp">i915</samp>&rsquo;.
+</p>
+</dd>
+<dt><em class="emph">-init_hw_device vaapi:,vendor_id=0x8086</em></dt>
+<dd><p>Create a vaapi device on a device associated with vendor id &lsquo;<samp class="samp">0x8086</samp>&rsquo;.
 </p></dd>
 </dl>
 
@@ -2392,9 +2721,8 @@ resides.
 </dd>
 </dl>
 
-</div>
-<div class="section-level-extent" id="Audio-Options">
-<h3 class="section">5.7 Audio Options</h3>
+<a name="Audio-Options"></a>
+<h3 class="section">5.7 Audio Options<span class="pull-right"><a class="anchor hidden-xs" href="#Audio-Options" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Audio-Options" aria-hidden="true">TOC</a></span></h3>
 
 <dl class="table">
 <dt><samp class="option">-aframes <var class="var">number</var> (<em class="emph">output</em>)</samp></dt>
@@ -2441,26 +2769,35 @@ filter the stream.
 </p></dd>
 </dl>
 
-</div>
-<div class="section-level-extent" id="Advanced-Audio-options">
-<h3 class="section">5.8 Advanced Audio options</h3>
+<a name="Advanced-Audio-options"></a>
+<h3 class="section">5.8 Advanced Audio options<span class="pull-right"><a class="anchor hidden-xs" href="#Advanced-Audio-options" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Advanced-Audio-options" aria-hidden="true">TOC</a></span></h3>
 
 <dl class="table">
 <dt><samp class="option">-atag <var class="var">fourcc/tag</var> (<em class="emph">output</em>)</samp></dt>
 <dd><p>Force audio tag/fourcc. This is an alias for <code class="code">-tag:a</code>.
+</p></dd>
+<dt><samp class="option">-ch_layout[:<var class="var">stream_specifier</var>] <var class="var">layout</var> (<em class="emph">input/output,per-stream</em>)</samp></dt>
+<dd><p>Alias for <code class="code">-channel_layout</code>.
+</p></dd>
+<dt><samp class="option">-channel_layout[:<var class="var">stream_specifier</var>] <var class="var">layout</var> (<em class="emph">input/output,per-stream</em>)</samp></dt>
+<dd><p>Set the audio channel layout. For output streams it is set by default to the
+input channel layout. For input streams it overrides the channel layout of the
+input. Not all decoders respect the overridden channel layout. This option
+also sets the channel layout for audio grabbing devices and raw demuxers
+and is mapped to the corresponding demuxer option.
 </p></dd>
 <dt><samp class="option">-guess_layout_max <var class="var">channels</var> (<em class="emph">input,per-stream</em>)</samp></dt>
 <dd><p>If some input channel layout is not known, try to guess only if it
 corresponds to at most the specified number of channels. For example, 2
 tells to <code class="command">ffmpeg</code> to recognize 1 channel as mono and 2 channels as
 stereo but not 6 channels as 5.1. The default is to always try to guess. Use
-0 to disable all guessing.
+0 to disable all guessing. Using the <code class="code">-channel_layout</code> option to
+explicitly specify an input layout also disables guessing.
 </p></dd>
 </dl>
 
-</div>
-<div class="section-level-extent" id="Subtitle-options">
-<h3 class="section">5.9 Subtitle options</h3>
+<a name="Subtitle-options"></a>
+<h3 class="section">5.9 Subtitle options<span class="pull-right"><a class="anchor hidden-xs" href="#Subtitle-options" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Subtitle-options" aria-hidden="true">TOC</a></span></h3>
 
 <dl class="table">
 <dt><samp class="option">-scodec <var class="var">codec</var> (<em class="emph">input/output</em>)</samp></dt>
@@ -2477,9 +2814,8 @@ option.
 </p></dd>
 </dl>
 
-</div>
-<div class="section-level-extent" id="Advanced-Subtitle-options">
-<h3 class="section">5.10 Advanced Subtitle options</h3>
+<a name="Advanced-Subtitle-options"></a>
+<h3 class="section">5.10 Advanced Subtitle options<span class="pull-right"><a class="anchor hidden-xs" href="#Advanced-Subtitle-options" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Advanced-Subtitle-options" aria-hidden="true">TOC</a></span></h3>
 
 <dl class="table">
 <dt><samp class="option">-fix_sub_duration</samp></dt>
@@ -2502,12 +2838,11 @@ lot.
 </dd>
 </dl>
 
-</div>
-<div class="section-level-extent" id="Advanced-options">
-<h3 class="section">5.11 Advanced options</h3>
+<a name="Advanced-options"></a>
+<h3 class="section">5.11 Advanced options<span class="pull-right"><a class="anchor hidden-xs" href="#Advanced-options" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Advanced-options" aria-hidden="true">TOC</a></span></h3>
 
 <dl class="table">
-<dt><samp class="option">-map [-]<var class="var">input_file_id</var>[:<var class="var">stream_specifier</var>][?] | <var class="var">[linklabel]</var> (<em class="emph">output</em>)</samp></dt>
+<dt><samp class="option">-map [-]<var class="var">input_file_id</var>[:<var class="var">stream_specifier</var>][:<var class="var">view_specifier</var>][:?] | <var class="var">[linklabel]</var> (<em class="emph">output</em>)</samp></dt>
 <dd>
 <p>Create one or more streams in the output file. This option has two forms for
 specifying the data source(s): the first selects one or more streams from some
@@ -2521,6 +2856,29 @@ only those streams that match the specifier are used (see the
 </p>
 <p>A <code class="code">-</code> character before the stream identifier creates a &quot;negative&quot; mapping.
 It disables matching streams from already created mappings.
+</p>
+<p>An optional <var class="var">view_specifier</var> may be given after the stream specifier, which
+for multiview video specifies the view to be used. The view specifier may have
+one of the following formats:
+</p><dl class="table">
+<dt><samp class="option">view:<var class="var">view_id</var></samp></dt>
+<dd><p>select a view by its ID; <var class="var">view_id</var> may be set to &rsquo;all&rsquo; to use all the views
+interleaved into one stream;
+</p>
+</dd>
+<dt><samp class="option">vidx:<var class="var">view_idx</var></samp></dt>
+<dd><p>select a view by its index; i.e. 0 is the base view, 1 is the first non-base
+view, etc.
+</p>
+</dd>
+<dt><samp class="option">vpos:<var class="var">position</var></samp></dt>
+<dd><p>select a view by its display position; <var class="var">position</var> may be <code class="code">left</code> or
+<code class="code">right</code>
+</p></dd>
+</dl>
+<p>The default for transcoding is to only use the base view, i.e. the equivalent of
+<code class="code">vidx:0</code>. For streamcopy, view specifiers are not supported and all views
+are always copied.
 </p>
 <p>A trailing <code class="code">?</code> after the stream index will allow the map to be
 optional: if the map matches no streams the map will be ignored instead
@@ -2612,78 +2970,6 @@ such streams is attempted.
 <dd><p>Allow input streams with unknown type to be copied instead of failing if copying
 such streams is attempted.
 </p>
-</dd>
-<dt><samp class="option">-map_channel [<var class="var">input_file_id</var>.<var class="var">stream_specifier</var>.<var class="var">channel_id</var>|-1][?][:<var class="var">output_file_id</var>.<var class="var">stream_specifier</var>]</samp></dt>
-<dd><p>This option is deprecated and will be removed. It can be replaced by the
-<var class="var">pan</var> filter. In some cases it may be easier to use some combination of the
-<var class="var">channelsplit</var>, <var class="var">channelmap</var>, or <var class="var">amerge</var> filters.
-</p>
-<p>Map an audio channel from a given input to an output. If
-<var class="var">output_file_id</var>.<var class="var">stream_specifier</var> is not set, the audio channel will
-be mapped on all the audio streams.
-</p>
-<p>Using &quot;-1&quot; instead of
-<var class="var">input_file_id</var>.<var class="var">stream_specifier</var>.<var class="var">channel_id</var> will map a muted
-channel.
-</p>
-<p>A trailing <code class="code">?</code> will allow the map_channel to be
-optional: if the map_channel matches no channel the map_channel will be ignored instead
-of failing.
-</p>
-<p>For example, assuming <var class="var">INPUT</var> is a stereo audio file, you can switch the
-two audio channels with the following command:
-</p><div class="example">
-<pre class="example-preformatted">ffmpeg -i INPUT -map_channel 0.0.1 -map_channel 0.0.0 OUTPUT
-</pre></div>
-
-<p>If you want to mute the first channel and keep the second:
-</p><div class="example">
-<pre class="example-preformatted">ffmpeg -i INPUT -map_channel -1 -map_channel 0.0.1 OUTPUT
-</pre></div>
-
-<p>The order of the &quot;-map_channel&quot; option specifies the order of the channels in
-the output stream. The output channel layout is guessed from the number of
-channels mapped (mono if one &quot;-map_channel&quot;, stereo if two, etc.). Using &quot;-ac&quot;
-in combination of &quot;-map_channel&quot; makes the channel gain levels to be updated if
-input and output channel layouts don&rsquo;t match (for instance two &quot;-map_channel&quot;
-options and &quot;-ac 6&quot;).
-</p>
-<p>You can also extract each channel of an input to specific outputs; the following
-command extracts two channels of the <var class="var">INPUT</var> audio stream (file 0, stream 0)
-to the respective <var class="var">OUTPUT_CH0</var> and <var class="var">OUTPUT_CH1</var> outputs:
-</p><div class="example">
-<pre class="example-preformatted">ffmpeg -i INPUT -map_channel 0.0.0 OUTPUT_CH0 -map_channel 0.0.1 OUTPUT_CH1
-</pre></div>
-
-<p>The following example splits the channels of a stereo input into two separate
-streams, which are put into the same output file:
-</p><div class="example">
-<pre class="example-preformatted">ffmpeg -i stereo.wav -map 0:0 -map 0:0 -map_channel 0.0.0:0.0 -map_channel 0.0.1:0.1 -y out.ogg
-</pre></div>
-
-<p>Note that currently each output stream can only contain channels from a single
-input stream; you can&rsquo;t for example use &quot;-map_channel&quot; to pick multiple input
-audio channels contained in different streams (from the same or different files)
-and merge them into a single output stream. It is therefore not currently
-possible, for example, to turn two separate mono streams into a single stereo
-stream. However splitting a stereo stream into two single channel mono streams
-is possible.
-</p>
-<p>If you need this feature, a possible workaround is to use the <em class="emph">amerge</em>
-filter. For example, if you need to merge a media (here <samp class="file">input.mkv</samp>) with 2
-mono audio streams into one single stereo channel audio stream (and keep the
-video stream), you can use the following command:
-</p><div class="example">
-<pre class="example-preformatted">ffmpeg -i input.mkv -filter_complex &quot;[0:1] [0:2] amerge&quot; -c:a pcm_s16le -c:v copy output.mkv
-</pre></div>
-
-<p>To map the first two audio channels from the first input, and using the
-trailing <code class="code">?</code>, ignore the audio channel mapping if the first input is
-mono instead of stereo:
-</p><div class="example">
-<pre class="example-preformatted">ffmpeg -i INPUT -map_channel 0.0.0 -map_channel 0.0.1? OUTPUT
-</pre></div>
-
 </dd>
 <dt><samp class="option">-map_metadata[:<var class="var">metadata_spec_out</var>] <var class="var">infile</var>[:<var class="var">metadata_spec_in</var>] (<em class="emph">output,per-metadata</em>)</samp></dt>
 <dd><p>Set metadata information of the next output file from <var class="var">infile</var>. Note that
@@ -3028,13 +3314,63 @@ on input or output - that would change if transcoding was happening.
 outputs. For simple graphs &ndash; those with one input and one output of the same
 type &ndash; see the <samp class="option">-filter</samp> options. <var class="var">filtergraph</var> is a description of
 the filtergraph, as described in the &ldquo;Filtergraph syntax&rdquo; section of the
-ffmpeg-filters manual.
+ffmpeg-filters manual. This option may be specified multiple times - each use
+creates a new complex filtergraph.
 </p>
-<p>Input link labels must refer to input streams using the
-<code class="code">[file_index:stream_specifier]</code> syntax (i.e. the same as <samp class="option">-map</samp>
-uses). If <var class="var">stream_specifier</var> matches multiple streams, the first one will be
-used. An unlabeled input will be connected to the first unused input stream of
-the matching type.
+<p>Inputs to a complex filtergraph may come from different source types,
+distinguished by the format of the corresponding link label:
+</p><ul class="itemize mark-bullet">
+<li>To connect an input stream, use <code class="code">[file_index:stream_specifier]</code> (i.e. the
+same syntax as <samp class="option">-map</samp>). If <var class="var">stream_specifier</var> matches multiple
+streams, the first one will be used. For multiview video, the stream specifier
+may be followed by the view specifier, see documentation for the <samp class="option">-map</samp>
+option for its syntax.
+
+</li><li>To connect a loopback decoder use [dec:<var class="var">dec_idx</var>], where <var class="var">dec_idx</var> is
+the index of the loopback decoder to be connected to given input. For multiview
+video, the decoder index may be followed by the view specifier, see
+documentation for the <samp class="option">-map</samp> option for its syntax.
+
+</li><li>To connect an output from another complex filtergraph, use its link label. E.g
+the following example:
+
+<div class="example">
+<pre class="example-preformatted">ffmpeg -i input.mkv \
+  -filter_complex '[0:v]scale=size=hd1080,split=outputs=2[for_enc][orig_scaled]' \
+  -c:v libx264 -map '[for_enc]' output.mkv \
+  -dec 0:0 \
+  -filter_complex '[dec:0][orig_scaled]hstack[stacked]' \
+  -map '[stacked]' -c:v ffv1 comparison.mkv
+</pre></div>
+
+<p>reads an input video and
+</p><ul class="itemize mark-bullet">
+<li>(line 2) uses a complex filtergraph with one input and two outputs
+to scale the video to 1920x1080 and duplicate the result to both
+outputs;
+
+</li><li>(line 3) encodes one scaled output with <code class="code">libx264</code> and writes the result to
+<samp class="file">output.mkv</samp>;
+
+</li><li>(line 4) decodes this encoded stream with a loopback decoder;
+
+</li><li>(line 5) places the output of the loopback decoder (i.e. the
+<code class="code">libx264</code>-encoded video) side by side with the scaled original input;
+
+</li><li>(line 6) combined video is then losslessly encoded and written into
+<samp class="file">comparison.mkv</samp>.
+
+</li></ul>
+
+<p>Note that the two filtergraphs cannot be combined into one, because then there
+would be a cycle in the transcoding pipeline (filtergraph output goes to
+encoding, from there to decoding, then back to the same graph), and such cycles
+are not allowed.
+</p>
+</li></ul>
+
+<p>An unlabeled input will be connected to the first unused input stream of the
+matching type.
 </p>
 <p>Output link labels are referred to with <samp class="option">-map</samp>. Unlabeled outputs are
 added to the first output file.
@@ -3366,9 +3702,8 @@ different formats.
 </dd>
 </dl>
 
-</div>
-<div class="section-level-extent" id="Preset-files">
-<h3 class="section">5.12 Preset files</h3>
+<a name="Preset-files"></a>
+<h3 class="section">5.12 Preset files<span class="pull-right"><a class="anchor hidden-xs" href="#Preset-files" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Preset-files" aria-hidden="true">TOC</a></span></h3>
 <p>A preset file contains a sequence of <var class="var">option</var>=<var class="var">value</var> pairs,
 one for each line, specifying a sequence of options which would be
 awkward to specify on the command line. Lines starting with the hash
@@ -3377,12 +3712,8 @@ the <samp class="file">presets</samp> directory in the FFmpeg source tree for ex
 </p>
 <p>There are two types of preset files: ffpreset and avpreset files.
 </p>
-<ul class="mini-toc">
-<li><a href="#ffpreset-files" accesskey="1">ffpreset files</a></li>
-<li><a href="#avpreset-files" accesskey="2">avpreset files</a></li>
-</ul>
-<div class="subsection-level-extent" id="ffpreset-files">
-<h4 class="subsection">5.12.1 ffpreset files</h4>
+<a name="ffpreset-files"></a>
+<h4 class="subsection">5.12.1 ffpreset files<span class="pull-right"><a class="anchor hidden-xs" href="#ffpreset-files" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-ffpreset-files" aria-hidden="true">TOC</a></span></h4>
 <p>ffpreset files are specified with the <code class="code">vpre</code>, <code class="code">apre</code>,
 <code class="code">spre</code>, and <code class="code">fpre</code> options. The <code class="code">fpre</code> option takes the
 filename of the preset instead of a preset name as input and can be
@@ -3409,9 +3740,8 @@ the preset file options will be applied. For example, if you select
 the video codec with <code class="code">-vcodec libvpx</code> and use <code class="code">-vpre 1080p</code>,
 then it will search for the file <samp class="file">libvpx-1080p.ffpreset</samp>.
 </p>
-</div>
-<div class="subsection-level-extent" id="avpreset-files">
-<h4 class="subsection">5.12.2 avpreset files</h4>
+<a name="avpreset-files"></a>
+<h4 class="subsection">5.12.2 avpreset files<span class="pull-right"><a class="anchor hidden-xs" href="#avpreset-files" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-avpreset-files" aria-hidden="true">TOC</a></span></h4>
 <p>avpreset files are specified with the <code class="code">pre</code> option. They work similar to
 ffpreset files, but they only allow encoder- specific options. Therefore, an
 <var class="var">option</var>=<var class="var">value</var> pair specifying an encoder cannot be used.
@@ -3430,10 +3760,8 @@ search for the file <samp class="file">libvpx-1080p.avpreset</samp>.
 <p>If no such file is found, then ffmpeg will search for a file named
 <var class="var">arg</var>.avpreset in the same directories.
 </p>
-<a class="anchor" id="vstats_005ffile_005fformat"></a></div>
-</div>
-<div class="section-level-extent" id="vstats-file-format">
-<h3 class="section">5.13 vstats file format</h3>
+<a class="anchor" id="vstats_005ffile_005fformat"></a><a name="vstats-file-format"></a>
+<h3 class="section">5.13 vstats file format<span class="pull-right"><a class="anchor hidden-xs" href="#vstats-file-format" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-vstats-file-format" aria-hidden="true">TOC</a></span></h3>
 <p>The <code class="code">-vstats</code> and <code class="code">-vstats_file</code> options enable generation of a file
 containing statistics about the generated video outputs.
 </p>
@@ -3501,18 +3829,11 @@ file.
 to show encoding statistics.
 </p>
 
-</div>
-</div>
-<div class="chapter-level-extent" id="Examples-1">
-<h2 class="chapter">6 Examples</h2>
+<a name="Examples-1"></a>
+<h2 class="chapter">6 Examples<span class="pull-right"><a class="anchor hidden-xs" href="#Examples-1" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Examples-1" aria-hidden="true">TOC</a></span></h2>
 
-<ul class="mini-toc">
-<li><a href="#Video-and-Audio-grabbing" accesskey="1">Video and Audio grabbing</a></li>
-<li><a href="#X11-grabbing" accesskey="2">X11 grabbing</a></li>
-<li><a href="#Video-and-Audio-file-format-conversion" accesskey="3">Video and Audio file format conversion</a></li>
-</ul>
-<div class="section-level-extent" id="Video-and-Audio-grabbing">
-<h3 class="section">6.1 Video and Audio grabbing</h3>
+<a name="Video-and-Audio-grabbing"></a>
+<h3 class="section">6.1 Video and Audio grabbing<span class="pull-right"><a class="anchor hidden-xs" href="#Video-and-Audio-grabbing" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Video-and-Audio-grabbing" aria-hidden="true">TOC</a></span></h3>
 
 <p>If you specify the input format and device then ffmpeg can grab video
 and audio directly.
@@ -3532,9 +3853,8 @@ launching ffmpeg with any TV viewer such as
 have to set the audio recording levels correctly with a
 standard mixer.
 </p>
-</div>
-<div class="section-level-extent" id="X11-grabbing">
-<h3 class="section">6.2 X11 grabbing</h3>
+<a name="X11-grabbing"></a>
+<h3 class="section">6.2 X11 grabbing<span class="pull-right"><a class="anchor hidden-xs" href="#X11-grabbing" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-X11-grabbing" aria-hidden="true">TOC</a></span></h3>
 
 <p>Grab the X11 display with ffmpeg via
 </p>
@@ -3552,9 +3872,8 @@ the DISPLAY environment variable.
 <p>0.0 is display.screen number of your X11 server, same as the DISPLAY environment
 variable. 10 is the x-offset and 20 the y-offset for the grabbing.
 </p>
-</div>
-<div class="section-level-extent" id="Video-and-Audio-file-format-conversion">
-<h3 class="section">6.3 Video and Audio file format conversion</h3>
+<a name="Video-and-Audio-file-format-conversion"></a>
+<h3 class="section">6.3 Video and Audio file format conversion<span class="pull-right"><a class="anchor hidden-xs" href="#Video-and-Audio-file-format-conversion" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Video-and-Audio-file-format-conversion" aria-hidden="true">TOC</a></span></h3>
 
 <p>Any supported file format and protocol can serve as input to ffmpeg:
 </p>
@@ -3696,10 +4015,8 @@ but you may use the QP2LAMBDA constant to easily convert from &rsquo;q&rsquo; un
 </li></ul>
 
 
-</div>
-</div>
-<div class="chapter-level-extent" id="See-Also">
-<h2 class="chapter">7 See Also</h2>
+<a name="See-Also"></a>
+<h2 class="chapter">7 See Also<span class="pull-right"><a class="anchor hidden-xs" href="#See-Also" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-See-Also" aria-hidden="true">TOC</a></span></h2>
 
 <p><a class="url" href="ffmpeg-all.html">ffmpeg-all</a>,
 <a class="url" href="ffplay.html">ffplay</a>, <a class="url" href="ffprobe.html">ffprobe</a>,
@@ -3714,9 +4031,8 @@ but you may use the QP2LAMBDA constant to easily convert from &rsquo;q&rsquo; un
 <a class="url" href="ffmpeg-filters.html">ffmpeg-filters</a>
 </p>
 
-</div>
-<div class="chapter-level-extent" id="Authors">
-<h2 class="chapter">8 Authors</h2>
+<a name="Authors"></a>
+<h2 class="chapter">8 Authors<span class="pull-right"><a class="anchor hidden-xs" href="#Authors" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Authors" aria-hidden="true">TOC</a></span></h2>
 
 <p>The FFmpeg developers.
 </p>
@@ -3729,8 +4045,6 @@ online repository at <a class="url" href="https://git.ffmpeg.org/ffmpeg">https:/
 <samp class="file">MAINTAINERS</samp> in the source code tree.
 </p>
 
-</div>
-</div>
       <p style="font-size: small;">
         This document was generated using <a class="uref" href="https://www.gnu.org/software/texinfo/"><em class="emph">makeinfo</em></a>.
       </p>

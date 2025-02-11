@@ -17,7 +17,7 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import filedialog
 import tkinter.messagebox as messagebox
-from pytube import YouTube
+from pytubefix import YouTube
 from pytube import Playlist
 
 class YouTubeConverter:
@@ -40,7 +40,7 @@ class YouTubeConverter:
         self.download_button = None
 
     def run(self):
-        """Start the GUI aplication."""
+        """Start the GUI application."""
         self._create_ui()
         self.window.mainloop()
 
@@ -129,14 +129,13 @@ class YouTubeConverter:
         elif video_id_match:
             num_videos = 1
         else:
-            # Handle the case where an invalid link is entered
             messagebox.showerror("Error", "Invalid link")
             return
 
         def convert_to_mp3(video_file_path, audio_file_path):
             if hasattr(sys, "_MEIPASS"):
                 # Running as a PyInstaller bundle
-                ffmpeg_path = os.path.join(sys._MEIPASS, "ffmpeg", "bin", "ffmpeg.exe") # type: ignore
+                ffmpeg_path = os.path.join(sys._MEIPASS, "ffmpeg", "bin", "ffmpeg.exe")
             else:
                 ffmpeg_path = os.path.join(os.path.dirname(__file__), "ffmpeg\\bin\\ffmpeg.exe")
             try:
@@ -181,7 +180,6 @@ class YouTubeConverter:
             except Exception as e:
                 return None
 
-
         # Define a function for downloading a single video
         def download_single_video(video_url):
             video_title = ""
@@ -198,7 +196,7 @@ class YouTubeConverter:
                         title_to_use = video_name if video_name else video.title
                     except Exception as e:
                         title_to_use = video.title
-                    
+
                     file_name = re.sub("[^A-Za-z0-9 -]+", "", title_to_use) + ".mp4"
                     video_file_path = os.path.join(self.download_directory, file_name)
                     audio_file_path = f"{os.path.splitext(video_file_path)[0]}.mp3"
@@ -212,7 +210,6 @@ class YouTubeConverter:
                     success = convert_to_mp3(video_file_path, audio_file_path)
                     if not success:
                         raise Exception("Failed to convert video to MP3.")
-
                     os.remove(video_file_path)
 
                 return video_title, None  # Success

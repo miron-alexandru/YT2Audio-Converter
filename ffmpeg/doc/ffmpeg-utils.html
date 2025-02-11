@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- Created by , GNU Texinfo 7.0.1 -->
+<!-- Created by , GNU Texinfo 7.1.1 -->
   <head>
     <meta charset="utf-8">
     <title>
@@ -17,7 +17,7 @@
       </h1>
 
 
-<div class="top-level-extent" id="SEC_Top">
+<a name="SEC_Top"></a>
 
 <div class="element-contents" id="SEC_Contents">
 <h2 class="contents-heading">Table of Contents</h2>
@@ -50,39 +50,21 @@
 </div>
 </div>
 
-<ul class="mini-toc">
-<li><a href="#Description" accesskey="1">Description</a></li>
-<li><a href="#Syntax" accesskey="2">Syntax</a></li>
-<li><a href="#Expression-Evaluation" accesskey="3">Expression Evaluation</a></li>
-<li><a href="#See-Also" accesskey="4">See Also</a></li>
-<li><a href="#Authors" accesskey="5">Authors</a></li>
-</ul>
-<div class="chapter-level-extent" id="Description">
-<h2 class="chapter">1 Description</h2>
+<a name="Description"></a>
+<h2 class="chapter">1 Description<span class="pull-right"><a class="anchor hidden-xs" href="#Description" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Description" aria-hidden="true">TOC</a></span></h2>
 
 <p>This document describes some generic features and utilities provided
 by the libavutil library.
 </p>
 
-</div>
-<div class="chapter-level-extent" id="Syntax">
-<h2 class="chapter">2 Syntax</h2>
+<a name="Syntax"></a>
+<h2 class="chapter">2 Syntax<span class="pull-right"><a class="anchor hidden-xs" href="#Syntax" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Syntax" aria-hidden="true">TOC</a></span></h2>
 
 <p>This section documents the syntax and formats employed by the FFmpeg
 libraries and tools.
 </p>
-<a class="anchor" id="quoting_005fand_005fescaping"></a><ul class="mini-toc">
-<li><a href="#Quoting-and-escaping" accesskey="1">Quoting and escaping</a></li>
-<li><a href="#Date" accesskey="2">Date</a></li>
-<li><a href="#Time-duration" accesskey="3">Time duration</a></li>
-<li><a href="#Video-size" accesskey="4">Video size</a></li>
-<li><a href="#Video-rate" accesskey="5">Video rate</a></li>
-<li><a href="#Ratio" accesskey="6">Ratio</a></li>
-<li><a href="#Color" accesskey="7">Color</a></li>
-<li><a href="#Channel-Layout" accesskey="8">Channel Layout</a></li>
-</ul>
-<div class="section-level-extent" id="Quoting-and-escaping">
-<h3 class="section">2.1 Quoting and escaping</h3>
+<a class="anchor" id="quoting_005fand_005fescaping"></a><a name="Quoting-and-escaping"></a>
+<h3 class="section">2.1 Quoting and escaping<span class="pull-right"><a class="anchor hidden-xs" href="#Quoting-and-escaping" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Quoting-and-escaping" aria-hidden="true">TOC</a></span></h3>
 
 <p>FFmpeg adopts the following quoting and escaping mechanism, unless
 explicitly specified. The following rules are applied:
@@ -114,11 +96,8 @@ escaped according to the rules defined above.
 <p>The tool <samp class="file">tools/ffescape</samp> in the FFmpeg source tree can be used
 to automatically quote or escape a string in a script.
 </p>
-<ul class="mini-toc">
-<li><a href="#Examples" accesskey="1">Examples</a></li>
-</ul>
-<div class="subsection-level-extent" id="Examples">
-<h4 class="subsection">2.1.1 Examples</h4>
+<a name="Examples"></a>
+<h4 class="subsection">2.1.1 Examples<span class="pull-right"><a class="anchor hidden-xs" href="#Examples" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Examples" aria-hidden="true">TOC</a></span></h4>
 
 <ul class="itemize mark-bullet">
 <li>Escape the string <code class="code">Crime d'Amour</code> containing the <code class="code">'</code> special
@@ -149,10 +128,8 @@ when quoting it:
 </pre></div>
 </li></ul>
 
-<a class="anchor" id="date-syntax"></a></div>
-</div>
-<div class="section-level-extent" id="Date">
-<h3 class="section">2.2 Date</h3>
+<a class="anchor" id="date-syntax"></a><a name="Date"></a>
+<h3 class="section">2.2 Date<span class="pull-right"><a class="anchor hidden-xs" href="#Date" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Date" aria-hidden="true">TOC</a></span></h3>
 
 <p>The accepted syntax is:
 </p><div class="example">
@@ -167,9 +144,8 @@ interpreted as UTC.
 If the year-month-day part is not specified it takes the current
 year-month-day.
 </p>
-<a class="anchor" id="time-duration-syntax"></a></div>
-<div class="section-level-extent" id="Time-duration">
-<h3 class="section">2.3 Time duration</h3>
+<a class="anchor" id="time-duration-syntax"></a><a name="Time-duration"></a>
+<h3 class="section">2.3 Time duration<span class="pull-right"><a class="anchor hidden-xs" href="#Time-duration" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Time-duration" aria-hidden="true">TOC</a></span></h3>
 
 <p>There are two accepted syntaxes for expressing time duration.
 </p>
@@ -195,11 +171,8 @@ respectively.
 </p>
 <p>In both expressions, the optional &lsquo;<samp class="samp">-</samp>&rsquo; indicates negative duration.
 </p>
-<ul class="mini-toc">
-<li><a href="#Examples-1" accesskey="1">Examples</a></li>
-</ul>
-<div class="subsection-level-extent" id="Examples-1">
-<h4 class="subsection">2.3.1 Examples</h4>
+<a name="Examples-1"></a>
+<h4 class="subsection">2.3.1 Examples<span class="pull-right"><a class="anchor hidden-xs" href="#Examples-1" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Examples-1" aria-hidden="true">TOC</a></span></h4>
 
 <p>The following examples are all valid time duration:
 </p>
@@ -229,10 +202,8 @@ respectively.
 </p></dd>
 </dl>
 
-<a class="anchor" id="video-size-syntax"></a></div>
-</div>
-<div class="section-level-extent" id="Video-size">
-<h3 class="section">2.4 Video size</h3>
+<a class="anchor" id="video-size-syntax"></a><a name="Video-size"></a>
+<h3 class="section">2.4 Video size<span class="pull-right"><a class="anchor hidden-xs" href="#Video-size" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Video-size" aria-hidden="true">TOC</a></span></h3>
 <p>Specify the size of the sourced video, it may be a string of the form
 <var class="var">width</var>x<var class="var">height</var>, or the name of a size abbreviation.
 </p>
@@ -399,9 +370,8 @@ respectively.
 </p></dd>
 </dl>
 
-<a class="anchor" id="video-rate-syntax"></a></div>
-<div class="section-level-extent" id="Video-rate">
-<h3 class="section">2.5 Video rate</h3>
+<a class="anchor" id="video-rate-syntax"></a><a name="Video-rate"></a>
+<h3 class="section">2.5 Video rate<span class="pull-right"><a class="anchor hidden-xs" href="#Video-rate" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Video-rate" aria-hidden="true">TOC</a></span></h3>
 
 <p>Specify the frame rate of a video, expressed as the number of frames
 generated per second. It has to be a string in the format
@@ -436,9 +406,8 @@ number or a valid video frame rate abbreviation.
 </p></dd>
 </dl>
 
-<a class="anchor" id="ratio-syntax"></a></div>
-<div class="section-level-extent" id="Ratio">
-<h3 class="section">2.6 Ratio</h3>
+<a class="anchor" id="ratio-syntax"></a><a name="Ratio"></a>
+<h3 class="section">2.6 Ratio<span class="pull-right"><a class="anchor hidden-xs" href="#Ratio" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Ratio" aria-hidden="true">TOC</a></span></h3>
 
 <p>A ratio can be expressed as an expression, or in the form
 <var class="var">numerator</var>:<var class="var">denominator</var>.
@@ -449,9 +418,8 @@ want to exclude those values.
 </p>
 <p>The undefined value can be expressed using the &quot;0:0&quot; string.
 </p>
-<a class="anchor" id="color-syntax"></a></div>
-<div class="section-level-extent" id="Color">
-<h3 class="section">2.7 Color</h3>
+<a class="anchor" id="color-syntax"></a><a name="Color"></a>
+<h3 class="section">2.7 Color<span class="pull-right"><a class="anchor hidden-xs" href="#Color" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Color" aria-hidden="true">TOC</a></span></h3>
 
 <p>It can be the name of a color as defined below (case insensitive match) or a
 <code class="code">[0x|#]RRGGBB[AA]</code> sequence, possibly followed by @ and a string
@@ -889,9 +857,8 @@ component is not specified then &lsquo;<samp class="samp">0xff</samp>&rsquo; is 
 </p></dd>
 </dl>
 
-<a class="anchor" id="channel-layout-syntax"></a></div>
-<div class="section-level-extent" id="Channel-Layout">
-<h3 class="section">2.8 Channel Layout</h3>
+<a class="anchor" id="channel-layout-syntax"></a><a name="Channel-Layout"></a>
+<h3 class="section">2.8 Channel Layout<span class="pull-right"><a class="anchor hidden-xs" href="#Channel-Layout" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Channel-Layout" aria-hidden="true">TOC</a></span></h3>
 
 <p>A channel layout specifies the spatial disposition of the channels in
 a multi-channel audio stream. To specify a channel layout, FFmpeg
@@ -1082,8 +1049,14 @@ following identifiers:
 <dt>&lsquo;<samp class="samp">9.1.4</samp>&rsquo;</dt>
 <dd><p>FL+FR+FC+LFE+BL+BR+FLC+FRC+SL+SR+TFL+TFR+TBL+TBR
 </p></dd>
+<dt>&lsquo;<samp class="samp">9.1.6</samp>&rsquo;</dt>
+<dd><p>FL+FR+FC+LFE+BL+BR+FLC+FRC+SL+SR+TFL+TFR+TBL+TBR+TSL+TSR
+</p></dd>
 <dt>&lsquo;<samp class="samp">hexadecagonal</samp>&rsquo;</dt>
 <dd><p>FL+FR+FC+BL+BR+BC+SL+SR+WL+WR+TBL+TBR+TBC+TFC+TFL+TFR
+</p></dd>
+<dt>&lsquo;<samp class="samp">binaural</samp>&rsquo;</dt>
+<dd><p>BIL+BIR
 </p></dd>
 <dt>&lsquo;<samp class="samp">downmix</samp>&rsquo;</dt>
 <dd><p>DL+DR
@@ -1128,10 +1101,8 @@ also be specified as a decimal number (if and only if not followed by &quot;c&qu
 <p>See also the function <code class="code">av_channel_layout_from_string</code> defined in
 <samp class="file">libavutil/channel_layout.h</samp>.
 </p>
-</div>
-</div>
-<div class="chapter-level-extent" id="Expression-Evaluation">
-<h2 class="chapter">3 Expression Evaluation</h2>
+<a name="Expression-Evaluation"></a>
+<h2 class="chapter">3 Expression Evaluation<span class="pull-right"><a class="anchor hidden-xs" href="#Expression-Evaluation" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Expression-Evaluation" aria-hidden="true">TOC</a></span></h2>
 
 <p>When evaluating an arithmetic expression, FFmpeg uses an internal
 formula evaluator, implemented through the <samp class="file">libavutil/eval.h</samp>
@@ -1149,6 +1120,11 @@ expression evaluates to the value of <var class="var">expr2</var>.
 <code class="code">*</code>, <code class="code">/</code>, <code class="code">^</code>.
 </p>
 <p>The following unary operators are available: <code class="code">+</code>, <code class="code">-</code>.
+</p>
+<p>Some internal variables can be used to store and load intermediary
+results. They can be accessed using the <code class="code">ld</code> and <code class="code">st</code>
+functions with an index argument varying from 0 to 9 to specify which
+internal variable to access.
 </p>
 <p>The following functions are available:
 </p><dl class="table">
@@ -1272,9 +1248,9 @@ result of <var class="var">y</var>, otherwise the evaluation result of <var clas
 <dd><p>Return 1.0 if <var class="var">x</var> is NAN, 0.0 otherwise.
 </p>
 </dd>
-<dt><samp class="option">ld(var)</samp></dt>
-<dd><p>Load the value of the internal variable with number
-<var class="var">var</var>, which was previously stored with st(<var class="var">var</var>, <var class="var">expr</var>).
+<dt><samp class="option">ld(idx)</samp></dt>
+<dd><p>Load the value of the internal variable with index <var class="var">idx</var>, which was
+previously stored with st(<var class="var">idx</var>, <var class="var">expr</var>).
 The function returns the loaded value.
 </p>
 </dd>
@@ -1317,23 +1293,33 @@ The function returns the loaded value.
 </dd>
 <dt><samp class="option">print(t)</samp></dt>
 <dt><samp class="option">print(t, l)</samp></dt>
-<dd><p>Print the value of expression <var class="var">t</var> with loglevel <var class="var">l</var>. If
-<var class="var">l</var> is not specified then a default log level is used.
-Returns the value of the expression printed.
-</p>
-<p>Prints t with loglevel l
+<dd><p>Print the value of expression <var class="var">t</var> with loglevel <var class="var">l</var>. If <var class="var">l</var> is not
+specified then a default log level is used.
+Return the value of the expression printed.
 </p>
 </dd>
 <dt><samp class="option">random(idx)</samp></dt>
 <dd><p>Return a pseudo random value between 0.0 and 1.0. <var class="var">idx</var> is the
-index of the internal variable which will be used to save the
-seed/state.
+index of the internal variable used to save the seed/state, which can be
+previously stored with <code class="code">st(idx)</code>.
 </p>
+<p>To initialize the seed, you need to store the seed value as a 64-bit
+unsigned integer in the internal variable with index <var class="var">idx</var>.
+</p>
+<p>For example, to store the seed with value <code class="code">42</code> in the internal
+variable with index <code class="code">0</code> and print a few random values:
+</p><div class="example">
+<pre class="example-preformatted">st(0,42); print(random(0)); print(random(0)); print(random(0))
+</pre></div>
+
 </dd>
 <dt><samp class="option">randomi(idx, min, max)</samp></dt>
 <dd><p>Return a pseudo random value in the interval between <var class="var">min</var> and
-<var class="var">max</var>. <var class="var">idx</var> is the index of the internal variable which will
-be used to save the seed/state.
+<var class="var">max</var>. <var class="var">idx</var> is the index of the internal variable which will be used to
+save the seed/state, which can be previously stored with <code class="code">st(idx)</code>.
+</p>
+<p>To initialize the seed, you need to store the seed value as a 64-bit
+unsigned integer in the internal variable with index <var class="var">idx</var>.
 </p>
 </dd>
 <dt><samp class="option">root(expr, max)</samp></dt>
@@ -1343,15 +1329,15 @@ with argument <var class="var">ld(0)</var> is 0 in the interval 0..<var class="v
 <p>The expression in <var class="var">expr</var> must denote a continuous function or the
 result is undefined.
 </p>
-<p><var class="var">ld(0)</var> is used to represent the function input value, which means
-that the given expression will be evaluated multiple times with
-various input values that the expression can access through
-<code class="code">ld(0)</code>. When the expression evaluates to 0 then the
-corresponding input value will be returned.
+<p><var class="var">ld(0)</var> is used to represent the function input value, which means that the
+given expression will be evaluated multiple times with various input values that
+the expression can access through <code class="code">ld(0)</code>. When the expression evaluates to
+0 then the corresponding input value will be returned.
 </p>
 </dd>
 <dt><samp class="option">round(expr)</samp></dt>
-<dd><p>Round the value of expression <var class="var">expr</var> to the nearest integer. For example, &quot;round(1.5)&quot; is &quot;2.0&quot;.
+<dd><p>Round the value of expression <var class="var">expr</var> to the nearest integer. For example,
+&quot;round(1.5)&quot; is &quot;2.0&quot;.
 </p>
 </dd>
 <dt><samp class="option">sgn(x)</samp></dt>
@@ -1375,12 +1361,15 @@ corresponding input value will be returned.
 <dd><p>Compute expression <code class="code">1/(1 + exp(4*x))</code>.
 </p>
 </dd>
-<dt><samp class="option">st(var, expr)</samp></dt>
+<dt><samp class="option">st(idx, expr)</samp></dt>
 <dd><p>Store the value of the expression <var class="var">expr</var> in an internal
-variable. <var class="var">var</var> specifies the number of the variable where to
-store the value, and it is a value ranging from 0 to 9. The function
-returns the value stored in the internal variable.
-Note, Variables are currently not shared between expressions.
+variable. <var class="var">idx</var> specifies the index of the variable where to store
+the value, and it is a value ranging from 0 to 9. The function returns
+the value stored in the internal variable.
+</p>
+<p>The stored value can be retrieved with <code class="code">ld(var)</code>.
+</p>
+<p>Note: variables are currently not shared between expressions.
 </p>
 </dd>
 <dt><samp class="option">tan(x)</samp></dt>
@@ -1392,16 +1381,16 @@ Note, Variables are currently not shared between expressions.
 </p>
 </dd>
 <dt><samp class="option">taylor(expr, x)</samp></dt>
-<dt><samp class="option">taylor(expr, x, id)</samp></dt>
+<dt><samp class="option">taylor(expr, x, idx)</samp></dt>
 <dd><p>Evaluate a Taylor series at <var class="var">x</var>, given an expression representing
-the <code class="code">ld(id)</code>-th derivative of a function at 0.
+the <code class="code">ld(idx)</code>-th derivative of a function at 0.
 </p>
 <p>When the series does not converge the result is undefined.
 </p>
-<p><var class="var">ld(id)</var> is used to represent the derivative order in <var class="var">expr</var>,
+<p><var class="var">ld(idx)</var> is used to represent the derivative order in <var class="var">expr</var>,
 which means that the given expression will be evaluated multiple times
 with various input values that the expression can access through
-<code class="code">ld(id)</code>. If <var class="var">id</var> is not specified then 0 is assumed.
+<code class="code">ld(idx)</code>. If <var class="var">idx</var> is not specified then 0 is assumed.
 </p>
 <p>Note, when you have the derivatives at y instead of 0,
 <code class="code">taylor(expr, x-y)</code> can be used.
@@ -1529,17 +1518,15 @@ indication of the corresponding powers of 10 and of 2.
 </dl>
 
 
-</div>
-<div class="chapter-level-extent" id="See-Also">
-<h2 class="chapter">4 See Also</h2>
+<a name="See-Also"></a>
+<h2 class="chapter">4 See Also<span class="pull-right"><a class="anchor hidden-xs" href="#See-Also" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-See-Also" aria-hidden="true">TOC</a></span></h2>
 
 <p><a class="url" href="ffmpeg.html">ffmpeg</a>, <a class="url" href="ffplay.html">ffplay</a>, <a class="url" href="ffprobe.html">ffprobe</a>,
 <a class="url" href="libavutil.html">libavutil</a>
 </p>
 
-</div>
-<div class="chapter-level-extent" id="Authors">
-<h2 class="chapter">5 Authors</h2>
+<a name="Authors"></a>
+<h2 class="chapter">5 Authors<span class="pull-right"><a class="anchor hidden-xs" href="#Authors" aria-hidden="true">#</a> <a class="anchor hidden-xs"href="#toc-Authors" aria-hidden="true">TOC</a></span></h2>
 
 <p>The FFmpeg developers.
 </p>
@@ -1552,8 +1539,6 @@ online repository at <a class="url" href="https://git.ffmpeg.org/ffmpeg">https:/
 <samp class="file">MAINTAINERS</samp> in the source code tree.
 </p>
 
-</div>
-</div>
       <p style="font-size: small;">
         This document was generated using <a class="uref" href="https://www.gnu.org/software/texinfo/"><em class="emph">makeinfo</em></a>.
       </p>
